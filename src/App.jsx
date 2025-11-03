@@ -3,6 +3,9 @@ import { BarChart3, BookOpen, Home, Settings } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import GraphPanel from './components/GraphPanel';
 import ContentPanel from './components/ContentPanel';
+import outerEarIcon from './assets/outer_ear_icon.svg';
+import middleEarIcon from './assets/middle_ear_icon.svg';
+import innerEarIcon from './assets/inner_ear_icon.svg';
 import './App.css';
 
 export default function App() {
@@ -10,9 +13,10 @@ export default function App() {
 
   const menuItems = [
     { id: 'home', label: 'Início', icon: Home },
-    { id: 'graphs', label: 'Gráficos', icon: BarChart3 },
-    { id: 'content', label: 'Conteúdo', icon: BookOpen },
-    { id: 'settings', label: 'Configurações', icon: Settings },
+    { id: 'settings', label: 'Configurações gerais', icon: Settings },
+    { id: 'outerEarMenu', label: 'Orelha externa', icon: outerEarIcon },
+    { id: 'middleEarMenu', label: 'Orelha média', icon: middleEarIcon },
+    { id: 'innerEarMenu', label: 'Orelha interna', icon: innerEarIcon },
   ];
 
   return (

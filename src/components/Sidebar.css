@@ -1,7 +1,7 @@
 .sidebar {
-  width: 256px;
-  background-color: #1a1a1a;
-  color: white;
+  width: 290px;
+  background-color: #e8fce8;
+  color: rgb(37, 37, 37);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   position: relative;
   height: 100vh;
@@ -16,6 +16,15 @@
   font-weight: bold;
   margin-bottom: 2rem;
 }
+
+.sidebar-logo {
+  width: 80%;           /* Largura total do sidebar */
+  max-width: 200px;      /* Largura máxima */
+  height: auto;          /* Mantém proporção */
+  margin: 0 auto 2rem auto; /* [topo] [direita] [baixo] [esquerda] */
+  display: block;        /* Remove espaço extra */
+}
+
 
 .sidebar-nav {
   display: flex;
@@ -35,7 +44,7 @@
   font-size: 1rem;
   transition: all 0.2s;
   background-color: transparent;
-  color: #d1d5db;
+  color: #090a0c;
 }
 
 .menu-button:hover {
@@ -44,12 +53,18 @@
 }
 
 .menu-button.active {
-  background-color: #2563eb;
+  background-color: #26282b;
   color: white;
 }
 
 .menu-button-label {
   font-weight: 500;
+}
+
+.menu-icon-img {
+  /* width: 20px; */
+  height: 40px;
+  object-fit: contain;
 }
 
 .sidebar-footer {
@@ -62,5 +77,10 @@
 
 .sidebar-version {
   font-size: 0.875rem;
-  color: #9ca3af;
+  color: #000000;
+}
+
+.sidebar-developed-by {
+  font-size: 0.875rem;
+  color: #000000;
 }
