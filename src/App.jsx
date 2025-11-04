@@ -14,9 +14,9 @@ import './App.css';
 const MENU_ITEMS = [
   { id: 'home', label: 'Início', icon: Home },
   { id: 'generalSettings', label: 'Configurações gerais', icon: Settings },
-  { id: 'outerEarMenu', label: 'Orelha externa', icon: outerEarIcon },
-  { id: 'middleEarMenu', label: 'Orelha média', icon: middleEarIcon },
-  { id: 'innerEarMenu', label: 'Orelha interna', icon: innerEarIcon },
+  { id: 'outerEarMenu', label: 'Orelha externa', icon: Settings },
+  { id: 'middleEarMenu', label: 'Orelha média', icon: Settings },
+  { id: 'innerEarMenu', label: 'Orelha interna', icon: Settings },
 ];
 
 const SETTINGS_SECTIONS = ['generalSettings','outerEarMenu','middleEarMenu','innerEarMenu'];

@@ -48,8 +48,8 @@
 }
 
 .menu-button:hover {
-  background-color: #2d2d2d;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(20, 20, 20);
 }
 
 .menu-button.active {
