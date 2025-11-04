@@ -1,6 +1,6 @@
 import React from 'react';
 import { BarChart3 } from 'lucide-react';
-import './GraphPanel.css';
+import '../styles/GraphPanel.css';
 
 export default function GraphPanel() {
   return (

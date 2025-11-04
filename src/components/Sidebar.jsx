@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.css';
+import '../styles/Sidebar.css';
 import logo_header from '../assets/ear_header.svg';
 
 

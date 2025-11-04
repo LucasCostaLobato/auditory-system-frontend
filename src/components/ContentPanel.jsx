@@ -1,6 +1,6 @@
 import React from 'react';
 import { BookOpen } from 'lucide-react';
-import './ContentPanel.css';
+import '../styles/ContentPanel.css';
 
 export default function ContentPanel() {
   return (

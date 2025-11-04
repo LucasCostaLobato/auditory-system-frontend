@@ -3,6 +3,7 @@ import { BarChart3, BookOpen, Home, Settings } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import GraphPanel from './components/GraphPanel';
 import ContentPanel from './components/ContentPanel';
+import HomePanel from './components/HomePanel';
 import outerEarIcon from './assets/outer_ear_icon.svg';
 import middleEarIcon from './assets/middle_ear_icon.svg';
 import innerEarIcon from './assets/inner_ear_icon.svg';
@@ -28,8 +29,13 @@ export default function App() {
       />
 
       <main className="main-content">
-        <GraphPanel />
-        <ContentPanel />
+        {activeSection === 'home' && <HomePanel />}
+        {activeSection !== 'home' && (
+          <>
+            <GraphPanel />
+            <ContentPanel />
+          </>
+        )}
       </main>
     </div>
   );
