@@ -1,6 +1,6 @@
 .settings-panel {
   width: 350px;
-  background-color: #ffffff;
+  background-color: #a7a7a7;
   border-right: 1px solid #e5e7eb;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -14,14 +14,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
-  background-color: #f9fafb;
+  border-bottom: 1px solid #a7a7a7;
+  background-color: #a7a7a7;
 }
 
 .settings-title {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #1f2937;
+  color: #0a0e14;
   margin: 0;
 }
 
@@ -56,7 +56,7 @@
 .settings-section h3 {
   font-size: 1rem;
   font-weight: 600;
-  color: #374151;
+  color: #0f141d;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #e5e7eb;
@@ -70,7 +70,7 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #374151;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
