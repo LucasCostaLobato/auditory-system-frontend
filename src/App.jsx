@@ -19,7 +19,7 @@ const MENU_ITEMS = [
   { id: 'innerEarMenu', label: 'Orelha interna', icon: innerEarIcon },
 ];
 
-const SETTINGS_SECTIONS = ['generalSettings'];
+const SETTINGS_SECTIONS = ['generalSettings','outerEarMenu','middleEarMenu','innerEarMenu'];
 
 const TITLES = {
   generalSettings: 'Configurações Gerais',
@@ -28,12 +28,17 @@ const TITLES = {
   innerEarMenu: 'Orelha Interna'
 };
 
-// ✅ Valores iniciais padrão - FORA da função
+// Valores iniciais padrão
 const INITIAL_GENERAL_SETTINGS = {
   frequencyMin: 20,
   frequencyMax: 10000,
   numberOfFrequencies: 300,
   inputSignal: 'idealWhiteNoise'
+};
+
+const INITIAL_OUTER_EAR = {
+  earCanalLength: 30,
+  freqsToAnalyze: [200,750,6200],
 };
 
 
@@ -43,9 +48,9 @@ export default function App() {
   // ✅ ESTADOS - DENTRO da função (obrigatório)
   const [activeSection, setActiveSection] = useState('home');
   const [generalSettings, setGeneralSettings] = useState(INITIAL_GENERAL_SETTINGS);
-  // const [outerEarSettings, setOuterEarSettings] = useState(INITIAL_OUTER_EAR_SETTINGS);
-  // const [middleEarSettings, setMiddleEarSettings] = useState(INITIAL_MIDDLE_EAR_SETTINGS);
-  // const [innerEarSettings, setInnerEarSettings] = useState(INITIAL_INNER_EAR_SETTINGS);
+  const [outerEarSettings, setOuterEarSettings] = useState(INITIAL_OUTER_EAR);
+  const [middleEarSettings, setMiddleEarSettings] = useState(INITIAL_GENERAL_SETTINGS);
+  const [innerEarSettings, setInnerEarSettings] = useState(INITIAL_GENERAL_SETTINGS);
 
   // ✅ FUNÇÕES que usam estado - DENTRO da função (obrigatório)
   const handleCloseSettings = () => {
@@ -56,12 +61,12 @@ export default function App() {
     switch(activeSection) {
       case 'generalSettings':
         return { settings: generalSettings, setSettings: setGeneralSettings };
-      // case 'outerEarMenu':
-      //   return { settings: outerEarSettings, setSettings: setOuterEarSettings };
-      // case 'middleEarMenu':
-      //   return { settings: middleEarSettings, setSettings: setMiddleEarSettings };
-      // case 'innerEarMenu':
-      //   return { settings: innerEarSettings, setSettings: setInnerEarSettings };
+      case 'outerEarMenu':
+        return { settings: outerEarSettings, setSettings: setOuterEarSettings };
+      case 'middleEarMenu':
+        return { settings: middleEarSettings, setSettings: setMiddleEarSettings };
+      case 'innerEarMenu':
+        return { settings: innerEarSettings, setSettings: setInnerEarSettings };
       default:
         return { settings: {}, setSettings: () => {} };
     }
