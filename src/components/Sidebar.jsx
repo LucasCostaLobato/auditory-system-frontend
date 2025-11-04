@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Sidebar.css';
-import logo_header from '../assets/ear_header.svg';
+import logo_header from '../assets/ear_header2.svg';
 
 
 function renderIcon(icon) {
