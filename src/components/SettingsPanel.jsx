@@ -7,7 +7,7 @@ import OuterEarSettings from './settingsSections/OuterEarSettings';
 import MiddleEarSettings from './settingsSections/MiddleEarSettings';
 import InnerEarSettings from './settingsSections/InnerEarSettings';
 
-export default function SettingsPanel({ title, onClose, settings, onSettingsChange, panelType }) {
+export default function SettingsPanel({ title, onClose, settings, onSettingsChange, panelType, onGenerateSpectrum }) {
   
   // Função para atualizar um campo específico
   const handleInputChange = (fieldName, value) => {
@@ -22,10 +22,11 @@ export default function SettingsPanel({ title, onClose, settings, onSettingsChan
     switch(panelType) {
       case 'generalSettings':
         return (
-          <GeneralSettings 
+          <GeneralSettings
             settings={settings}
             handleInputChange={handleInputChange}
             onClose={onClose}
+            onGenerateSpectrum={onGenerateSpectrum}
           />
         );
       

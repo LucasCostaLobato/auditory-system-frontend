@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function GeneralSettings({ settings, handleInputChange, onClose }) {
+export default function GeneralSettings({ settings, handleInputChange, onClose, onGenerateSpectrum }) {
+
   return (
     <>
       <div className="settings-section">
@@ -53,7 +54,7 @@ export default function GeneralSettings({ settings, handleInputChange, onClose }
           </select>
         </div>
 
-        <button className="btn-primary" onClick={onClose}>
+        <button className="btn-primary" onClick={onGenerateSpectrum}>
           Ver espectro
         </button>
       </div>

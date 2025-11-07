@@ -1,41 +1,40 @@
 .graph-panel {
   flex: 1;
-  padding: 1.5rem;
+  padding: 0;
   overflow: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.graph-panel-container {
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  height: 100%;
-}
-
-.graph-panel-header {
+.graph-loading {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  justify-content: center;
+  background-color: #fafafa;
 }
 
-.graph-panel-icon {
-  color: #2563eb;
-}
-
-.graph-panel-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1f2937;
+.graph-loading-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #6b7280;
 }
 
 .graph-placeholder {
   border: 2px dashed #d1d5db;
   border-radius: 0.5rem;
-  height: calc(100% - 3rem);
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.graph-placeholder:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
 }
 
 .graph-placeholder-content {

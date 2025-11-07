@@ -11,6 +11,11 @@ import middleEarIcon from './assets/middle_ear_icon.svg';
 import innerEarIcon from './assets/inner_ear_icon.svg';
 import './App.css';
 
+// Import APIs
+import { getInputSignal } from './services/api';
+
+
+
 const MENU_ITEMS = [
   { id: 'home', label: 'Início', icon: Home },
   { id: 'generalSettings', label: 'Configurações gerais', icon: Settings },
@@ -19,7 +24,12 @@ const MENU_ITEMS = [
   { id: 'innerEarMenu', label: 'Orelha interna', icon: Settings },
 ];
 
-const SETTINGS_SECTIONS = ['generalSettings','outerEarMenu','middleEarMenu','innerEarMenu'];
+const SETTINGS_SECTIONS = [
+  'generalSettings',
+  'outerEarMenu',
+  'middleEarMenu',
+  'innerEarMenu'
+];
 
 const TITLES = {
   generalSettings: 'Configurações Gerais',
@@ -44,15 +54,52 @@ const INITIAL_OUTER_EAR = {
 
 // ===== COMPONENTE PRINCIPAL =====
 export default function App() {
+  
+  // ================================================
+  // STATES
 
-  // ✅ ESTADOS - DENTRO da função (obrigatório)
+  // Estados gerais
   const [activeSection, setActiveSection] = useState('home');
   const [generalSettings, setGeneralSettings] = useState(INITIAL_GENERAL_SETTINGS);
   const [outerEarSettings, setOuterEarSettings] = useState(INITIAL_OUTER_EAR);
   const [middleEarSettings, setMiddleEarSettings] = useState(INITIAL_GENERAL_SETTINGS);
   const [innerEarSettings, setInnerEarSettings] = useState(INITIAL_GENERAL_SETTINGS);
 
-  // ✅ FUNÇÕES que usam estado - DENTRO da função (obrigatório)
+
+  // Estados de requisições http
+  const [inputSpectrum, setInputSpectrum] = useState(null);
+  const [loadingInputSpectrum, setLoadingInputSpectrum] = useState(false);
+
+
+
+  // ================================================
+  // HANDLERS
+
+  // Handler que busca inputSpectrum da API
+  const handleInputSpectrum = async () => {
+    try {
+      setLoadingInputSpectrum(true);
+      
+      // Chamar API
+      const data = await getInputSignal(generalSettings);
+
+      // Debug: Log the received data
+      console.log('Data received from API:', data);
+      console.log('Keys in data:', Object.keys(data));
+
+      // Atualizar estado com dados recebidos
+      setInputSpectrum(data);
+      
+    } catch (error) {
+      setInputSpectrum(null);
+      console.error('❌ Erro ao carregar espectro:', error);
+      alert('Erro ao gerar espectro. Verifique a conexão com o servidor.');
+    } finally {
+      setLoadingInputSpectrum(false);
+    }
+  };
+
+
   const handleCloseSettings = () => {
     setActiveSection('home');
   };
@@ -72,11 +119,15 @@ export default function App() {
     }
   };
 
-  // ✅ VARIÁVEIS derivadas - DENTRO da função
+  // VARIÁVEIS derivadas - DENTRO da função
   const showSettingsPanel = SETTINGS_SECTIONS.includes(activeSection);
   const { settings: currentSettings, setSettings: setCurrentSettings } = getSettingsForSection();
   const settingsTitle = TITLES[activeSection] || 'Configurações';
 
+
+
+
+  // RETURN DA FUNÇÃO APP
   return (
     <div className="app-container">
       <Sidebar 
@@ -92,6 +143,7 @@ export default function App() {
           settings={currentSettings}
           onSettingsChange={setCurrentSettings}
           panelType={activeSection}
+          onGenerateSpectrum={handleInputSpectrum}
         />
       )}
 
@@ -100,7 +152,10 @@ export default function App() {
 
         {showSettingsPanel && (
           <>
-            <GraphPanel />
+            <GraphPanel
+              data={inputSpectrum}
+              loading={loadingInputSpectrum}
+            />
             <ContentPanel />
           </>
         )}
@@ -108,26 +163,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
-//   return (
-//     <div className="app-container">
-//       <Sidebar 
-//         menuItems={menuItems}
-//         activeSection={activeSection}
-//         onSectionChange={setActiveSection}
-//       />
-
-//       <main className="main-content">
-//         {activeSection === 'home' && <HomePanel />}
-//         {activeSection !== 'home' && (
-//           <>
-//             <GraphPanel />
-//             <ContentPanel />
-//           </>
-//         )}
-//       </main>
-//     </div>
-//   );
-// }
