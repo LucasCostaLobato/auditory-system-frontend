@@ -156,7 +156,7 @@ export default function App() {
               data={inputSpectrum}
               loading={loadingInputSpectrum}
             />
-            <ContentPanel />
+            <ContentPanel inputSignal={generalSettings.inputSignal} />
           </>
         )}
       </main>

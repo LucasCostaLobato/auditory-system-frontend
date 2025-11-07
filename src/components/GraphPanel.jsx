@@ -21,13 +21,14 @@ export default function GraphPanel({ data, loading }) {
       chart: {
         type: 'line',
         backgroundColor: '#ffffff',
-        height: 500,
+        height: null,
+        marginBottom: 80,
         style: {
           fontFamily: 'system-ui, -apple-system, sans-serif'
         }
       },
       title: {
-        text: 'Espectro de Magnitude do Sinal de Entrada',
+        text: 'Espectro de magnitude do sinal de entrada',
         align: 'left',
         style: {
           color: '#1f2937',
@@ -41,6 +42,8 @@ export default function GraphPanel({ data, loading }) {
         max: data.freq_vec[data.freq_vec.length - 1],
         title: {
           text: 'Frequência (Hz)',
+          enabled: true,
+          margin: 15,
           style: {
             color: '#374151',
             fontSize: '13px',
@@ -147,11 +150,13 @@ export default function GraphPanel({ data, loading }) {
           <p className="graph-loading-text">Carregando espectro...</p>
         </div>
       ) : chartOptions ? (
-        <HighchartsReact
-          highcharts={Highcharts}
-          options={chartOptions}
-          containerProps={{ style: { width: '100%', height: '100%' } }}
-        />
+        <div style={{ height: '50vh', width: '100%' }}>
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={chartOptions}
+            containerProps={{ style: { width: '100%', height: '100%' } }}
+          />
+        </div>
       ) : (
         <div className="graph-placeholder">
           <div className="graph-placeholder-content">
