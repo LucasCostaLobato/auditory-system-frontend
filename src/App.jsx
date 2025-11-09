@@ -66,36 +66,55 @@ export default function App() {
   const [innerEarSettings, setInnerEarSettings] = useState(INITIAL_GENERAL_SETTINGS);
 
 
-  // Estados de requisições http
-  const [inputSpectrum, setInputSpectrum] = useState(null);
-  const [loadingInputSpectrum, setLoadingInputSpectrum] = useState(false);
+  // Estados de requisições http - unified approach for scalability
+  // This single state object handles ALL analysis results from any button
+  const [analysisResults, setAnalysisResults] = useState({
+    inputSpectrum: { data: null, loading: false }
+    // To add more analysis types, simply add new keys here:
+    // outputSpectrum: { data: null, loading: false },
+    // phaseResponse: { data: null, loading: false },
+    // spatialAnalysis: { data: null, loading: false },
+  });
 
 
 
   // ================================================
   // HANDLERS
 
-  // Handler que busca inputSpectrum da API
-  const handleInputSpectrum = async () => {
+  // Generic handler for any analysis action - scalable approach
+  const handleAnalysisAction = async (resultKey, apiFunction, params, chartConfig = {}) => {
     try {
-      setLoadingInputSpectrum(true);
-      
-      // Chamar API
-      const data = await getInputSignal(generalSettings);
+      // Set loading state for this specific result
+      setAnalysisResults(prev => ({
+        ...prev,
+        [resultKey]: { ...prev[resultKey], loading: true }
+      }));
+
+      // Call the API
+      const data = await apiFunction(params);
 
       // Debug: Log the received data
-      console.log('Data received from API:', data);
+      console.log(`Data received from API for ${resultKey}:`, data);
       console.log('Keys in data:', Object.keys(data));
 
-      // Atualizar estado com dados recebidos
-      setInputSpectrum(data);
-      
+      // Update state with received data and optional chart configuration
+      setAnalysisResults(prev => ({
+        ...prev,
+        [resultKey]: {
+          data,
+          loading: false,
+          chartConfig // Store custom chart configuration if provided
+        }
+      }));
+
     } catch (error) {
-      setInputSpectrum(null);
-      console.error('❌ Erro ao carregar espectro:', error);
-      alert('Erro ao gerar espectro. Verifique a conexão com o servidor.');
-    } finally {
-      setLoadingInputSpectrum(false);
+      // Reset data and stop loading on error
+      setAnalysisResults(prev => ({
+        ...prev,
+        [resultKey]: { data: null, loading: false, chartConfig: {} }
+      }));
+      console.error(`❌ Erro ao carregar ${resultKey}:`, error);
+      alert(`Erro ao gerar ${resultKey}. Verifique a conexão com o servidor.`);
     }
   };
 
@@ -143,7 +162,8 @@ export default function App() {
           settings={currentSettings}
           onSettingsChange={setCurrentSettings}
           panelType={activeSection}
-          onGenerateSpectrum={handleInputSpectrum}
+          onAnalysisAction={handleAnalysisAction}
+          analysisResults={analysisResults}
         />
       )}
 
@@ -153,8 +173,7 @@ export default function App() {
         {showSettingsPanel && (
           <>
             <GraphPanel
-              data={inputSpectrum}
-              loading={loadingInputSpectrum}
+              analysisResults={analysisResults}
             />
             <ContentPanel inputSignal={generalSettings.inputSignal} />
           </>

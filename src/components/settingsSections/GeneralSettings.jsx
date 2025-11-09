@@ -1,6 +1,7 @@
 import React from 'react';
+import { getInputSignal } from '../../services/api';
 
-export default function GeneralSettings({ settings, handleInputChange, onClose, onGenerateSpectrum }) {
+export default function GeneralSettings({ settings, handleInputChange, onClose, onAnalysisAction }) {
 
   return (
     <>
@@ -54,9 +55,44 @@ export default function GeneralSettings({ settings, handleInputChange, onClose, 
           </select>
         </div>
 
-        <button className="btn-primary" onClick={onGenerateSpectrum}>
+        <button
+          className="btn-primary"
+          onClick={() => onAnalysisAction(
+            'inputSpectrum',              // Unique key for this analysis result
+            getInputSignal,                // API function to call
+            settings,                      // Parameters to pass to the API
+            { title: 'Espectro de magnitude do sinal de entrada', color: '#3b82f6' }  // Chart config
+          )}
+        >
           Ver espectro
         </button>
+
+        {/* EXAMPLE: How to add more buttons - just follow the same pattern:
+
+        <button
+          className="btn-primary"
+          onClick={() => onAnalysisAction(
+            'outputSpectrum',             // Different unique key
+            getOutputSignal,              // Different API function (add to api.jsx first)
+            settings,                     // Same or different parameters
+            { title: 'Espectro de saída', color: '#ef4444' }  // Different title/color
+          )}
+        >
+          Ver espectro de saída
+        </button>
+
+        <button
+          className="btn-secondary"
+          onClick={() => onAnalysisAction(
+            'phaseResponse',
+            getPhaseResponse,
+            settings,
+            { title: 'Resposta de fase', color: '#10b981' }
+          )}
+        >
+          Ver resposta de fase
+        </button>
+        */}
       </div>
     </>
   );

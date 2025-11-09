@@ -4,7 +4,18 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import '../styles/GraphPanel.css';
 
-export default function GraphPanel({ data, loading }) {
+export default function GraphPanel({ analysisResults }) {
+  // Find the first available result to display (can be extended to support switching between results)
+  const activeResult = useMemo(() => {
+    const results = Object.values(analysisResults);
+    return results.find(result => result.data || result.loading) || { data: null, loading: false };
+  }, [analysisResults]);
+
+  // Get chart configuration from active result
+  const chartConfig = activeResult.chartConfig || {};
+  const data = activeResult.data;
+  const loading = activeResult.loading;
+
   // Prepare chart options when data is available
   const chartOptions = useMemo(() => {
     if (!data || !data.freq_vec || !data.magnitude) {
@@ -17,6 +28,10 @@ export default function GraphPanel({ data, loading }) {
       data.magnitude[index]
     ]);
 
+    // Use custom config or defaults
+    const title = chartConfig.title || 'Espectro de magnitude do sinal de entrada';
+    const color = chartConfig.color || '#3b82f6';
+
     return {
       chart: {
         type: 'line',
@@ -28,7 +43,7 @@ export default function GraphPanel({ data, loading }) {
         }
       },
       title: {
-        text: 'Espectro de magnitude do sinal de entrada',
+        text: title,
         align: 'left',
         style: {
           color: '#1f2937',
@@ -102,10 +117,10 @@ export default function GraphPanel({ data, loading }) {
       series: [{
         name: 'Espectro',
         data: chartData,
-        color: '#3b82f6',
+        color: color,
         lineWidth: 2.5,
         shadow: {
-          color: 'rgba(59, 130, 246, 0.3)',
+          color: `rgba(59, 130, 246, 0.3)`,
           width: 3
         }
       }],
@@ -121,7 +136,7 @@ export default function GraphPanel({ data, loading }) {
                 enabled: true,
                 radius: 4,
                 lineWidth: 2,
-                lineColor: '#3b82f6',
+                lineColor: color,
                 fillColor: '#ffffff'
               }
             }
@@ -141,7 +156,7 @@ export default function GraphPanel({ data, loading }) {
         }]
       }
     };
-  }, [data]);
+  }, [data, chartConfig]);
 
   return (
     <section className="graph-panel">
