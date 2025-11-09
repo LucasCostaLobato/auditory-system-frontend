@@ -9,7 +9,7 @@ import SettingsPanel from './components/SettingsPanel'
 import outerEarIcon from './assets/outer_ear_icon.svg';
 import middleEarIcon from './assets/middle_ear_icon.svg';
 import innerEarIcon from './assets/inner_ear_icon.svg';
-import './App.css';
+import './styles/App.css';
 
 // Import APIs
 import { getInputSignal } from './services/api';

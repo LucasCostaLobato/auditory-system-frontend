@@ -1,7 +1,7 @@
 .sidebar {
   width: 290px;
-  background-color: #d4d4d4;
-  color: rgb(37, 37, 37);
+  background-color: #ffdca7;
+  color: rgb(19, 19, 19);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   position: relative;
   height: 100vh;
@@ -44,7 +44,7 @@
   font-size: 1rem;
   transition: all 0.2s;
   background-color: transparent;
-  color: #090a0c;
+  color: #050505;
 }
 
 .menu-button:hover {

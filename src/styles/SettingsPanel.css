@@ -1,6 +1,6 @@
 .settings-panel {
   width: 350px;
-  background-color: #a7a7a7;
+  background-color: #ffffff;
   border-right: 1px solid #e5e7eb;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -14,8 +14,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid #a7a7a7;
-  background-color: #a7a7a7;
+  border-bottom: 1px solid #ffffff;
+  background-color: #ffffff;
 }
 
 .settings-title {
