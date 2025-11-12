@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function OuterEarSettings({ settings, handleInputChange, onSettingsChange, onClose }) {
+export default function OuterEarSettings({ settings, handleInputChange, onSettingsChange, onClose, onAnalysisAction, generalSettings }) {
   // Estado local para armazenar o texto enquanto usuário digita
   const [freqsInputText, setFreqsInputText] = React.useState(() => {
     // Inicializar com o valor atual (se existir)
@@ -69,6 +69,26 @@ export default function OuterEarSettings({ settings, handleInputChange, onSettin
         <button className="btn-primary" onClick={onClose}>
           Executar análise no domínio do espaço
         </button>
+
+        {/* EXAMPLE: How to add a button that uses inputSignal from General Settings:
+
+        import { getSpatialAnalysis } from '../../services/api';  // Add at top of file
+
+        <button
+          className="btn-primary"
+          onClick={() => onAnalysisAction(
+            'spatialAnalysis',              // Unique key
+            getSpatialAnalysis,             // API function (create in api.jsx)
+            {
+              ...settings,                  // Includes earCanalLength, freqsToAnalyze
+              inputSignal: generalSettings.inputSignal  // Access from General Settings
+            },
+            { title: 'Análise Espacial', color: '#8b5cf6' }
+          )}
+        >
+          Executar análise espacial
+        </button>
+        */}
       </div>
     </>
   );

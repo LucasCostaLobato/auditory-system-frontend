@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MiddleEarSettings({ settings, handleInputChange }) {
+export default function MiddleEarSettings({ settings, handleInputChange, onAnalysisAction, generalSettings }) {
   return (
     <>
       <div className="settings-section">

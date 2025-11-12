@@ -215,6 +215,35 @@ import { getOutputSignal } from '../../services/api';  // ← ADD THIS LINE
 - Orange: `#f59e0b`
 - Yellow: `#eab308`
 
+**Accessing General Settings from Other Menus:**
+
+If you're adding a button to **Outer Ear**, **Middle Ear**, or **Inner Ear** and need to use the `inputSignal` from General Settings, you can access it via `generalSettings`:
+
+```javascript
+<button
+  className="btn-primary"
+  onClick={() => onAnalysisAction(
+    'outerEarAnalysis',
+    getOuterEarAnalysis,
+    {
+      ...settings,                           // Current menu settings (e.g., earCanalLength)
+      inputSignal: generalSettings.inputSignal,  // Access inputSignal from General Settings
+      frequencyMin: generalSettings.frequencyMin,  // You can access other general settings too
+      frequencyMax: generalSettings.frequencyMax
+    },
+    { title: 'Análise da Orelha Externa', color: '#8b5cf6' }
+  )}
+>
+  Executar análise
+</button>
+```
+
+The `generalSettings` object is available in all settings components and contains:
+- `generalSettings.inputSignal` - The selected input signal type
+- `generalSettings.frequencyMin` - Minimum frequency
+- `generalSettings.frequencyMax` - Maximum frequency
+- `generalSettings.numberOfFrequencies` - Number of frequencies
+
 ---
 
 ### **STEP 4: Test It!** ✅
@@ -282,7 +311,7 @@ Add button in the component:
 
 ---
 
-### Example 2: Add "Spatial Analysis" Button to Outer Ear Settings
+### Example 2: Add "Spatial Analysis" Button to Outer Ear Settings (Using inputSignal from General Settings)
 
 **Step 1 - Edit `src/App.jsx`:**
 ```javascript
@@ -298,6 +327,7 @@ export const getSpatialAnalysis = async (settings) => {
   const params = {
     length: settings.earCanalLength,
     frequencies: settings.freqsToAnalyze,
+    inputSignal: settings.inputSignal,  // From General Settings
   };
 
   return apiClient.get('/outer-ear/spatial-analysis', { params });
@@ -312,31 +342,26 @@ import React from 'react';
 import { getSpatialAnalysis } from '../../services/api';  // ← ADD THIS
 ```
 
-Add this to the component props (find the line that starts with `export default function OuterEarSettings`):
-```javascript
-export default function OuterEarSettings({
-  settings,
-  handleInputChange,
-  onSettingsChange,
-  onClose,
-  onAnalysisAction  // ← ADD THIS if not already there
-}) {
-```
+The component already has `onAnalysisAction` and `generalSettings` props, so you can directly add the button:
 
-Add button in the component:
 ```javascript
 <button
   className="btn-primary"
   onClick={() => onAnalysisAction(
     'spatialAnalysis',
     getSpatialAnalysis,
-    settings,
+    {
+      ...settings,  // Includes earCanalLength, freqsToAnalyze
+      inputSignal: generalSettings.inputSignal  // Add inputSignal from General Settings
+    },
     { title: 'Análise Espacial', color: '#8b5cf6' }
   )}
 >
   Executar análise espacial
 </button>
 ```
+
+**Key Point:** Notice how we combine `settings` (Outer Ear specific) with `generalSettings.inputSignal` to send all needed parameters to the API.
 
 ---
 
@@ -530,17 +555,49 @@ src/
 - `btn-secondary` - Secondary action button (different style)
 
 ### Common Settings Available
-When using `settings` parameter, these are available depending on which menu:
 
-**General Settings:**
+**1. Current Menu Settings (`settings`)**
+
+Available depending on which menu you're in:
+
+**General Settings Menu:**
 - `settings.frequencyMin`
 - `settings.frequencyMax`
 - `settings.numberOfFrequencies`
 - `settings.inputSignal`
 
-**Outer Ear Settings:**
+**Outer Ear Menu:**
 - `settings.earCanalLength`
 - `settings.freqsToAnalyze`
+
+**Middle Ear Menu:**
+- (To be defined based on your needs)
+
+**Inner Ear Menu:**
+- (To be defined based on your needs)
+
+**2. General Settings from Any Menu (`generalSettings`)**
+
+From **any menu** (Outer Ear, Middle Ear, Inner Ear), you can access General Settings:
+
+- `generalSettings.frequencyMin`
+- `generalSettings.frequencyMax`
+- `generalSettings.numberOfFrequencies`
+- `generalSettings.inputSignal`
+
+**Example combining both:**
+```javascript
+onClick={() => onAnalysisAction(
+  'myAnalysis',
+  getMyAnalysis,
+  {
+    ...settings,  // Current menu's settings
+    inputSignal: generalSettings.inputSignal,  // Add from General Settings
+    frequencyMin: generalSettings.frequencyMin
+  },
+  { title: 'My Analysis', color: '#3b82f6' }
+)}
+```
 
 ---
 

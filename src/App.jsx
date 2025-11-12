@@ -164,6 +164,7 @@ export default function App() {
           panelType={activeSection}
           onAnalysisAction={handleAnalysisAction}
           analysisResults={analysisResults}
+          generalSettings={generalSettings}
         />
       )}
 
