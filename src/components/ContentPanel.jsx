@@ -77,7 +77,6 @@ export default function ContentPanel({ inputSignal }) {
             </div>
           </div>
         );
-
       case 'music':
         return (
           <div className="content-text">
@@ -117,7 +116,39 @@ export default function ContentPanel({ inputSignal }) {
             </div>
           </div>
         );
+        case 'narrowBandSignalLowFreq':
+        return (
+          <div className="content-text">
+            <h3 className="content-subtitle">Sinal de banda estreita em baixa frequência</h3>
 
+            <p className="content-intro">
+              Sinal com amplitude constante na faixa de frequência entre 80 Hz e 120 Hz.
+            </p>
+            
+          </div>
+        );
+        case 'narrowBandSignalMidFreq':
+        return (
+          <div className="content-text">
+            <h3 className="content-subtitle">Sinal de banda estreita em média frequência</h3>
+
+            <p className="content-intro">
+            Sinal com amplitude constante na faixa de frequência entre 800 Hz e 1200 Hz.
+            </p>
+            
+          </div>
+        );
+        case 'narrowBandSignalHighFreq':
+        return (
+          <div className="content-text">
+            <h3 className="content-subtitle">Sinal de banda estreita em alta frequência</h3>
+
+            <p className="content-intro">
+            Sinal com amplitude constante na faixa de frequência entre 4800 Hz e 5200 Hz.
+            </p>
+            
+          </div>
+        );
       default:
         return (
           <div className="content-text">

@@ -52,6 +52,11 @@ export default function GeneralSettings({ settings, handleInputChange, onClose, 
             <option value="idealWhiteNoise">Ruído branco ideal</option>
             <option value="speech">Fala</option>
             <option value="music">Musica</option>
+            <option value="narrowBandSignalLowFreq">Sinal de banda estreita (baixa frequência)</option>
+            <option value="narrowBandSignalMidFreq">Sinal de banda estreita (média frequência)</option>
+            <option value="narrowBandSignalHighFreq">Sinal de banda estreita (alta frequência)</option>
+
+            
           </select>
         </div>
 
