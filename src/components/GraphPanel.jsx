@@ -77,6 +77,7 @@ export default function GraphPanel({ analysisResults }) {
         backgroundColor: '#ffffff',
         height: null,
         marginBottom: 80,
+        zoomType: 'xy',
         style: {
           fontFamily: 'system-ui, -apple-system, sans-serif'
         }
