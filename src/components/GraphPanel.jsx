@@ -39,6 +39,10 @@ export default function GraphPanel({ analysisResults }) {
     const color = chartConfig.color || '#3b82f6';
 
     // Determine if this is a multi-series chart (has position keys) or single series (has magnitude)
+    // TODO: Adicionar uma condição menos dependente da regra lógica. Ou seja uma condição que apenas
+    // verifique se o dado tem mais de um array a ser plotado. Além disso, a variavel positionKeys
+    // também está dependente da regra lógica. Na prática, deve ser apenas labelKey e não position key
+    // visto que também vai se aplicar a frequencyKey, por exemplo (e tantas outras que possam ser criadas)
     const isMultiSeries = !data.magnitude;
     let seriesData;
 
