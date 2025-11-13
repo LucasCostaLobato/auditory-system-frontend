@@ -35,7 +35,7 @@ export default function GraphPanel({ analysisResults }) {
     }
 
     // Use custom config or defaults
-    const title = chartConfig.title || 'Espectro de magnitude do sinal de entrada';
+    // const title = chartConfig.title || 'Espectro de magnitude do sinal de entrada';
     const color = chartConfig.color || '#3b82f6';
 
     // Determine if this is a multi-series chart (has position keys) or single series (has magnitude)
@@ -76,6 +76,7 @@ export default function GraphPanel({ analysisResults }) {
         type: 'line',
         backgroundColor: '#ffffff',
         height: null,
+        marginTop: isMultiSeries ? 60 : 40,
         marginBottom: 80,
         zoomType: 'xy',
         style: {
@@ -141,11 +142,10 @@ export default function GraphPanel({ analysisResults }) {
       },
       legend: {
         enabled: isMultiSeries,
-        align: 'right',
+        align: 'center',
         verticalAlign: 'top',
-        layout: 'vertical',
-        x: 0,
-        y: 80,
+        layout: 'horizontal',
+        y: -15,
         itemStyle: {
           color: '#374151',
           fontSize: '12px',
