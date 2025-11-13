@@ -62,13 +62,13 @@ export default function ContentPanel({ inputSignal }) {
 
           </div>
         );
-      case 'music':
+      case 'clarinet':
         return (
           <div className="content-text">
-            <h3 className="content-subtitle">Sinal Musical</h3>
+            <h3 className="content-subtitle">Clarineta</h3>
 
             <p className="content-intro">
-              Sinais musicais apresentam estrutura harmônica rica, com energia distribuída
+              O espectro de uma clarineta representa um sinal musical com uma estrutura harmônica rica, com energia distribuída
               em múltiplas frequências relacionadas harmonicamente.
             </p>
 
@@ -80,21 +80,14 @@ export default function ContentPanel({ inputSignal }) {
               </li>
               <li className="content-list-item">
                 <span className="content-list-bullet">•</span>
-                <span>Ampla faixa dinâmica de frequências (20 Hz a 20 kHz)</span>
+                <span>Ampla faixa em amplitude e frequência</span>
               </li>
               <li className="content-list-item">
                 <span className="content-list-bullet">•</span>
-                <span>Desafia a resolução temporal e espectral do sistema auditivo</span>
+                <span>Estudo da resolução espectral do sistema auditivo</span>
               </li>
             </ul>
 
-            <div className="content-tip">
-              <p className="content-tip-text">
-                💡 <strong>Aplicação:</strong> A análise de sinais musicais permite avaliar
-                a capacidade do sistema auditivo em processar sons complexos e harmônicos,
-                essencial para a apreciação musical.
-              </p>
-            </div>
           </div>
         );
         case 'narrowBandSignalLowFreq':
