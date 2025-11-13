@@ -49,6 +49,7 @@ const INITIAL_GENERAL_SETTINGS = {
 const INITIAL_OUTER_EAR = {
   earCanalLength: 30,
   freqsToAnalyze: [200,750,6200],
+  positionsToAnalyze: [],
 };
 
 
@@ -69,7 +70,8 @@ export default function App() {
   // Estados de requisições http - unified approach for scalability
   // This single state object handles ALL analysis results from any button
   const [analysisResults, setAnalysisResults] = useState({
-    inputSpectrum: { data: null, loading: false }
+    inputSpectrum: { data: null, loading: false },
+    frequencyDomainAnalysis: { data: null, loading: false }
     // To add more analysis types, simply add new keys here:
     // outputSpectrum: { data: null, loading: false },
     // phaseResponse: { data: null, loading: false },
@@ -176,7 +178,10 @@ export default function App() {
             <GraphPanel
               analysisResults={analysisResults}
             />
-            <ContentPanel inputSignal={generalSettings.inputSignal} />
+            <ContentPanel
+              inputSignal={generalSettings.inputSignal}
+              activeSection={activeSection}
+            />
           </>
         )}
       </main>

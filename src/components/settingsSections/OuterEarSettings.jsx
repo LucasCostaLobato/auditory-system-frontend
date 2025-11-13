@@ -1,11 +1,21 @@
 import React from 'react';
+import { getFrequencyDomainAnalysis } from '../../services/api';
 
 export default function OuterEarSettings({ settings, handleInputChange, onSettingsChange, onClose, onAnalysisAction, generalSettings }) {
-  // Estado local para armazenar o texto enquanto usuário digita
+  // Estado local para armazenar o texto de frequências enquanto usuário digita
   const [freqsInputText, setFreqsInputText] = React.useState(() => {
     // Inicializar com o valor atual (se existir)
     if (settings.freqsToAnalyze && Array.isArray(settings.freqsToAnalyze)) {
       return settings.freqsToAnalyze.join(', ');
+    }
+    return '';
+  });
+
+  // Estado local para armazenar o texto de posições enquanto usuário digita
+  const [positionsInputText, setPositionsInputText] = React.useState(() => {
+    // Inicializar com o valor atual (se existir)
+    if (settings.positionsToAnalyze && Array.isArray(settings.positionsToAnalyze)) {
+      return settings.positionsToAnalyze.join(', ');
     }
     return '';
   });
@@ -35,6 +45,31 @@ export default function OuterEarSettings({ settings, handleInputChange, onSettin
   const handleFreqsKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleFreqsBlur();
+    }
+  };
+
+  // Handlers para posições (similar ao de frequências)
+  const handlePositionsTextChange = (e) => {
+    const text = e.target.value;
+    setPositionsInputText(text);
+  };
+
+  const handlePositionsBlur = () => {
+    const stringArray = positionsInputText.split(',').map(s => s.trim());
+    const floatArray = stringArray
+      .filter(s => s !== '')
+      .map(s => parseFloat(s))
+      .filter(n => !isNaN(n));
+
+    onSettingsChange({
+      ...settings,
+      positionsToAnalyze: floatArray
+    });
+  };
+
+  const handlePositionsKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handlePositionsBlur();
     }
   };
 
@@ -89,6 +124,41 @@ export default function OuterEarSettings({ settings, handleInputChange, onSettin
           Executar análise espacial
         </button>
         */}
+      </div>
+
+      <div className="settings-section">
+        <h3>Análise no domínio da frequência</h3>
+
+        <div className="settings-field">
+          <label htmlFor="positionsToAnalyze">Lista de posições para analisar, em mm</label>
+          <input
+            type="text"
+            id="positionsToAnalyze"
+            value={positionsInputText}
+            onChange={handlePositionsTextChange}
+            onBlur={handlePositionsBlur}
+            onKeyPress={handlePositionsKeyPress}
+            placeholder="Ex: 0, 5, 10, 15, 20, 25"
+          />
+        </div>
+
+        <button
+          className="btn-primary"
+          onClick={() => onAnalysisAction(
+            'frequencyDomainAnalysis',
+            getFrequencyDomainAnalysis,
+            {
+              ...settings,
+              frequencyMin: generalSettings.frequencyMin,
+              frequencyMax: generalSettings.frequencyMax,
+              numberOfFrequencies: generalSettings.numberOfFrequencies,
+              inputSignal: generalSettings.inputSignal
+            },
+            { title: 'Análise no domínio da frequência', color: '#10b981' }
+          )}
+        >
+          Executar análise no domínio da frequência
+        </button>
       </div>
     </>
   );

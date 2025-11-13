@@ -20,19 +20,46 @@ export default function GraphPanel({ analysisResults }) {
 
   // Prepare chart options when data is available
   const chartOptions = useMemo(() => {
-    if (!data || !data.freq_vec || !data.magnitude) {
+    if (!data || !data.freq_vec) {
       return null;
     }
-
-    // Create data points array combining frequencies and magnitudes
-    const chartData = data.freq_vec.map((freq, index) => [
-      freq,
-      data.magnitude[index]
-    ]);
 
     // Use custom config or defaults
     const title = chartConfig.title || 'Espectro de magnitude do sinal de entrada';
     const color = chartConfig.color || '#3b82f6';
+
+    // Determine if this is a multi-series chart (has position keys) or single series (has magnitude)
+    const isMultiSeries = !data.magnitude;
+    let seriesData;
+
+    if (isMultiSeries) {
+      // Multi-series: create one series per position
+      const positionKeys = Object.keys(data).filter(key => key !== 'freq_vec');
+      const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'];
+
+      seriesData = positionKeys.map((posKey, index) => ({
+        name: `Posição ${posKey} mm`,
+        data: data.freq_vec.map((freq, i) => [freq, data[posKey][i]]),
+        color: colors[index % colors.length],
+        lineWidth: 2,
+        shadow: {
+          color: `${colors[index % colors.length]}33`,
+          width: 2
+        }
+      }));
+    } else {
+      // Single series: use magnitude array
+      seriesData = [{
+        name: 'Espectro',
+        data: data.freq_vec.map((freq, index) => [freq, data.magnitude[index]]),
+        color: color,
+        lineWidth: 2.5,
+        shadow: {
+          color: `rgba(59, 130, 246, 0.3)`,
+          width: 3
+        }
+      }];
+    }
 
     return {
       chart: {
@@ -102,7 +129,17 @@ export default function GraphPanel({ analysisResults }) {
         gridLineWidth: 1
       },
       legend: {
-        enabled: false
+        enabled: isMultiSeries,
+        align: 'right',
+        verticalAlign: 'top',
+        layout: 'vertical',
+        x: 0,
+        y: 80,
+        itemStyle: {
+          color: '#374151',
+          fontSize: '12px',
+          fontWeight: '500'
+        }
       },
       tooltip: {
         backgroundColor: '#1f2937',
@@ -116,16 +153,7 @@ export default function GraphPanel({ analysisResults }) {
         pointFormat: '<b>Frequência:</b> {point.x:.1f} Hz<br/><b>Magnitude:</b> {point.y:.2f} dB',
         shadow: true
       },
-      series: [{
-        name: 'Espectro',
-        data: chartData,
-        color: color,
-        lineWidth: 2.5,
-        shadow: {
-          color: `rgba(59, 130, 246, 0.3)`,
-          width: 3
-        }
-      }],
+      series: seriesData,
       credits: {
         enabled: false
       },
@@ -138,7 +166,6 @@ export default function GraphPanel({ analysisResults }) {
                 enabled: true,
                 radius: 4,
                 lineWidth: 2,
-                lineColor: color,
                 fillColor: '#ffffff'
               }
             }
