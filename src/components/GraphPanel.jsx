@@ -1,10 +1,12 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { BarChart3 } from 'lucide-react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import '../styles/GraphPanel.css';
 
 export default function GraphPanel({ analysisResults }) {
+  const [xAxisType, setXAxisType] = useState('linear');
+
   // Find the first available result to display (can be extended to support switching between results)
   const activeResult = useMemo(() => {
     const results = Object.values(analysisResults);
@@ -52,7 +54,7 @@ export default function GraphPanel({ analysisResults }) {
         }
       },
       xAxis: {
-        type: 'logarithmic',
+        type: xAxisType,
         min: data.freq_vec[0],
         max: data.freq_vec[data.freq_vec.length - 1],
         title: {
@@ -156,7 +158,7 @@ export default function GraphPanel({ analysisResults }) {
         }]
       }
     };
-  }, [data, chartConfig]);
+  }, [data, chartConfig, xAxisType]);
 
   return (
     <section className="graph-panel">
@@ -165,13 +167,28 @@ export default function GraphPanel({ analysisResults }) {
           <p className="graph-loading-text">Carregando espectro...</p>
         </div>
       ) : chartOptions ? (
-        <div style={{ height: '50vh', width: '100%' }}>
-          <HighchartsReact
-            highcharts={Highcharts}
-            options={chartOptions}
-            containerProps={{ style: { width: '100%', height: '100%' } }}
-          />
-        </div>
+        <>
+          <div className="graph-controls">
+            <label className="axis-type-label">
+              Escala do eixo X:
+              <select
+                value={xAxisType}
+                onChange={(e) => setXAxisType(e.target.value)}
+                className="axis-type-selector"
+              >
+                <option value="linear">Linear</option>
+                <option value="logarithmic">Logarítmica</option>
+              </select>
+            </label>
+          </div>
+          <div style={{ height: '50vh', width: '100%' }}>
+            <HighchartsReact
+              highcharts={Highcharts}
+              options={chartOptions}
+              containerProps={{ style: { width: '100%', height: '100%' } }}
+            />
+          </div>
+        </>
       ) : (
         <div className="graph-placeholder">
           <div className="graph-placeholder-content">
