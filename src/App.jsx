@@ -42,7 +42,7 @@ const TITLES = {
 const INITIAL_GENERAL_SETTINGS = {
   frequencyMin: 20,
   frequencyMax: 10000,
-  numberOfFrequencies: 300,
+  numberOfFrequencies: 3000,
   inputSignal: 'idealWhiteNoise'
 };
 
