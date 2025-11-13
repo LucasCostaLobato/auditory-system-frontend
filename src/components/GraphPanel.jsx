@@ -35,7 +35,7 @@ export default function GraphPanel({ analysisResults }) {
     }
 
     // Use custom config or defaults
-    // const title = chartConfig.title || 'Espectro de magnitude do sinal de entrada';
+    const title = chartConfig.title || 'Espectro de magnitude do sinal de entrada';
     const color = chartConfig.color || '#3b82f6';
 
     // Determine if this is a multi-series chart (has position keys) or single series (has magnitude)
