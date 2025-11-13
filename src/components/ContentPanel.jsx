@@ -16,7 +16,7 @@ export default function ContentPanel({ inputSignal }) {
               O ruído branco ideal é um sinal que possui a mesma amplitude em todas as frequêncais de análise.
             </p>
 
-            <h4 className="content-section-title">Características principais:</h4>
+            <h4 className="content-section-title">Características principais e aplicações:</h4>
             <ul className="content-list">
               <li className="content-list-item">
                 <span className="content-list-bullet">•</span>
@@ -27,14 +27,6 @@ export default function ContentPanel({ inputSignal }) {
                 <span>Útil para caracterizar sistemas em geral</span>
               </li>
             </ul>
-
-            <div className="content-tip">
-              <p className="content-tip-text">
-                💡 <strong>Aplicação:</strong> O ruído branco ideal é fundamental para
-                caracterizar a resposta em frequência do sistema auditivo humano, pois
-                permite identificar como diferentes frequências são processadas igualmente.
-              </p>
-            </div>
           </div>
         );
 
@@ -48,7 +40,7 @@ export default function ContentPanel({ inputSignal }) {
               concentrando energia principalmente nas frequências de 300 Hz a 3400 Hz.
             </p>
 
-            <h4 className="content-section-title">Características principais:</h4>
+            <h4 className="content-section-title">Características principais e aplicações:</h4>
             <ul className="content-list">
               <li className="content-list-item">
                 <span className="content-list-bullet">•</span>
@@ -68,13 +60,6 @@ export default function ContentPanel({ inputSignal }) {
               </li>
             </ul>
 
-            <div className="content-tip">
-              <p className="content-tip-text">
-                💡 <strong>Aplicação:</strong> A análise do sinal de fala é crucial para
-                entender como o sistema auditivo processa informações linguísticas e desenvolver
-                dispositivos de auxílio auditivo.
-              </p>
-            </div>
           </div>
         );
       case 'music':
@@ -87,7 +72,7 @@ export default function ContentPanel({ inputSignal }) {
               em múltiplas frequências relacionadas harmonicamente.
             </p>
 
-            <h4 className="content-section-title">Características principais:</h4>
+            <h4 className="content-section-title">Características principais e aplicações:</h4>
             <ul className="content-list">
               <li className="content-list-item">
                 <span className="content-list-bullet">•</span>
@@ -96,10 +81,6 @@ export default function ContentPanel({ inputSignal }) {
               <li className="content-list-item">
                 <span className="content-list-bullet">•</span>
                 <span>Ampla faixa dinâmica de frequências (20 Hz a 20 kHz)</span>
-              </li>
-              <li className="content-list-item">
-                <span className="content-list-bullet">•</span>
-                <span>Estrutura temporal complexa com ritmo e melodia</span>
               </li>
               <li className="content-list-item">
                 <span className="content-list-bullet">•</span>
@@ -124,6 +105,14 @@ export default function ContentPanel({ inputSignal }) {
             <p className="content-intro">
               Sinal com amplitude constante na faixa de frequência entre 80 Hz e 120 Hz.
             </p>
+
+            <h4 className="content-section-title">Características principais e aplicações:</h4>
+            <ul className="content-list">
+              <li className="content-list-item">
+                <span className="content-list-bullet">•</span>
+                <span>Estudo da tonotopia da orelha interna</span>
+              </li>
+            </ul>
             
           </div>
         );
@@ -135,6 +124,14 @@ export default function ContentPanel({ inputSignal }) {
             <p className="content-intro">
             Sinal com amplitude constante na faixa de frequência entre 800 Hz e 1200 Hz.
             </p>
+
+            <h4 className="content-section-title">Características principais e aplicações:</h4>
+            <ul className="content-list">
+              <li className="content-list-item">
+                <span className="content-list-bullet">•</span>
+                <span>Estudo da tonotopia da orelha interna</span>
+              </li>
+            </ul>
             
           </div>
         );
@@ -146,6 +143,14 @@ export default function ContentPanel({ inputSignal }) {
             <p className="content-intro">
             Sinal com amplitude constante na faixa de frequência entre 4800 Hz e 5200 Hz.
             </p>
+
+            <h4 className="content-section-title">Características principais e aplicações:</h4>
+            <ul className="content-list">
+              <li className="content-list-item">
+                <span className="content-list-bullet">•</span>
+                <span>Estudo da tonotopia da orelha interna</span>
+              </li>
+            </ul>
             
           </div>
         );
