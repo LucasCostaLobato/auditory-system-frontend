@@ -76,8 +76,9 @@ export default function GraphPanel({ analysisResults }) {
         type: 'line',
         backgroundColor: '#ffffff',
         height: null,
-        marginTop: isMultiSeries ? 60 : 40,
-        marginBottom: 80,
+        marginTop: 30,
+        // marginTop: isMultiSeries ? 30 : 30,
+        marginBottom: 70,
         zoomType: 'xy',
         style: {
           fontFamily: 'system-ui, -apple-system, sans-serif'
@@ -86,9 +87,10 @@ export default function GraphPanel({ analysisResults }) {
       title: {
         text: title,
         align: 'left',
+        y:7,
         style: {
           color: '#1f2937',
-          fontSize: '18px',
+          fontSize: '16px',
           fontWeight: '600'
         }
       },
@@ -145,7 +147,7 @@ export default function GraphPanel({ analysisResults }) {
         align: 'center',
         verticalAlign: 'top',
         layout: 'horizontal',
-        y: -15,
+        y: -45,
         itemStyle: {
           color: '#374151',
           fontSize: '12px',

@@ -59,7 +59,7 @@
 
 .graph-controls {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   padding: 0.75rem 0.5rem;
   background-color: #ffffff;
   border-bottom: 1px solid #e5e7eb;
