@@ -7,10 +7,20 @@ import '../styles/GraphPanel.css';
 export default function GraphPanel({ analysisResults }) {
   const [xAxisType, setXAxisType] = useState('linear');
 
-  // Find the first available result to display (can be extended to support switching between results)
+  // Find the most recently updated result to display based on timestamp
   const activeResult = useMemo(() => {
-    const results = Object.values(analysisResults);
-    return results.find(result => result.data || result.loading) || { data: null, loading: false };
+    // Get all results with data or loading state
+    const resultsWithData = Object.entries(analysisResults)
+      .map(([key, result]) => ({ key, ...result }))
+      .filter(result => (result.data || result.loading) && result.timestamp);
+
+    if (resultsWithData.length === 0) {
+      return { data: null, loading: false };
+    }
+
+    // Sort by timestamp and return the most recent one
+    resultsWithData.sort((a, b) => b.timestamp - a.timestamp);
+    return resultsWithData[0];
   }, [analysisResults]);
 
   // Get chart configuration from active result

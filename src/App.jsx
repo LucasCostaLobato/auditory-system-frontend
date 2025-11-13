@@ -70,12 +70,12 @@ export default function App() {
   // Estados de requisições http - unified approach for scalability
   // This single state object handles ALL analysis results from any button
   const [analysisResults, setAnalysisResults] = useState({
-    inputSpectrum: { data: null, loading: false },
-    frequencyDomainAnalysis: { data: null, loading: false }
+    inputSpectrum: { data: null, loading: false, timestamp: null },
+    frequencyDomainAnalysis: { data: null, loading: false, timestamp: null }
     // To add more analysis types, simply add new keys here:
-    // outputSpectrum: { data: null, loading: false },
-    // phaseResponse: { data: null, loading: false },
-    // spatialAnalysis: { data: null, loading: false },
+    // outputSpectrum: { data: null, loading: false, timestamp: null },
+    // phaseResponse: { data: null, loading: false, timestamp: null },
+    // spatialAnalysis: { data: null, loading: false, timestamp: null },
   });
 
 
@@ -86,10 +86,10 @@ export default function App() {
   // Generic handler for any analysis action - scalable approach
   const handleAnalysisAction = async (resultKey, apiFunction, params, chartConfig = {}) => {
     try {
-      // Set loading state for this specific result
+      // Set loading state for this specific result with timestamp
       setAnalysisResults(prev => ({
         ...prev,
-        [resultKey]: { ...prev[resultKey], loading: true }
+        [resultKey]: { ...prev[resultKey], loading: true, timestamp: Date.now() }
       }));
 
       // Call the API
@@ -99,13 +99,14 @@ export default function App() {
       console.log(`Data received from API for ${resultKey}:`, data);
       console.log('Keys in data:', Object.keys(data));
 
-      // Update state with received data and optional chart configuration
+      // Update state with received data, chart configuration, and timestamp
       setAnalysisResults(prev => ({
         ...prev,
         [resultKey]: {
           data,
           loading: false,
-          chartConfig // Store custom chart configuration if provided
+          chartConfig, // Store custom chart configuration if provided
+          timestamp: Date.now() // Update timestamp when data is received
         }
       }));
 
@@ -113,7 +114,7 @@ export default function App() {
       // Reset data and stop loading on error
       setAnalysisResults(prev => ({
         ...prev,
-        [resultKey]: { data: null, loading: false, chartConfig: {} }
+        [resultKey]: { data: null, loading: false, chartConfig: {}, timestamp: null }
       }));
       console.error(`❌ Erro ao carregar ${resultKey}:`, error);
       alert(`Erro ao gerar ${resultKey}. Verifique a conexão com o servidor.`);
