@@ -154,7 +154,20 @@ export default function OuterEarSettings({ settings, handleInputChange, onSettin
               numberOfFrequencies: generalSettings.numberOfFrequencies,
               inputSignal: generalSettings.inputSignal
             },
-            { title: 'Análise no domínio da frequência', color: '#10b981' }
+            {
+              title: 'Análise no domínio da frequência',
+              color: '#10b981',
+              xAxisLabel: 'Frequência (Hz)',
+              yAxisLabel: 'Magnitude (dB)',
+              xAxisKey: 'freq_vec',
+              xAxisFormatter: (value) => value >= 1000 ? (value/1000) + 'k' : value,
+              tooltipXLabel: 'Frequência',
+              tooltipYLabel: 'Magnitude',
+              tooltipXUnit: 'Hz',
+              tooltipYUnit: 'dB',
+              yAxisMin: 40,
+              yAxisMax: 110
+            }
           )}
         >
           Executar análise no domínio da frequência

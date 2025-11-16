@@ -30,13 +30,27 @@ export default function GraphPanel({ analysisResults }) {
 
   // Prepare chart options when data is available
   const chartOptions = useMemo(() => {
-    if (!data || !data.freq_vec) {
-      return null;
-    }
-
     // Use custom config or defaults
     const title = chartConfig.title || 'Espectro de magnitude do sinal de entrada';
     const color = chartConfig.color || '#3b82f6';
+    const xAxisKey = chartConfig.xAxisKey || 'freq_vec';
+    const xAxisLabel = chartConfig.xAxisLabel || 'Frequência (Hz)';
+    const yAxisLabel = chartConfig.yAxisLabel || 'Magnitude (dB)';
+    const tooltipXLabel = chartConfig.tooltipXLabel || 'Frequência';
+    const tooltipYLabel = chartConfig.tooltipYLabel || 'Magnitude';
+    const tooltipXUnit = chartConfig.tooltipXUnit || 'Hz';
+    const tooltipYUnit = chartConfig.tooltipYUnit || 'dB';
+    const yAxisMin = chartConfig.yAxisMin !== undefined ? chartConfig.yAxisMin : 40;
+    const yAxisMax = chartConfig.yAxisMax !== undefined ? chartConfig.yAxisMax : 110;
+    const seriesLabelPrefix = chartConfig.seriesLabelPrefix || 'Posição';
+    const seriesLabelUnit = chartConfig.seriesLabelUnit || 'mm';
+    const xAxisFormatter = chartConfig.xAxisFormatter || ((value) => value >= 1000 ? (value/1000) + 'k' : value);
+
+    if (!data || !data[xAxisKey]) {
+      return null;
+    }
+
+    const xAxisData = data[xAxisKey];
 
     // Determine if this is a multi-series chart (has position keys) or single series (has magnitude)
     // TODO: Adicionar uma condição menos dependente da regra lógica. Ou seja uma condição que apenas
@@ -48,12 +62,12 @@ export default function GraphPanel({ analysisResults }) {
 
     if (isMultiSeries) {
       // Multi-series: create one series per position
-      const positionKeys = Object.keys(data).filter(key => key !== 'freq_vec');
+      const positionKeys = Object.keys(data).filter(key => key !== xAxisKey);
       const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16'];
 
       seriesData = positionKeys.map((posKey, index) => ({
-        name: `Posição ${posKey} mm`,
-        data: data.freq_vec.map((freq, i) => [freq, data[posKey][i]]),
+        name: `${seriesLabelPrefix} ${posKey} ${seriesLabelUnit}`,
+        data: xAxisData.map((xVal, i) => [xVal, data[posKey][i]]),
         color: colors[index % colors.length],
         lineWidth: 2,
         shadow: {
@@ -65,7 +79,7 @@ export default function GraphPanel({ analysisResults }) {
       // Single series: use magnitude array
       seriesData = [{
         name: 'Espectro',
-        data: data.freq_vec.map((freq, index) => [freq, data.magnitude[index]]),
+        data: xAxisData.map((xVal, index) => [xVal, data.magnitude[index]]),
         color: color,
         lineWidth: 2.5,
         shadow: {
@@ -100,10 +114,10 @@ export default function GraphPanel({ analysisResults }) {
       },
       xAxis: {
         type: xAxisType,
-        min: data.freq_vec[0],
-        max: data.freq_vec[data.freq_vec.length - 1],
+        min: xAxisData[0],
+        max: xAxisData[xAxisData.length - 1],
         title: {
-          text: 'Frequência (Hz)',
+          text: xAxisLabel,
           enabled: true,
           margin: 15,
           style: {
@@ -118,7 +132,7 @@ export default function GraphPanel({ analysisResults }) {
             fontSize: '12px'
           },
           formatter: function() {
-            return this.value >= 1000 ? (this.value/1000) + 'k' : this.value;
+            return xAxisFormatter(this.value);
           }
         },
         gridLineColor: '#e5e7eb',
@@ -127,10 +141,10 @@ export default function GraphPanel({ analysisResults }) {
         minorGridLineWidth: 0.5
       },
       yAxis: {
-        min: 40,
-        max: 110,
+        min: yAxisMin,
+        max: yAxisMax,
         title: {
-          text: 'Magnitude (dB)',
+          text: yAxisLabel,
           style: {
             color: '#374151',
             fontSize: '13px',
@@ -167,7 +181,7 @@ export default function GraphPanel({ analysisResults }) {
           fontSize: '13px'
         },
         headerFormat: '',
-        pointFormat: '<b>Frequência:</b> {point.x:.1f} Hz<br/><b>Magnitude:</b> {point.y:.2f} dB',
+        pointFormat: `<b>${tooltipXLabel}:</b> {point.x:.1f} ${tooltipXUnit}<br/><b>${tooltipYLabel}:</b> {point.y:.2f} ${tooltipYUnit}`,
         shadow: true
       },
       series: seriesData,
