@@ -141,8 +141,8 @@ export default function GraphPanel({ analysisResults }) {
         minorGridLineWidth: 0.5
       },
       yAxis: {
-        min: yAxisMin,
-        max: yAxisMax,
+        min: 10,
+        max: 120,
         title: {
           text: yAxisLabel,
           style: {
