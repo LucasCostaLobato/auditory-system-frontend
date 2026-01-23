@@ -1,0 +1,32 @@
+.outer-ear-page {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.outer-ear-content {
+  flex: 1;
+  margin-left: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 24px;
+  color: #3498db;
+}
+
+.graph-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  color: #7f8c8d;
+  font-size: 18px;
+}

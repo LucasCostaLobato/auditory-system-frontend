@@ -3,6 +3,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
 import SettingsPage from './components/SettingsPage';
+import OuterEarPage from './components/OuterEarPage';
 import './App.css';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       case 'settings':
         return <SettingsPage onClose={handleCloseSettings} />;
       case 'outerEar':
-        return <div className="page-placeholder">Orelha externa - Em desenvolvimento</div>;
+        return <OuterEarPage />;
       case 'middleEar':
         return <div className="page-placeholder">Orelha média - Em desenvolvimento</div>;
       case 'innerEar':

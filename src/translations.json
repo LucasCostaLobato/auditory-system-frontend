@@ -17,8 +17,19 @@
       "frequencyPoints": "Número de pontos na frequência",
       "viewSpectrum": "Ver espectro"
     },
+    "outerEar": {
+      "anatomySection": "Anatomia do canal auditivo",
+      "canalLength": "Comprimento do canal auditivo (mm)",
+      "getFRF": "Obter FRF do canal auditivo",
+      "spaceDomainSection": "Análise no domínio do espaço",
+      "frequencyList": "Lista de frequências (Hz)",
+      "executeSpaceDomain": "Executar análise no domínio do espaço",
+      "frequencyDomainSection": "Análise no domínio da frequência",
+      "positionList": "Lista de posições (mm)",
+      "executeFrequencyDomain": "Executar análise no domínio da frequência"
+    },
     "home": {
-      "title": "Bem-vindo à Plataforma de Ensino sobre Audição",
+      "title": "Bem-vindo a SimAudiS: uma plataforma de ensino sobre mecanismos da audição",
       "content": "Conteúdo de apresentação, instruções e referências serão adicionados aqui."
     },
     "language": {
@@ -43,8 +54,19 @@
       "frequencyPoints": "Number of frequency points",
       "viewSpectrum": "View spectrum"
     },
+    "outerEar": {
+      "anatomySection": "Ear canal anatomy",
+      "canalLength": "Ear canal length (mm)",
+      "getFRF": "Get ear canal FRF",
+      "spaceDomainSection": "Space domain analysis",
+      "frequencyList": "Frequency list (Hz)",
+      "executeSpaceDomain": "Execute space domain analysis",
+      "frequencyDomainSection": "Frequency domain analysis",
+      "positionList": "Position list (mm)",
+      "executeFrequencyDomain": "Execute frequency domain analysis"
+    },
     "home": {
-      "title": "Welcome to the Auditory System Learning Platform",
+      "title": "Welcome to SimAudiS: the mechanics of hearing learning platform",
       "content": "Presentation content, instructions and references will be added here."
     },
     "language": {
@@ -69,8 +91,19 @@
       "frequencyPoints": "Número de puntos de frecuencia",
       "viewSpectrum": "Ver espectro"
     },
+    "outerEar": {
+      "anatomySection": "Anatomía del canal auditivo",
+      "canalLength": "Longitud del canal auditivo (mm)",
+      "getFRF": "Obtener FRF del canal auditivo",
+      "spaceDomainSection": "Análisis en el dominio del espacio",
+      "frequencyList": "Lista de frecuencias (Hz)",
+      "executeSpaceDomain": "Ejecutar análisis en el dominio del espacio",
+      "frequencyDomainSection": "Análisis en el dominio de la frecuencia",
+      "positionList": "Lista de posiciones (mm)",
+      "executeFrequencyDomain": "Ejecutar análisis en el dominio de la frecuencia"
+    },
     "home": {
-      "title": "Bienvenido a la Plataforma de Enseñanza del Sistema Auditivo",
+      "title": "Bienvenido a SimAudiS: la plataforma de enseñanza del mecanismos de la audición",
       "content": "El contenido de presentación, instrucciones y referencias se agregarán aquí."
     },
     "language": {

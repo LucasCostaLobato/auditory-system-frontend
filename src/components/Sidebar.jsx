@@ -17,7 +17,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <h2>Auditory System</h2>
+        <h2>SimAudiS</h2>
       </div>
       <nav className="sidebar-menu">
         {menuItems.map((item) => {

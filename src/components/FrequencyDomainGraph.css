@@ -1,0 +1,20 @@
+.frequency-domain-graph {
+  width: 100%;
+  padding: 30px;
+}
+
+.frequency-domain-graph h2 {
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.graph-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  color: #7f8c8d;
+  font-size: 18px;
+}

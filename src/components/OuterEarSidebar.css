@@ -1,0 +1,77 @@
+.outer-ear-sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #ecf0f1;
+  padding: 20px;
+  position: fixed;
+  left: 250px;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.outer-ear-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.outer-ear-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  color: #2c3e50;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.outer-ear-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.outer-ear-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  margin-bottom: 15px;
+}
+
+.outer-ear-input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.outer-ear-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.outer-ear-button:hover:not(:disabled) {
+  background-color: #229954;
+}
+
+.outer-ear-button:active:not(:disabled) {
+  background-color: #1e8449;
+}
+
+.outer-ear-button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}

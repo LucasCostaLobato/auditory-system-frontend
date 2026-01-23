@@ -5,7 +5,7 @@ const LanguageSelector = () => {
   const { language, setLanguage, t } = useLanguage();
 
   const languages = [
-    { code: 'pt', label: 'Português' },
+    { code: 'pt', label: 'Português'},
     { code: 'en', label: 'English' },
     { code: 'es', label: 'Español' }
   ];
