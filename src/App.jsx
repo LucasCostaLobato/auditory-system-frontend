@@ -3,18 +3,21 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
 import SettingsPage from './components/SettingsPage';
-import LanguageSelector from './components/LanguageSelector';
 import './App.css';
 
 function App() {
   const [activeMenu, setActiveMenu] = useState('home');
+
+  const handleCloseSettings = () => {
+    setActiveMenu('home');
+  };
 
   const renderContent = () => {
     switch (activeMenu) {
       case 'home':
         return <HomePage />;
       case 'settings':
-        return <SettingsPage />;
+        return <SettingsPage onClose={handleCloseSettings} />;
       case 'outerEar':
         return <div className="page-placeholder">Orelha externa - Em desenvolvimento</div>;
       case 'middleEar':
@@ -29,7 +32,6 @@ function App() {
   return (
     <LanguageProvider>
       <div className="app">
-        <LanguageSelector />
         <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
         <main className="main-content">
           {renderContent()}

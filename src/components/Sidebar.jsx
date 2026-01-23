@@ -1,15 +1,17 @@
 import { useLanguage } from '../contexts/LanguageContext';
+import { Home, Settings } from 'lucide-react';
+import LanguageSelector from './LanguageSelector';
 import './Sidebar.css';
 
 const Sidebar = ({ activeMenu, setActiveMenu }) => {
   const { t } = useLanguage();
 
   const menuItems = [
-    { id: 'home', label: t('menu.home') },
-    { id: 'settings', label: t('menu.settings') },
-    { id: 'outerEar', label: t('menu.outerEar') },
-    { id: 'middleEar', label: t('menu.middleEar') },
-    { id: 'innerEar', label: t('menu.innerEar') }
+    { id: 'home', label: t('menu.home'), icon: Home },
+    { id: 'settings', label: t('menu.settings'), icon: Settings },
+    { id: 'outerEar', label: t('menu.outerEar'), icon: Settings },
+    { id: 'middleEar', label: t('menu.middleEar'), icon: Settings },
+    { id: 'innerEar', label: t('menu.innerEar'), icon: Settings }
   ];
 
   return (
@@ -18,16 +20,23 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
         <h2>Auditory System</h2>
       </div>
       <nav className="sidebar-menu">
-        {menuItems.map((item) => (
-          <button
-            key={item.id}
-            className={`menu-item ${activeMenu === item.id ? 'active' : ''}`}
-            onClick={() => setActiveMenu(item.id)}
-          >
-            {item.label}
-          </button>
-        ))}
+        {menuItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <button
+              key={item.id}
+              className={`menu-item ${activeMenu === item.id ? 'active' : ''}`}
+              onClick={() => setActiveMenu(item.id)}
+            >
+              <Icon size={18} />
+              {item.label}
+            </button>
+          );
+        })}
       </nav>
+      <div className="sidebar-footer">
+        <LanguageSelector />
+      </div>
     </div>
   );
 };

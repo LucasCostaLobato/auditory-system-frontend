@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   padding: 10px 0;
+  flex: 1;
 }
 
 .menu-item {
@@ -37,6 +38,9 @@
   font-size: 16px;
   transition: background-color 0.3s;
   border-left: 4px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .menu-item:hover {
@@ -47,4 +51,9 @@
   background-color: #34495e;
   border-left-color: #3498db;
   font-weight: 600;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid #34495e;
 }
