@@ -26,6 +26,8 @@ const CanalFRFGraph = ({ data }) => {
             dataKey="frequency"
             label={{ value: t('outerEar.frequencyAxisLabel'), position: 'insideBottom', offset: -10 }}
             tickFormatter={(value) => Math.round(value)}
+            interval="preserveStartEnd"
+            minTickGap={50}
           />
           <YAxis
             label={{ value: t('outerEar.amplitudeDbAxisLabel'), angle: -90, position: 'insideLeft' }}

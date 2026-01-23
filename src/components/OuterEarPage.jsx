@@ -57,16 +57,25 @@ const OuterEarPage = () => {
         signalType: settings.signalType
       });
 
-      // A API retorna múltiplas curvas (uma por frequência)
-      // Formato esperado: { x: [], y: [[...], [...], ...] } ou similar
-      const xAxis = response.x || response.position || [];
-      const yArrays = response.y || response.pressure || [];
+      // A API retorna { x_vec: [], "100.0": [], "500.0": [], "1000.0": [], ... }
+      // Extraímos x_vec como eixo X e todas as outras chaves como séries Y
+      const positions = response.x_vec || [];
 
-      // Transforma múltiplas curvas em formato para o gráfico
+      // Extrai todas as chaves que não sejam 'x_vec'
+      const series = [];
+      const frequencyLabels = [];
+
+      Object.keys(response).forEach(key => {
+        if (key !== 'x_vec') {
+          series.push(response[key]);
+          frequencyLabels.push(key); // Usa o nome da chave como está (ex: "100.0", "500.0")
+        }
+      });
+
       setSpaceDomainData({
-        series: yArrays,
-        positions: xAxis,
-        frequencies: params.frequencies
+        series,
+        positions,
+        frequencies: frequencyLabels
       });
 
     } catch (error) {

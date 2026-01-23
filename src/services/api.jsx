@@ -65,7 +65,7 @@ export const getSpaceDomainAnalysis = async (params) => {
       ec_length: params.ecLength,
       meCondition: params.meCondition || 'healthy',
       meSeverity: params.meSeverity || 'medium',
-      inputType: params.inputType || params.signalType
+      inputSignal: params.inputType || params.signalType
     });
 
     // Adiciona cada frequência como um parâmetro separado

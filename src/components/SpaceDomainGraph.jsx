@@ -39,6 +39,9 @@ const SpaceDomainGraph = ({ data }) => {
           <XAxis
             dataKey="position"
             label={{ value: t('outerEar.distanceAxisLabel'), position: 'insideBottom', offset: -10 }}
+            tickFormatter={(value) => Math.round(value)}
+            interval="preserveStartEnd"
+            minTickGap={50}
           />
           <YAxis
             label={{ value: t('outerEar.amplitudePaAxisLabel'), angle: -90, position: 'insideLeft' }}
