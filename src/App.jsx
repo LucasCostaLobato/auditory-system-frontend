@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { LanguageProvider } from './contexts/LanguageContext';
+import Sidebar from './components/Sidebar';
+import HomePage from './components/HomePage';
+import SettingsPage from './components/SettingsPage';
+import LanguageSelector from './components/LanguageSelector';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeMenu, setActiveMenu] = useState('home');
+
+  const renderContent = () => {
+    switch (activeMenu) {
+      case 'home':
+        return <HomePage />;
+      case 'settings':
+        return <SettingsPage />;
+      case 'outerEar':
+        return <div className="page-placeholder">Orelha externa - Em desenvolvimento</div>;
+      case 'middleEar':
+        return <div className="page-placeholder">Orelha média - Em desenvolvimento</div>;
+      case 'innerEar':
+        return <div className="page-placeholder">Orelha interna - Em desenvolvimento</div>;
+      default:
+        return <HomePage />;
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <LanguageProvider>
+      <div className="app">
+        <LanguageSelector />
+        <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+        <main className="main-content">
+          {renderContent()}
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </LanguageProvider>
+  );
 }
 
-export default App
+export default App;

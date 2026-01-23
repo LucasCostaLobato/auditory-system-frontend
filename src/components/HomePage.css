@@ -1,0 +1,21 @@
+.home-page {
+  padding: 40px;
+}
+
+.home-page h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+.home-content {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.home-content p {
+  color: #555;
+  font-size: 16px;
+}

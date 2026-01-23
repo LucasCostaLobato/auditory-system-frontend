@@ -1,0 +1,80 @@
+{
+  "pt": {
+    "menu": {
+      "home": "Início",
+      "settings": "Configurações",
+      "outerEar": "Orelha externa",
+      "middleEar": "Orelha média",
+      "innerEar": "Orelha interna"
+    },
+    "settings": {
+      "signalType": "Tipo de sinal",
+      "whiteNoise": "Ruído branco ideal",
+      "speechSignal": "Sinal de fala",
+      "frequencyRange": "Faixa de frequência",
+      "startFrequency": "Frequência inicial",
+      "endFrequency": "Frequência final",
+      "frequencyPoints": "Número de pontos na frequência",
+      "viewSpectrum": "Ver espectro"
+    },
+    "home": {
+      "title": "Bem-vindo à Plataforma de Ensino sobre Audição",
+      "content": "Conteúdo de apresentação, instruções e referências serão adicionados aqui."
+    },
+    "language": {
+      "selector": "Idioma"
+    }
+  },
+  "en": {
+    "menu": {
+      "home": "Home",
+      "settings": "Settings",
+      "outerEar": "Outer ear",
+      "middleEar": "Middle ear",
+      "innerEar": "Inner ear"
+    },
+    "settings": {
+      "signalType": "Signal type",
+      "whiteNoise": "Ideal white noise",
+      "speechSignal": "Speech signal",
+      "frequencyRange": "Frequency range",
+      "startFrequency": "Start frequency",
+      "endFrequency": "End frequency",
+      "frequencyPoints": "Number of frequency points",
+      "viewSpectrum": "View spectrum"
+    },
+    "home": {
+      "title": "Welcome to the Auditory System Learning Platform",
+      "content": "Presentation content, instructions and references will be added here."
+    },
+    "language": {
+      "selector": "Language"
+    }
+  },
+  "es": {
+    "menu": {
+      "home": "Inicio",
+      "settings": "Configuraciones",
+      "outerEar": "Oído externo",
+      "middleEar": "Oído medio",
+      "innerEar": "Oído interno"
+    },
+    "settings": {
+      "signalType": "Tipo de señal",
+      "whiteNoise": "Ruido blanco ideal",
+      "speechSignal": "Señal de habla",
+      "frequencyRange": "Rango de frecuencia",
+      "startFrequency": "Frecuencia inicial",
+      "endFrequency": "Frecuencia final",
+      "frequencyPoints": "Número de puntos de frecuencia",
+      "viewSpectrum": "Ver espectro"
+    },
+    "home": {
+      "title": "Bienvenido a la Plataforma de Enseñanza del Sistema Auditivo",
+      "content": "El contenido de presentación, instrucciones y referencias se agregarán aquí."
+    },
+    "language": {
+      "selector": "Idioma"
+    }
+  }
+}
