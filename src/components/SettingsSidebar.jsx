@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSettings } from '../contexts/SettingsContext';
 import './SettingsSidebar.css';
 
 const SettingsSidebar = ({ onViewSpectrum }) => {
   const { t } = useLanguage();
+  const { settings, updateSettings } = useSettings();
 
-  const [signalType, setSignalType] = useState('white_noise');
-  const [startFrequency, setStartFrequency] = useState('');
-  const [endFrequency, setEndFrequency] = useState('');
-  const [frequencyPoints, setFrequencyPoints] = useState('');
+  const [signalType, setSignalType] = useState(settings.signalType);
+  const [startFrequency, setStartFrequency] = useState(settings.startFrequency);
+  const [endFrequency, setEndFrequency] = useState(settings.endFrequency);
+  const [frequencyPoints, setFrequencyPoints] = useState(settings.frequencyPoints);
+
+  // Update local state when context changes
+  useEffect(() => {
+    setSignalType(settings.signalType);
+    setStartFrequency(settings.startFrequency);
+    setEndFrequency(settings.endFrequency);
+    setFrequencyPoints(settings.frequencyPoints);
+  }, [settings]);
 
   const handleViewSpectrum = () => {
     const params = {
@@ -17,6 +27,10 @@ const SettingsSidebar = ({ onViewSpectrum }) => {
       endFrequency: parseFloat(endFrequency),
       frequencyPoints: parseInt(frequencyPoints)
     };
+
+    // Save to context for persistence
+    updateSettings(params);
+
     onViewSpectrum(params);
   };
 

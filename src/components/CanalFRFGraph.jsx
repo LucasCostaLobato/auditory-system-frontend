@@ -1,18 +1,21 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useLanguage } from '../contexts/LanguageContext';
 import './CanalFRFGraph.css';
 
 const CanalFRFGraph = ({ data }) => {
+  const { t } = useLanguage();
+
   if (!data || data.length === 0) {
     return (
       <div className="graph-placeholder">
-        <p>Clique em "Obter FRF do canal auditivo" para visualizar o gráfico</p>
+        <p>{t('outerEar.getFRF')}</p>
       </div>
     );
   }
 
   return (
     <div className="canal-frf-graph">
-      <h2>Função de Resposta em Frequência do Canal Auditivo</h2>
+      <h2>{t('outerEar.frfGraphTitle')}</h2>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
           data={data}
@@ -21,10 +24,11 @@ const CanalFRFGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
-            label={{ value: 'Frequência (Hz)', position: 'insideBottom', offset: -10 }}
+            label={{ value: t('outerEar.frequencyAxisLabel'), position: 'insideBottom', offset: -10 }}
+            tickFormatter={(value) => Math.round(value)}
           />
           <YAxis
-            label={{ value: 'Magnitude (dB)', angle: -90, position: 'insideLeft' }}
+            label={{ value: t('outerEar.amplitudeDbAxisLabel'), angle: -90, position: 'insideLeft' }}
           />
           <Tooltip />
           <Legend />

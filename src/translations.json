@@ -15,7 +15,10 @@
       "startFrequency": "Frequência inicial",
       "endFrequency": "Frequência final",
       "frequencyPoints": "Número de pontos na frequência",
-      "viewSpectrum": "Ver espectro"
+      "viewSpectrum": "Ver espectro",
+      "spectrumGraphTitle": "Espectro do Sinal",
+      "frequencyAxisLabel": "Frequência [Hz]",
+      "amplitudeAxisLabel": "Amplitude"
     },
     "outerEar": {
       "anatomySection": "Anatomia do canal auditivo",
@@ -26,7 +29,14 @@
       "executeSpaceDomain": "Executar análise no domínio do espaço",
       "frequencyDomainSection": "Análise no domínio da frequência",
       "positionList": "Lista de posições (mm)",
-      "executeFrequencyDomain": "Executar análise no domínio da frequência"
+      "executeFrequencyDomain": "Executar análise no domínio da frequência",
+      "frfGraphTitle": "Função de Resposta em Frequência do Canal Auditivo",
+      "spaceDomainGraphTitle": "Análise no Domínio do Espaço",
+      "frequencyDomainGraphTitle": "Análise no Domínio da Frequência",
+      "frequencyAxisLabel": "Frequência [Hz]",
+      "amplitudeDbAxisLabel": "Amplitude [dB]",
+      "distanceAxisLabel": "Distância da entrada do canal auditivo [mm]",
+      "amplitudePaAxisLabel": "Amplitude [Pa]"
     },
     "home": {
       "title": "Bem-vindo a SimAudiS: uma plataforma de ensino sobre mecanismos da audição",
@@ -52,7 +62,10 @@
       "startFrequency": "Start frequency",
       "endFrequency": "End frequency",
       "frequencyPoints": "Number of frequency points",
-      "viewSpectrum": "View spectrum"
+      "viewSpectrum": "View spectrum",
+      "spectrumGraphTitle": "Signal Spectrum",
+      "frequencyAxisLabel": "Frequency [Hz]",
+      "amplitudeAxisLabel": "Amplitude"
     },
     "outerEar": {
       "anatomySection": "Ear canal anatomy",
@@ -63,7 +76,14 @@
       "executeSpaceDomain": "Execute space domain analysis",
       "frequencyDomainSection": "Frequency domain analysis",
       "positionList": "Position list (mm)",
-      "executeFrequencyDomain": "Execute frequency domain analysis"
+      "executeFrequencyDomain": "Execute frequency domain analysis",
+      "frfGraphTitle": "Ear Canal Frequency Response Function",
+      "spaceDomainGraphTitle": "Space Domain Analysis",
+      "frequencyDomainGraphTitle": "Frequency Domain Analysis",
+      "frequencyAxisLabel": "Frequency [Hz]",
+      "amplitudeDbAxisLabel": "Amplitude [dB]",
+      "distanceAxisLabel": "Distance from ear canal entrance [mm]",
+      "amplitudePaAxisLabel": "Amplitude [Pa]"
     },
     "home": {
       "title": "Welcome to SimAudiS: the mechanics of hearing learning platform",
@@ -89,7 +109,10 @@
       "startFrequency": "Frecuencia inicial",
       "endFrequency": "Frecuencia final",
       "frequencyPoints": "Número de puntos de frecuencia",
-      "viewSpectrum": "Ver espectro"
+      "viewSpectrum": "Ver espectro",
+      "spectrumGraphTitle": "Espectro de la Señal",
+      "frequencyAxisLabel": "Frecuencia [Hz]",
+      "amplitudeAxisLabel": "Amplitud"
     },
     "outerEar": {
       "anatomySection": "Anatomía del canal auditivo",
@@ -100,7 +123,14 @@
       "executeSpaceDomain": "Ejecutar análisis en el dominio del espacio",
       "frequencyDomainSection": "Análisis en el dominio de la frecuencia",
       "positionList": "Lista de posiciones (mm)",
-      "executeFrequencyDomain": "Ejecutar análisis en el dominio de la frecuencia"
+      "executeFrequencyDomain": "Ejecutar análisis en el dominio de la frecuencia",
+      "frfGraphTitle": "Función de Respuesta en Frecuencia del Canal Auditivo",
+      "spaceDomainGraphTitle": "Análisis en el Dominio del Espacio",
+      "frequencyDomainGraphTitle": "Análisis en el Dominio de la Frecuencia",
+      "frequencyAxisLabel": "Frecuencia [Hz]",
+      "amplitudeDbAxisLabel": "Amplitud [dB]",
+      "distanceAxisLabel": "Distancia desde la entrada del canal auditivo [mm]",
+      "amplitudePaAxisLabel": "Amplitud [Pa]"
     },
     "home": {
       "title": "Bienvenido a SimAudiS: la plataforma de enseñanza del mecanismos de la audición",

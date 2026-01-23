@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { useSettings } from '../contexts/SettingsContext';
+import { getOuterEarFRF, getSpaceDomainAnalysis, getFrequencyDomainAnalysis } from '../services/api';
 import OuterEarSidebar from './OuterEarSidebar';
 import CanalFRFGraph from './CanalFRFGraph';
 import SpaceDomainGraph from './SpaceDomainGraph';
@@ -7,10 +8,11 @@ import FrequencyDomainGraph from './FrequencyDomainGraph';
 import './OuterEarPage.css';
 
 const OuterEarPage = () => {
+  const { settings } = useSettings();
   const [activeGraph, setActiveGraph] = useState(null);
   const [frfData, setFrfData] = useState([]);
-  const [spaceDomainData, setSpaceDomainData] = useState([]);
-  const [frequencyDomainData, setFrequencyDomainData] = useState([]);
+  const [spaceDomainData, setSpaceDomainData] = useState({ series: [], positions: [] });
+  const [frequencyDomainData, setFrequencyDomainData] = useState({ series: [], frequencies: [] });
   const [loading, setLoading] = useState(false);
 
   const handleGetFRF = async (params) => {
@@ -18,35 +20,27 @@ const OuterEarPage = () => {
     setActiveGraph('frf');
 
     try {
-      // URL placeholder - será atualizada posteriormente
-      const response = await axios.get('https://api.placeholder.com/outer-ear/frf', {
-        params: {
-          canal_length: params.canalLength
-        }
+      const response = await getOuterEarFRF({
+        ecLength: params.canalLength,
+        startFrequency: settings.startFrequency,
+        endFrequency: settings.endFrequency,
+        frequencyPoints: settings.frequencyPoints
       });
 
-      // Assumindo que a API retorna { frequency: [], magnitude: [] }
-      const data = response.data.frequency.map((freq, index) => ({
-        frequency: freq,
-        magnitude: response.data.magnitude[index]
+      // A API retorna { freq_vec: [], frf: [] }
+      const xAxis = response.freq_vec || [];
+      const yAxis = response.frf || [];
+
+      const data = xAxis.map((x, index) => ({
+        frequency: x,
+        magnitude: yAxis[index]
       }));
 
       setFrfData(data);
     } catch (error) {
       console.error('Erro ao buscar FRF do canal auditivo:', error);
-
-      // Dados de exemplo para teste (remover quando a API estiver funcionando)
-      const mockData = [];
-      for (let i = 0; i < 100; i++) {
-        const freq = 20 + (20000 - 20) * (i / 99);
-        const magnitude = -10 + Math.sin(freq / 1000) * 15 + Math.random() * 5;
-        mockData.push({
-          frequency: freq.toFixed(2),
-          magnitude: magnitude.toFixed(2)
-        });
-      }
-
-      setFrfData(mockData);
+      // Limpa os dados em caso de erro
+      setFrfData([]);
     } finally {
       setLoading(false);
     }
@@ -57,38 +51,28 @@ const OuterEarPage = () => {
     setActiveGraph('spaceDomain');
 
     try {
-      // URL placeholder - será atualizada posteriormente
-      const response = await axios.get('https://api.placeholder.com/outer-ear/space-domain', {
-        params: {
-          canal_length: params.canalLength,
-          frequencies: params.frequencies.join(',')
-        }
+      const response = await getSpaceDomainAnalysis({
+        ecLength: params.canalLength,
+        frequencies: params.frequencies,
+        signalType: settings.signalType
       });
 
-      // Assumindo que a API retorna { position: [], pressure: [] }
-      const data = response.data.position.map((pos, index) => ({
-        position: pos,
-        pressure: response.data.pressure[index]
-      }));
+      // A API retorna múltiplas curvas (uma por frequência)
+      // Formato esperado: { x: [], y: [[...], [...], ...] } ou similar
+      const xAxis = response.x || response.position || [];
+      const yArrays = response.y || response.pressure || [];
 
-      setSpaceDomainData(data);
+      // Transforma múltiplas curvas em formato para o gráfico
+      setSpaceDomainData({
+        series: yArrays,
+        positions: xAxis,
+        frequencies: params.frequencies
+      });
+
     } catch (error) {
       console.error('Erro ao executar análise no domínio do espaço:', error);
-
-      // Dados de exemplo para teste (remover quando a API estiver funcionando)
-      const mockData = [];
-      const canalLength = params.canalLength || 25;
-
-      for (let i = 0; i < 50; i++) {
-        const position = (canalLength * i) / 49;
-        const pressure = 0.02 + Math.sin(position / 5) * 0.01 + Math.random() * 0.005;
-        mockData.push({
-          position: position.toFixed(2),
-          pressure: pressure.toFixed(4)
-        });
-      }
-
-      setSpaceDomainData(mockData);
+      // Limpa os dados em caso de erro
+      setSpaceDomainData({ series: [], positions: [], frequencies: [] });
     } finally {
       setLoading(false);
     }
@@ -99,37 +83,40 @@ const OuterEarPage = () => {
     setActiveGraph('frequencyDomain');
 
     try {
-      // URL placeholder - será atualizada posteriormente
-      const response = await axios.get('https://api.placeholder.com/outer-ear/frequency-domain', {
-        params: {
-          canal_length: params.canalLength,
-          positions: params.positions.join(',')
+      const response = await getFrequencyDomainAnalysis({
+        ecLength: params.canalLength,
+        positions: params.positions,
+        startFrequency: settings.startFrequency,
+        endFrequency: settings.endFrequency,
+        frequencyPoints: settings.frequencyPoints,
+        signalType: settings.signalType
+      });
+
+      // A API retorna { freq_vec: [], "7.0": [], "25.0": [], ... }
+      // Extraímos freq_vec como eixo X e todas as outras chaves como séries Y
+      const frequencies = response.freq_vec || [];
+
+      // Extrai todas as chaves que não sejam 'freq_vec'
+      const series = [];
+      const positionLabels = [];
+
+      Object.keys(response).forEach(key => {
+        if (key !== 'freq_vec') {
+          series.push(response[key]);
+          positionLabels.push(key); // Usa o nome da chave como está (ex: "7.0", "25.0")
         }
       });
 
-      // Assumindo que a API retorna { frequency: [], magnitude: [] }
-      const data = response.data.frequency.map((freq, index) => ({
-        frequency: freq,
-        magnitude: response.data.magnitude[index]
-      }));
+      setFrequencyDomainData({
+        series,
+        frequencies,
+        positions: positionLabels
+      });
 
-      setFrequencyDomainData(data);
     } catch (error) {
       console.error('Erro ao executar análise no domínio da frequência:', error);
-
-      // Dados de exemplo para teste (remover quando a API estiver funcionando)
-      const mockData = [];
-
-      for (let i = 0; i < 100; i++) {
-        const freq = 20 + (20000 - 20) * (i / 99);
-        const magnitude = 60 + Math.sin(freq / 2000) * 20 + Math.random() * 10;
-        mockData.push({
-          frequency: freq.toFixed(2),
-          magnitude: magnitude.toFixed(2)
-        });
-      }
-
-      setFrequencyDomainData(mockData);
+      // Limpa os dados em caso de erro
+      setFrequencyDomainData({ series: [], frequencies: [], positions: [] });
     } finally {
       setLoading(false);
     }

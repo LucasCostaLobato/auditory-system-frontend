@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { SettingsProvider } from './contexts/SettingsContext';
 import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
 import SettingsPage from './components/SettingsPage';
@@ -32,12 +33,14 @@ function App() {
 
   return (
     <LanguageProvider>
-      <div className="app">
-        <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
-        <main className="main-content">
-          {renderContent()}
-        </main>
-      </div>
+      <SettingsProvider>
+        <div className="app">
+          <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+          <main className="main-content">
+            {renderContent()}
+          </main>
+        </div>
+      </SettingsProvider>
     </LanguageProvider>
   );
 }

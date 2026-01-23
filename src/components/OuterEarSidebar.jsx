@@ -1,18 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSettings } from '../contexts/SettingsContext';
 import './OuterEarSidebar.css';
 
 const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDomain }) => {
   const { t } = useLanguage();
+  const { settings, updateSettings } = useSettings();
 
-  const [canalLength, setCanalLength] = useState('');
-  const [frequencyList, setFrequencyList] = useState('');
-  const [positionList, setPositionList] = useState('');
+  const [canalLength, setCanalLength] = useState(settings.canalLength);
+  const [frequencyList, setFrequencyList] = useState(settings.frequencyList);
+  const [positionList, setPositionList] = useState(settings.positionList);
+
+  // Update local state when context changes
+  useEffect(() => {
+    setCanalLength(settings.canalLength);
+    setFrequencyList(settings.frequencyList);
+    setPositionList(settings.positionList);
+  }, [settings]);
 
   const handleGetFRF = () => {
     const params = {
       canalLength: parseFloat(canalLength)
     };
+
+    // Save to context for persistence
+    updateSettings({ canalLength });
+
     onGetFRF(params);
   };
 
@@ -27,6 +40,10 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
       canalLength: parseFloat(canalLength),
       frequencies
     };
+
+    // Save to context for persistence
+    updateSettings({ canalLength, frequencyList });
+
     onExecuteSpaceDomain(params);
   };
 
@@ -41,6 +58,10 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
       canalLength: parseFloat(canalLength),
       positions
     };
+
+    // Save to context for persistence
+    updateSettings({ canalLength, positionList });
+
     onExecuteFrequencyDomain(params);
   };
 
