@@ -130,3 +130,76 @@ export const getFrequencyDomainAnalysis = async (params) => {
     throw error;
   }
 };
+
+// Página Orelha Média - Ver FRF
+export const getMiddleEarFRF = async (params) => {
+  try {
+    const queryParams = new URLSearchParams({
+      fi: params.startFrequency,
+      ff: params.endFrequency,
+      nf: params.frequencyPoints,
+      meCondition: params.meCondition || 'healthy',
+      meSeverity: params.meSeverity || 'medium'
+    });
+
+    // Adiciona cada medida como um parâmetro separado
+    if (params.measures && params.measures.length > 0) {
+      params.measures.forEach(measure => {
+        queryParams.append('measures', measure);
+      });
+    }
+
+    const response = await fetch(`${API_BASE_URL}middle-ear/frf?${queryParams}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Erro ao buscar FRF da orelha média:', error);
+    throw error;
+  }
+};
+
+// Página Orelha Média - Ver resposta à excitação
+export const getMiddleEarDynamicBehavior = async (params) => {
+  try {
+    const queryParams = new URLSearchParams({
+      start_freq: params.startFrequency,
+      end_freq: params.endFrequency,
+      num_points: params.frequencyPoints,
+      meCondition: params.meCondition || 'healthy',
+      meSeverity: params.meSeverity || 'medium',
+      inputSignal: params.inputSignal || params.signalType
+    });
+
+    // Adiciona cada medida como um parâmetro separado
+    if (params.measures && params.measures.length > 0) {
+      params.measures.forEach(measure => {
+        queryParams.append('measures', measure);
+      });
+    }
+
+    const response = await fetch(`${API_BASE_URL}middle-ear/dynamic-behavior?${queryParams}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Erro ao buscar resposta à excitação da orelha média:', error);
+    throw error;
+  }
+};

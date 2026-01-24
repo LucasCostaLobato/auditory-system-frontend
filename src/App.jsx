@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
 import SettingsPage from './components/SettingsPage';
 import OuterEarPage from './components/OuterEarPage';
+import MiddleEarPage from './components/MiddleEarPage';
 import './App.css';
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       case 'outerEar':
         return <OuterEarPage />;
       case 'middleEar':
-        return <div className="page-placeholder">Orelha média - Em desenvolvimento</div>;
+        return <MiddleEarPage />;
       case 'innerEar':
         return <div className="page-placeholder">Orelha interna - Em desenvolvimento</div>;
       default:

@@ -10,7 +10,9 @@ export const SettingsProvider = ({ children }) => {
     frequencyPoints: 100,
     canalLength: '25',
     frequencyList: '',
-    positionList: ''
+    positionList: '',
+    meCondition: 'healthy',
+    meSeverity: 'medium'
   });
 
   const updateSettings = (newSettings) => {
