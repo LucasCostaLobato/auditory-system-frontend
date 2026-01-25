@@ -5,10 +5,10 @@ const SettingsContext = createContext();
 export const SettingsProvider = ({ children }) => {
   const [settings, setSettings] = useState({
     signalType: 'white_noise',
-    startFrequency: 20,
-    endFrequency: 20000,
-    frequencyPoints: 100,
-    canalLength: '25',
+    startFrequency: 100,
+    endFrequency: 10000,
+    frequencyPoints: 500,
+    canalLength: '30',
     frequencyList: '',
     positionList: '',
     meCondition: 'healthy',
