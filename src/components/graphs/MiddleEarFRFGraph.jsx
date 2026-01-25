@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import './MiddleEarFRFGraph.css';
-import './GraphScaleControls.css';
+import '../common/GraphScaleControls.css';
 
 const MiddleEarFRFGraph = ({ data }) => {
   const { t } = useLanguage();

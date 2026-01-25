@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import './FrequencyDomainGraph.css';
-import './GraphScaleControls.css';
+import '../common/GraphScaleControls.css';
 
 const colors = ['#f39c12', '#e74c3c', '#9b59b6', '#3498db', '#2ecc71', '#1abc9c', '#e67e22', '#95a5a6'];
 

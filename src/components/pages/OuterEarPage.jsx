@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { useSettings } from '../contexts/SettingsContext';
-import { getOuterEarFRF, getSpaceDomainAnalysis, getFrequencyDomainAnalysis } from '../services/api';
-import OuterEarSidebar from './OuterEarSidebar';
-import CanalFRFGraph from './CanalFRFGraph';
-import SpaceDomainGraph from './SpaceDomainGraph';
-import FrequencyDomainGraph from './FrequencyDomainGraph';
-import CanalFRFExplanation from './CanalFRFExplanation';
-import SpaceDomainExplanation from './SpaceDomainExplanation';
-import FrequencyDomainExplanation from './FrequencyDomainExplanation';
+import { useSettings } from '../../contexts/SettingsContext';
+import { getOuterEarFRF, getSpaceDomainAnalysis, getFrequencyDomainAnalysis } from '../../services/api';
+import OuterEarSidebar from '../sidebars/OuterEarSidebar';
+import CanalFRFGraph from '../graphs/CanalFRFGraph';
+import SpaceDomainGraph from '../graphs/SpaceDomainGraph';
+import FrequencyDomainGraph from '../graphs/FrequencyDomainGraph';
+import CanalFRFExplanation from '../explanations/CanalFRFExplanation';
+import SpaceDomainExplanation from '../explanations/SpaceDomainExplanation';
+import FrequencyDomainExplanation from '../explanations/FrequencyDomainExplanation';
 import './OuterEarPage.css';
 
 const OuterEarPage = () => {

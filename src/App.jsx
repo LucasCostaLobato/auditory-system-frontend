@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { SettingsProvider } from './contexts/SettingsContext';
-import Sidebar from './components/Sidebar';
-import HomePage from './components/HomePage';
-import SettingsPage from './components/SettingsPage';
-import OuterEarPage from './components/OuterEarPage';
-import MiddleEarPage from './components/MiddleEarPage';
+import Sidebar from './components/sidebars/Sidebar';
+import HomePage from './components/pages/HomePage';
+import SettingsPage from './components/pages/SettingsPage';
+import OuterEarPage from './components/pages/OuterEarPage';
+import MiddleEarPage from './components/pages/MiddleEarPage';
 import './App.css';
 
 function App() {

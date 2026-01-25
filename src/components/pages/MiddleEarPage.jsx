@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import MiddleEarSidebar from './MiddleEarSidebar';
-import MiddleEarFRFGraph from './MiddleEarFRFGraph';
-import MiddleEarDynamicGraph from './MiddleEarDynamicGraph';
-import MiddleEarFRFExplanation from './MiddleEarFRFExplanation';
-import MiddleEarDynamicExplanation from './MiddleEarDynamicExplanation';
-import { getMiddleEarFRF, getMiddleEarDynamicBehavior } from '../services/api';
+import MiddleEarSidebar from '../sidebars/MiddleEarSidebar';
+import MiddleEarFRFGraph from '../graphs/MiddleEarFRFGraph';
+import MiddleEarDynamicGraph from '../graphs/MiddleEarDynamicGraph';
+import MiddleEarFRFExplanation from '../explanations/MiddleEarFRFExplanation';
+import MiddleEarDynamicExplanation from '../explanations/MiddleEarDynamicExplanation';
+import { getMiddleEarFRF, getMiddleEarDynamicBehavior } from '../../services/api';
 import './MiddleEarPage.css';
 
 const MiddleEarPage = () => {

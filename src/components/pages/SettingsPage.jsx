@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useSettings } from '../contexts/SettingsContext';
-import { getInputSignal } from '../services/api';
-import SettingsSidebar from './SettingsSidebar';
-import SpectrumGraph from './SpectrumGraph';
-import SpectrumExplanation from './SpectrumExplanation';
+import { useSettings } from '../../contexts/SettingsContext';
+import { getInputSignal } from '../../services/api';
+import SettingsSidebar from '../sidebars/SettingsSidebar';
+import SpectrumGraph from '../graphs/SpectrumGraph';
+import SpectrumExplanation from '../explanations/SpectrumExplanation';
 import './SettingsPage.css';
 
 const SettingsPage = () => {

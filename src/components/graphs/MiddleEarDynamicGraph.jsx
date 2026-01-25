@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useLanguage } from '../contexts/LanguageContext';
-import './SpectrumGraph.css';
-import './GraphScaleControls.css';
+import { useLanguage } from '../../contexts/LanguageContext';
+import './MiddleEarDynamicGraph.css';
+import '../common/GraphScaleControls.css';
 
-const SpectrumGraph = ({ data }) => {
+const MiddleEarDynamicGraph = ({ data }) => {
   const { t } = useLanguage();
   const [logScaleX, setLogScaleX] = useState(false);
   const [logScaleY, setLogScaleY] = useState(false);
@@ -12,14 +12,31 @@ const SpectrumGraph = ({ data }) => {
   if (!data || data.length === 0) {
     return (
       <div className="graph-placeholder">
-        <p>{t('settings.viewSpectrum')}</p>
+        <p>{t('middleEar.clickToView')}</p>
       </div>
     );
   }
 
+  // Extrai as chaves de dados (exceto 'frequency')
+  const dataKeys = Object.keys(data[0]).filter(key => key !== 'frequency');
+
+  // Paleta de cores para múltiplas séries
+  const colors = ['#9b59b6', '#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#1abc9c', '#e67e22', '#95a5a6'];
+
+  // Mapeia nomes técnicos para nomes traduzidos
+  const getMeasureName = (key) => {
+    const nameMap = {
+      'tympanic_membrane': t('middleEar.tympanicMembrane'),
+      'malleus': t('middleEar.malleus'),
+      'incus': t('middleEar.incus'),
+      'stapes': t('middleEar.stapes')
+    };
+    return nameMap[key] || key;
+  };
+
   return (
-    <div className="spectrum-graph">
-      <h2>{t('settings.spectrumGraphTitle')}</h2>
+    <div className="middle-ear-dynamic-graph">
+      <h2>{t('middleEar.dynamicTitle')}</h2>
       <div className="scale-controls">
         <label className="scale-toggle">
           <span className="toggle-switch">
@@ -54,7 +71,7 @@ const SpectrumGraph = ({ data }) => {
             dataKey="frequency"
             scale={logScaleX ? 'log' : 'auto'}
             domain={logScaleX ? ['auto', 'auto'] : undefined}
-            label={{ value: t('settings.frequencyAxisLabel'), position: 'insideBottom', offset: -10 }}
+            label={{ value: t('middleEar.dynamicFrequencyAxis'), position: 'insideBottom', offset: -10 }}
             tickFormatter={(value) => Math.round(value)}
             interval="preserveStartEnd"
             minTickGap={50}
@@ -62,22 +79,25 @@ const SpectrumGraph = ({ data }) => {
           <YAxis
             scale={logScaleY ? 'log' : 'auto'}
             domain={logScaleY ? ['auto', 'auto'] : undefined}
-            label={{ value: t('settings.amplitudeAxisLabel'), angle: -90, position: 'insideLeft' }}
+            label={{ value: t('middleEar.dynamicVelocityAxis'), angle: -90, position: 'insideLeft' }}
           />
           <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="amplitude"
-            stroke="#3498db"
-            strokeWidth={2}
-            dot={false}
-            name={t('settings.amplitudeAxisLabel')}
-          />
+          {dataKeys.map((key, index) => (
+            <Line
+              key={key}
+              type="monotone"
+              dataKey={key}
+              stroke={colors[index % colors.length]}
+              strokeWidth={2}
+              dot={false}
+              name={getMeasureName(key)}
+            />
+          ))}
         </LineChart>
       </ResponsiveContainer>
     </div>
   );
 };
 
-export default SpectrumGraph;
+export default MiddleEarDynamicGraph;

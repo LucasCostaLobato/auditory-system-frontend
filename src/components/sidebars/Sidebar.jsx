@@ -1,6 +1,6 @@
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { Home, Settings } from 'lucide-react';
-import LanguageSelector from './LanguageSelector';
+import LanguageSelector from '../common/LanguageSelector';
 import './Sidebar.css';
 
 const Sidebar = ({ activeMenu, setActiveMenu }) => {

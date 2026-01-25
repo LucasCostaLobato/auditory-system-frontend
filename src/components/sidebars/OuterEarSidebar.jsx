@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { useSettings } from '../contexts/SettingsContext';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { useSettings } from '../../contexts/SettingsContext';
 import './OuterEarSidebar.css';
 
 const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDomain }) => {
