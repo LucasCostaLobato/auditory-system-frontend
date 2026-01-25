@@ -44,7 +44,7 @@ const SettingsSidebar = ({ onViewSpectrum }) => {
           onChange={(e) => setSignalType(e.target.value)}
         >
           <option value="white_noise">{t('settings.whiteNoise')}</option>
-          <option value="speech_signal">{t('settings.speechSignal')}</option>
+          <option value="speech">{t('settings.speechSignal')}</option>
         </select>
       </div>
 
