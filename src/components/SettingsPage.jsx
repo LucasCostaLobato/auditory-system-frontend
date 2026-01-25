@@ -3,6 +3,7 @@ import { useSettings } from '../contexts/SettingsContext';
 import { getInputSignal } from '../services/api';
 import SettingsSidebar from './SettingsSidebar';
 import SpectrumGraph from './SpectrumGraph';
+import SpectrumExplanation from './SpectrumExplanation';
 import './SettingsPage.css';
 
 const SettingsPage = () => {
@@ -53,6 +54,7 @@ const SettingsPage = () => {
           <SpectrumGraph data={graphData} />
         )}
       </div>
+      {graphData.length > 0 && <SpectrumExplanation />}
     </div>
   );
 };

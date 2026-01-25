@@ -7,6 +7,7 @@
 .outer-ear-content {
   flex: 1;
   margin-left: 300px;
+  margin-right: 320px;
   display: flex;
   align-items: center;
   justify-content: center;

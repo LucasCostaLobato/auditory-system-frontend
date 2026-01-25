@@ -18,7 +18,9 @@
       "viewSpectrum": "Ver espectro",
       "spectrumGraphTitle": "Espectro do Sinal",
       "frequencyAxisLabel": "Frequência [Hz]",
-      "amplitudeAxisLabel": "Amplitude"
+      "amplitudeAxisLabel": "Amplitude",
+      "spectrumExplanationTitle": "Sobre o Espectro do Sinal",
+      "spectrumExplanationContent": "O espectro de magnitude mostra a distribuição de energia do sinal de entrada ao longo das frequências. Este gráfico permite visualizar como diferentes componentes de frequência estão presentes no sinal escolhido (ruído branco ou sinal de fala), sendo essencial para entender como o som será processado pelo sistema auditivo."
     },
     "outerEar": {
       "anatomySection": "Anatomia do canal auditivo",
@@ -36,7 +38,13 @@
       "frequencyAxisLabel": "Frequência [Hz]",
       "amplitudeDbAxisLabel": "Amplitude [dB]",
       "distanceAxisLabel": "Distância da entrada do canal auditivo [mm]",
-      "amplitudePaAxisLabel": "Amplitude [Pa]"
+      "amplitudePaAxisLabel": "Amplitude [Pa]",
+      "frfExplanationTitle": "Sobre a FRF do Canal Auditivo",
+      "frfExplanationContent": "A Função de Resposta em Frequência (FRF) do canal auditivo externo mostra como o canal amplifica ou atenua diferentes frequências sonoras. Este fenômeno ocorre devido às propriedades acústicas do canal, que age como um ressonador tubular, aumentando a pressão sonora em certas frequências, especialmente próximas a 3-4 kHz.",
+      "spaceDomainExplanationTitle": "Sobre a Análise no Domínio do Espaço",
+      "spaceDomainExplanationContent": "Esta análise mostra como a pressão sonora varia ao longo do comprimento do canal auditivo para frequências específicas. Permite visualizar os padrões de ondas estacionárias que se formam no canal, mostrando onde ocorrem máximos e mínimos de pressão para cada frequência selecionada.",
+      "frequencyDomainExplanationTitle": "Sobre a Análise no Domínio da Frequência",
+      "frequencyDomainExplanationContent": "Este gráfico exibe o espectro de frequências em posições específicas ao longo do canal auditivo. Mostra como o conteúdo espectral do sinal de entrada se modifica conforme a onda sonora propaga pelo canal, revelando os efeitos da ressonância em diferentes localizações."
     },
     "middleEar": {
       "condition": "Condição da orelha média",
@@ -65,7 +73,11 @@
       "magnitudeAxis": "Magnitude [dB]",
       "amplitudeAxis": "Amplitude",
       "selectAtLeastOne": "Selecione ao menos um componente",
-      "clickToView": "Clique em um dos botões para visualizar o gráfico"
+      "clickToView": "Clique em um dos botões para visualizar o gráfico",
+      "frfExplanationTitle": "Sobre a FRF da Orelha Média",
+      "frfExplanationContent": "A Função de Resposta em Frequência (FRF) da orelha média mostra como cada componente vibratório responde a diferentes frequências de entrada. Este gráfico permite visualizar o comportamento de cada estrutura anatômica (membrana timpânica, martelo, bigorna e estribo) em função da frequência do som incidente.",
+      "dynamicExplanationTitle": "Sobre a Resposta à Excitação",
+      "dynamicExplanationContent": "Este gráfico mostra a resposta vibratória dos componentes da orelha média quando excitados por um sinal de entrada específico. Diferente da FRF, aqui você visualiza o comportamento dinâmico considerando o sinal de entrada configurado (ruído branco ou sinal de fala) e as características do canal auditivo."
     },
     "home": {
       "title": "Bem-vindo a SimAudiS: uma plataforma de ensino sobre mecanismos da audição",
@@ -94,7 +106,9 @@
       "viewSpectrum": "View spectrum",
       "spectrumGraphTitle": "Signal Spectrum",
       "frequencyAxisLabel": "Frequency [Hz]",
-      "amplitudeAxisLabel": "Amplitude"
+      "amplitudeAxisLabel": "Amplitude",
+      "spectrumExplanationTitle": "About Signal Spectrum",
+      "spectrumExplanationContent": "The magnitude spectrum shows the energy distribution of the input signal across frequencies. This graph allows you to visualize how different frequency components are present in the chosen signal (white noise or speech signal), which is essential for understanding how sound will be processed by the auditory system."
     },
     "outerEar": {
       "anatomySection": "Ear canal anatomy",
@@ -112,7 +126,13 @@
       "frequencyAxisLabel": "Frequency [Hz]",
       "amplitudeDbAxisLabel": "Amplitude [dB]",
       "distanceAxisLabel": "Distance from ear canal entrance [mm]",
-      "amplitudePaAxisLabel": "Amplitude [Pa]"
+      "amplitudePaAxisLabel": "Amplitude [Pa]",
+      "frfExplanationTitle": "About Ear Canal FRF",
+      "frfExplanationContent": "The Frequency Response Function (FRF) of the outer ear canal shows how the canal amplifies or attenuates different sound frequencies. This phenomenon occurs due to the acoustic properties of the canal, which acts as a tubular resonator, increasing sound pressure at certain frequencies, especially near 3-4 kHz.",
+      "spaceDomainExplanationTitle": "About Space Domain Analysis",
+      "spaceDomainExplanationContent": "This analysis shows how sound pressure varies along the length of the ear canal for specific frequencies. It allows you to visualize the standing wave patterns that form in the canal, showing where pressure maxima and minima occur for each selected frequency.",
+      "frequencyDomainExplanationTitle": "About Frequency Domain Analysis",
+      "frequencyDomainExplanationContent": "This graph displays the frequency spectrum at specific positions along the ear canal. It shows how the spectral content of the input signal changes as the sound wave propagates through the canal, revealing the effects of resonance at different locations."
     },
     "middleEar": {
       "condition": "Middle ear condition",
@@ -141,7 +161,11 @@
       "magnitudeAxis": "Magnitude [dB]",
       "amplitudeAxis": "Amplitude",
       "selectAtLeastOne": "Select at least one component",
-      "clickToView": "Click one of the buttons to view the graph"
+      "clickToView": "Click one of the buttons to view the graph",
+      "frfExplanationTitle": "About Middle Ear FRF",
+      "frfExplanationContent": "The Middle Ear Frequency Response Function (FRF) shows how each vibratory component responds to different input frequencies. This graph allows you to visualize the behavior of each anatomical structure (tympanic membrane, malleus, incus, and stapes) as a function of the incident sound frequency.",
+      "dynamicExplanationTitle": "About Excitation Response",
+      "dynamicExplanationContent": "This graph shows the vibratory response of middle ear components when excited by a specific input signal. Unlike the FRF, here you visualize the dynamic behavior considering the configured input signal (white noise or speech signal) and the ear canal characteristics."
     },
     "home": {
       "title": "Welcome to SimAudiS: the mechanics of hearing learning platform",
@@ -170,7 +194,9 @@
       "viewSpectrum": "Ver espectro",
       "spectrumGraphTitle": "Espectro de la Señal",
       "frequencyAxisLabel": "Frecuencia [Hz]",
-      "amplitudeAxisLabel": "Amplitud"
+      "amplitudeAxisLabel": "Amplitud",
+      "spectrumExplanationTitle": "Sobre el Espectro de la Señal",
+      "spectrumExplanationContent": "El espectro de magnitud muestra la distribución de energía de la señal de entrada a lo largo de las frecuencias. Este gráfico permite visualizar cómo diferentes componentes de frecuencia están presentes en la señal elegida (ruido blanco o señal de habla), lo cual es esencial para comprender cómo el sonido será procesado por el sistema auditivo."
     },
     "outerEar": {
       "anatomySection": "Anatomía del canal auditivo",
@@ -188,7 +214,13 @@
       "frequencyAxisLabel": "Frecuencia [Hz]",
       "amplitudeDbAxisLabel": "Amplitud [dB]",
       "distanceAxisLabel": "Distancia desde la entrada del canal auditivo [mm]",
-      "amplitudePaAxisLabel": "Amplitud [Pa]"
+      "amplitudePaAxisLabel": "Amplitud [Pa]",
+      "frfExplanationTitle": "Sobre la FRF del Canal Auditivo",
+      "frfExplanationContent": "La Función de Respuesta en Frecuencia (FRF) del canal auditivo externo muestra cómo el canal amplifica o atenúa diferentes frecuencias sonoras. Este fenómeno ocurre debido a las propiedades acústicas del canal, que actúa como un resonador tubular, aumentando la presión sonora en ciertas frecuencias, especialmente cerca de 3-4 kHz.",
+      "spaceDomainExplanationTitle": "Sobre el Análisis en el Dominio del Espacio",
+      "spaceDomainExplanationContent": "Este análisis muestra cómo la presión sonora varía a lo largo de la longitud del canal auditivo para frecuencias específicas. Permite visualizar los patrones de ondas estacionarias que se forman en el canal, mostrando dónde ocurren máximos y mínimos de presión para cada frecuencia seleccionada.",
+      "frequencyDomainExplanationTitle": "Sobre el Análisis en el Dominio de la Frecuencia",
+      "frequencyDomainExplanationContent": "Este gráfico muestra el espectro de frecuencias en posiciones específicas a lo largo del canal auditivo. Muestra cómo el contenido espectral de la señal de entrada se modifica conforme la onda sonora se propaga por el canal, revelando los efectos de la resonancia en diferentes ubicaciones."
     },
     "middleEar": {
       "condition": "Condición del oído medio",
@@ -217,7 +249,11 @@
       "magnitudeAxis": "Magnitud [dB]",
       "amplitudeAxis": "Amplitud",
       "selectAtLeastOne": "Seleccione al menos un componente",
-      "clickToView": "Haga clic en uno de los botones para ver el gráfico"
+      "clickToView": "Haga clic en uno de los botones para ver el gráfico",
+      "frfExplanationTitle": "Sobre la FRF del Oído Medio",
+      "frfExplanationContent": "La Función de Respuesta en Frecuencia (FRF) del oído medio muestra cómo cada componente vibratorio responde a diferentes frecuencias de entrada. Este gráfico permite visualizar el comportamiento de cada estructura anatómica (membrana timpánica, martillo, yunque y estribo) en función de la frecuencia del sonido incidente.",
+      "dynamicExplanationTitle": "Sobre la Respuesta a la Excitación",
+      "dynamicExplanationContent": "Este gráfico muestra la respuesta vibratoria de los componentes del oído medio cuando son excitados por una señal de entrada específica. A diferencia de la FRF, aquí se visualiza el comportamiento dinámico considerando la señal de entrada configurada (ruido blanco o señal de habla) y las características del canal auditivo."
     },
     "home": {
       "title": "Bienvenido a SimAudiS: la plataforma de enseñanza del mecanismos de la audición",

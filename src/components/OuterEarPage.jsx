@@ -5,6 +5,9 @@ import OuterEarSidebar from './OuterEarSidebar';
 import CanalFRFGraph from './CanalFRFGraph';
 import SpaceDomainGraph from './SpaceDomainGraph';
 import FrequencyDomainGraph from './FrequencyDomainGraph';
+import CanalFRFExplanation from './CanalFRFExplanation';
+import SpaceDomainExplanation from './SpaceDomainExplanation';
+import FrequencyDomainExplanation from './FrequencyDomainExplanation';
 import './OuterEarPage.css';
 
 const OuterEarPage = () => {
@@ -162,6 +165,9 @@ const OuterEarPage = () => {
       <div className="outer-ear-content">
         {renderGraph()}
       </div>
+      {activeGraph === 'frf' && <CanalFRFExplanation />}
+      {activeGraph === 'spaceDomain' && <SpaceDomainExplanation />}
+      {activeGraph === 'frequencyDomain' && <FrequencyDomainExplanation />}
     </div>
   );
 };
