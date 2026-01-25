@@ -90,6 +90,7 @@ const MiddleEarSidebar = ({ onViewFRF, onViewDynamic }) => {
       startFrequency: settings.startFrequency,
       endFrequency: settings.endFrequency,
       frequencyPoints: settings.frequencyPoints,
+      canalLength: settings.canalLength,
       meCondition,
       meSeverity,
       inputSignal: settings.signalType,

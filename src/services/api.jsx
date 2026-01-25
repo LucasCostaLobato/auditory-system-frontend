@@ -171,9 +171,10 @@ export const getMiddleEarFRF = async (params) => {
 export const getMiddleEarDynamicBehavior = async (params) => {
   try {
     const queryParams = new URLSearchParams({
-      start_freq: params.startFrequency,
-      end_freq: params.endFrequency,
-      num_points: params.frequencyPoints,
+      fi: params.startFrequency,
+      ff: params.endFrequency,
+      nf: params.frequencyPoints,
+      ec_length: params.ecLength || params.canalLength,
       meCondition: params.meCondition || 'healthy',
       meSeverity: params.meSeverity || 'medium',
       inputSignal: params.inputSignal || params.signalType

@@ -55,16 +55,18 @@ const MiddleEarPage = () => {
       const data = await getMiddleEarDynamicBehavior(params);
 
       // Transformar dados da API para o formato do gráfico
-      // Assumindo que a API retorna: { freq_vec: [], series: { measure_name: [...] } }
+      // A API retorna: { freq_vec: [], measure_name1: [...], measure_name2: [...], ... }
       const frequencies = data.freq_vec || [];
-      const series = data.series || {};
+
+      // Extrai todas as chaves exceto freq_vec (essas são as medidas)
+      const measureKeys = Object.keys(data).filter(key => key !== 'freq_vec');
 
       const chartData = frequencies.map((frequency, index) => {
         const point = { frequency };
 
         // Adiciona cada série de medida
-        Object.keys(series).forEach(measureKey => {
-          point[measureKey] = series[measureKey][index];
+        measureKeys.forEach(measureKey => {
+          point[measureKey] = data[measureKey][index];
         });
 
         return point;

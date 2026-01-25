@@ -41,13 +41,13 @@ const MiddleEarDynamicGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
-            label={{ value: t('middleEar.frequencyAxis'), position: 'insideBottom', offset: -10 }}
+            label={{ value: t('middleEar.dynamicFrequencyAxis'), position: 'insideBottom', offset: -10 }}
             tickFormatter={(value) => Math.round(value)}
             interval="preserveStartEnd"
             minTickGap={50}
           />
           <YAxis
-            label={{ value: t('middleEar.amplitudeAxis'), angle: -90, position: 'insideLeft' }}
+            label={{ value: t('middleEar.dynamicVelocityAxis'), angle: -90, position: 'insideLeft' }}
           />
           <Tooltip />
           <Legend />
