@@ -85,6 +85,10 @@
     },
     "language": {
       "selector": "Idioma"
+    },
+    "common": {
+      "logScaleX": "Escala logarítmica (eixo X)",
+      "logScaleY": "Escala logarítmica (eixo Y)"
     }
   },
   "en": {
@@ -173,6 +177,10 @@
     },
     "language": {
       "selector": "Language"
+    },
+    "common": {
+      "logScaleX": "Logarithmic scale (X axis)",
+      "logScaleY": "Logarithmic scale (Y axis)"
     }
   },
   "es": {
@@ -261,6 +269,10 @@
     },
     "language": {
       "selector": "Idioma"
+    },
+    "common": {
+      "logScaleX": "Escala logarítmica (eje X)",
+      "logScaleY": "Escala logarítmica (eje Y)"
     }
   }
 }

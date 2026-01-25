@@ -1,11 +1,15 @@
+import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useLanguage } from '../contexts/LanguageContext';
 import './FrequencyDomainGraph.css';
+import './GraphScaleControls.css';
 
 const colors = ['#f39c12', '#e74c3c', '#9b59b6', '#3498db', '#2ecc71', '#1abc9c', '#e67e22', '#95a5a6'];
 
 const FrequencyDomainGraph = ({ data }) => {
   const { t } = useLanguage();
+  const [logScaleX, setLogScaleX] = useState(false);
+  const [logScaleY, setLogScaleY] = useState(false);
 
   if (!data || !data.series || data.series.length === 0) {
     return (
@@ -30,6 +34,30 @@ const FrequencyDomainGraph = ({ data }) => {
   return (
     <div className="frequency-domain-graph">
       <h2>{t('outerEar.frequencyDomainGraphTitle')}</h2>
+      <div className="scale-controls">
+        <label className="scale-toggle">
+          <span className="toggle-switch">
+            <input
+              type="checkbox"
+              checked={logScaleX}
+              onChange={(e) => setLogScaleX(e.target.checked)}
+            />
+            <span className="toggle-slider"></span>
+          </span>
+          {t('common.logScaleX')}
+        </label>
+        <label className="scale-toggle">
+          <span className="toggle-switch">
+            <input
+              type="checkbox"
+              checked={logScaleY}
+              onChange={(e) => setLogScaleY(e.target.checked)}
+            />
+            <span className="toggle-slider"></span>
+          </span>
+          {t('common.logScaleY')}
+        </label>
+      </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
           data={chartData}
@@ -38,12 +66,16 @@ const FrequencyDomainGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
+            scale={logScaleX ? 'log' : 'auto'}
+            domain={logScaleX ? ['auto', 'auto'] : undefined}
             label={{ value: t('outerEar.frequencyAxisLabel'), position: 'insideBottom', offset: -10 }}
             tickFormatter={(value) => Math.round(value)}
             interval="preserveStartEnd"
             minTickGap={50}
           />
           <YAxis
+            scale={logScaleY ? 'log' : 'auto'}
+            domain={logScaleY ? ['auto', 'auto'] : undefined}
             label={{ value: t('outerEar.amplitudeDbAxisLabel'), angle: -90, position: 'insideLeft' }}
           />
           <Tooltip />

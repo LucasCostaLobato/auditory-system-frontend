@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useLanguage } from '../contexts/LanguageContext';
 import './CanalFRFGraph.css';
+import './GraphScaleControls.css';
 
 const CanalFRFGraph = ({ data }) => {
   const { t } = useLanguage();
+  const [logScaleX, setLogScaleX] = useState(false);
 
   if (!data || data.length === 0) {
     return (
@@ -16,6 +19,19 @@ const CanalFRFGraph = ({ data }) => {
   return (
     <div className="canal-frf-graph">
       <h2>{t('outerEar.frfGraphTitle')}</h2>
+      <div className="scale-controls">
+        <label className="scale-toggle">
+          <span className="toggle-switch">
+            <input
+              type="checkbox"
+              checked={logScaleX}
+              onChange={(e) => setLogScaleX(e.target.checked)}
+            />
+            <span className="toggle-slider"></span>
+          </span>
+          {t('common.logScaleX')}
+        </label>
+      </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
           data={data}
@@ -24,6 +40,8 @@ const CanalFRFGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
+            scale={logScaleX ? 'log' : 'auto'}
+            domain={logScaleX ? ['auto', 'auto'] : undefined}
             label={{ value: t('outerEar.frequencyAxisLabel'), position: 'insideBottom', offset: -10 }}
             tickFormatter={(value) => Math.round(value)}
             interval="preserveStartEnd"
