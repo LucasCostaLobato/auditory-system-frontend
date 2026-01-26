@@ -9,6 +9,25 @@ const MiddleEarFRFGraph = ({ data }) => {
   const [logScaleX, setLogScaleX] = useState(false);
   const [logScaleY, setLogScaleY] = useState(false);
 
+  const xAxisLabel = t('middleEar.frfFrequencyAxis');
+  const yAxisLabel = t('middleEar.frfVelocityAxis');
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p><strong>{xAxisLabel}:</strong> {Number(label).toFixed(1)}</p>
+          {payload.map((entry, index) => (
+            <p key={index} style={{ color: entry.color }}>
+              <strong>{yAxisLabel} ({entry.name}):</strong> {Number(entry.value).toFixed(2)}
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
   if (!data || data.length === 0) {
     return (
       <div className="graph-placeholder">
@@ -64,14 +83,14 @@ const MiddleEarFRFGraph = ({ data }) => {
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
           data={data}
-          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+          margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
             scale={logScaleX ? 'log' : 'auto'}
             domain={logScaleX ? ['auto', 'auto'] : undefined}
-            label={{ value: t('middleEar.frfFrequencyAxis'), position: 'insideBottom', offset: -10 }}
+            label={{ value: xAxisLabel, position: 'insideBottom', offset: -10 }}
             tickFormatter={(value) => Math.round(value)}
             interval="preserveStartEnd"
             minTickGap={50}
@@ -79,10 +98,10 @@ const MiddleEarFRFGraph = ({ data }) => {
           <YAxis
             scale={logScaleY ? 'log' : 'auto'}
             domain={logScaleY ? ['auto', 'auto'] : undefined}
-            label={{ value: t('middleEar.frfVelocityAxis'), angle: -90, position: 'insideLeft' }}
+            label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />
-          <Tooltip />
-          <Legend />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend wrapperStyle={{ paddingTop: '20px' }} />
           {dataKeys.map((key, index) => (
             <Line
               key={key}

@@ -8,6 +8,25 @@ const CanalFRFGraph = ({ data }) => {
   const { t } = useLanguage();
   const [logScaleX, setLogScaleX] = useState(false);
 
+  const xAxisLabel = t('outerEar.frequencyAxisLabel');
+  const yAxisLabel = t('outerEar.amplitudeDbAxisLabel');
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p><strong>{xAxisLabel}:</strong> {Number(label).toFixed(1)}</p>
+          {payload.map((entry, index) => (
+            <p key={index} style={{ color: entry.color }}>
+              <strong>{yAxisLabel}:</strong> {Number(entry.value).toFixed(2)}
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
   if (!data || data.length === 0) {
     return (
       <div className="graph-placeholder">
@@ -35,30 +54,30 @@ const CanalFRFGraph = ({ data }) => {
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
           data={data}
-          margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+          margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
             scale={logScaleX ? 'log' : 'auto'}
             domain={logScaleX ? ['auto', 'auto'] : undefined}
-            label={{ value: t('outerEar.frequencyAxisLabel'), position: 'insideBottom', offset: -10 }}
+            label={{ value: xAxisLabel, position: 'insideBottom', offset: -10 }}
             tickFormatter={(value) => Math.round(value)}
             interval="preserveStartEnd"
             minTickGap={50}
           />
           <YAxis
-            label={{ value: t('outerEar.amplitudeDbAxisLabel'), angle: -90, position: 'insideLeft' }}
+            label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />
-          <Tooltip />
-          <Legend />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend wrapperStyle={{ paddingTop: '20px' }} />
           <Line
             type="monotone"
             dataKey="magnitude"
             stroke="#e74c3c"
             strokeWidth={2}
             dot={false}
-            name="Magnitude"
+            name={yAxisLabel}
           />
         </LineChart>
       </ResponsiveContainer>
