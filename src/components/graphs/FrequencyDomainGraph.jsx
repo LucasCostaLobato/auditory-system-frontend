@@ -94,7 +94,7 @@ const FrequencyDomainGraph = ({ data }) => {
           />
           <YAxis
             scale={logScaleY ? 'log' : 'auto'}
-            domain={logScaleY ? ['auto', 'auto'] : undefined}
+            domain={['auto', 'auto']}
             label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />
           <Tooltip content={<CustomTooltip />} />
