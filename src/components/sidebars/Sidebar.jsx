@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Home, Settings } from 'lucide-react';
+import { Home, Settings, Activity } from 'lucide-react';
 import LanguageSelector from '../common/LanguageSelector';
 import logo from '../../assets/simaudis_logo_v1.png';
 import './Sidebar.css';
@@ -10,9 +10,9 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
   const menuItems = [
     { id: 'home', label: t('menu.home'), icon: Home },
     { id: 'settings', label: t('menu.settings'), icon: Settings },
-    { id: 'outerEar', label: t('menu.outerEar'), icon: Settings },
-    { id: 'middleEar', label: t('menu.middleEar'), icon: Settings },
-    { id: 'innerEar', label: t('menu.innerEar'), icon: Settings }
+    { id: 'outerEar', label: t('menu.outerEar'), icon: Activity },
+    { id: 'middleEar', label: t('menu.middleEar'), icon: Activity },
+    { id: 'innerEar', label: t('menu.innerEar'), icon: Activity }
   ];
 
   return (

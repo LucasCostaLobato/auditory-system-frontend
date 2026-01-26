@@ -12,7 +12,10 @@ const LanguageSelector = () => {
 
   return (
     <div className="language-selector">
-      <label className="language-label">{t('language.selector')}:</label>
+      <label className="language-label">
+        <span className="language-icon">🌐</span>
+        {t('language.selector')}:
+      </label>
       <select
         className="language-select"
         value={language}
