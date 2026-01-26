@@ -1,6 +1,7 @@
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Home, Settings } from 'lucide-react';
 import LanguageSelector from '../common/LanguageSelector';
+import logo from '../../assets/SimAudiS_logo.png';
 import './Sidebar.css';
 
 const Sidebar = ({ activeMenu, setActiveMenu }) => {
@@ -17,7 +18,7 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <h2>SimAudiS</h2>
+        <img src={logo} alt="SimAudiS" className="sidebar-logo" />
       </div>
       <nav className="sidebar-menu">
         {menuItems.map((item) => {

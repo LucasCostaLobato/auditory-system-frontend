@@ -15,10 +15,9 @@
   border-bottom: 1px solid #34495e;
 }
 
-.sidebar-header h2 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
+.sidebar-logo {
+  max-width: 100%;
+  height: auto;
 }
 
 .sidebar-menu {
