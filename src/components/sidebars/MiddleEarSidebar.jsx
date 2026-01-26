@@ -115,6 +115,7 @@ const MiddleEarSidebar = ({ onViewFRF, onViewDynamic, onHold, onClear, hasCurren
             <option value="healthy">{t('middleEar.healthy')}</option>
             <option value="otosclerosis">{t('middleEar.otosclerosis')}</option>
             <option value="malleus_fixation">{t('middleEar.malleusFixation')}</option>
+            <option value="otitis_media">{t('middleEar.otitisMedia')}</option>
           </select>
 
           <label className="middle-ear-label">{t('middleEar.severity')}</label>

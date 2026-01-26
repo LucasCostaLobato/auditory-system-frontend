@@ -38,7 +38,8 @@ const MiddleEarDynamicGraph = ({ data, seriesMetadata = [] }) => {
       const severity = parts[1];
       const conditionMap = {
         'otosclerosis': t('middleEar.otosclerosis'),
-        'malleus': t('middleEar.malleusFixation')
+        'malleus': t('middleEar.malleusFixation'),
+        'otitis': t('middleEar.otitisMedia')
       };
       const severityMap = {
         'low': t('middleEar.low'),
@@ -48,6 +49,10 @@ const MiddleEarDynamicGraph = ({ data, seriesMetadata = [] }) => {
       // Handle "malleus_fixation_severity" case
       if (condition === 'malleus' && parts[1] === 'fixation' && parts.length >= 3) {
         return `${conditionMap['malleus']} (${severityMap[parts[2]] || parts[2]})`;
+      }
+      // Handle "otitis_media_severity" case
+      if (condition === 'otitis' && parts[1] === 'media' && parts.length >= 3) {
+        return `${conditionMap['otitis']} (${severityMap[parts[2]] || parts[2]})`;
       }
       return `${conditionMap[condition] || condition} (${severityMap[severity] || severity})`;
     }
