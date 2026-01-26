@@ -4,13 +4,62 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import './MiddleEarDynamicGraph.css';
 import '../common/GraphScaleControls.css';
 
-const MiddleEarDynamicGraph = ({ data }) => {
+const MiddleEarDynamicGraph = ({ data, seriesMetadata = [] }) => {
   const { t } = useLanguage();
   const [logScaleX, setLogScaleX] = useState(false);
   const [logScaleY, setLogScaleY] = useState(false);
 
   const xAxisLabel = t('middleEar.dynamicFrequencyAxis');
   const yAxisLabel = t('middleEar.dynamicVelocityAxis');
+
+  // Paleta de cores para múltiplas séries
+  const colors = ['#9b59b6', '#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#1abc9c', '#e67e22', '#95a5a6'];
+
+  // Mapeia nomes técnicos para nomes traduzidos
+  const getMeasureName = (key) => {
+    const nameMap = {
+      'tympanic_membrane': t('middleEar.tympanicMembrane'),
+      'malleus': t('middleEar.malleus'),
+      'incus': t('middleEar.incus'),
+      'stapes': t('middleEar.stapes')
+    };
+    return nameMap[key] || key;
+  };
+
+  // Mapeia condições para nomes traduzidos
+  const getConditionName = (conditionSuffix) => {
+    if (conditionSuffix === 'healthy') {
+      return t('middleEar.healthy');
+    }
+    // Extrai condição e severidade do sufixo (ex: "otosclerosis_medium")
+    const parts = conditionSuffix.split('_');
+    if (parts.length >= 2) {
+      const condition = parts[0];
+      const severity = parts[1];
+      const conditionMap = {
+        'otosclerosis': t('middleEar.otosclerosis'),
+        'malleus': t('middleEar.malleusFixation')
+      };
+      const severityMap = {
+        'low': t('middleEar.low'),
+        'medium': t('middleEar.medium'),
+        'high': t('middleEar.high')
+      };
+      // Handle "malleus_fixation_severity" case
+      if (condition === 'malleus' && parts[1] === 'fixation' && parts.length >= 3) {
+        return `${conditionMap['malleus']} (${severityMap[parts[2]] || parts[2]})`;
+      }
+      return `${conditionMap[condition] || condition} (${severityMap[severity] || severity})`;
+    }
+    return conditionSuffix;
+  };
+
+  // Gera nome da série para legenda
+  const getSeriesDisplayName = (metadata) => {
+    const measureName = getMeasureName(metadata.measure);
+    const conditionName = getConditionName(metadata.conditionSuffix);
+    return `${measureName} - ${conditionName}`;
+  };
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -36,22 +85,10 @@ const MiddleEarDynamicGraph = ({ data }) => {
     );
   }
 
-  // Extrai as chaves de dados (exceto 'frequency')
-  const dataKeys = Object.keys(data[0]).filter(key => key !== 'frequency');
-
-  // Paleta de cores para múltiplas séries
-  const colors = ['#9b59b6', '#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#1abc9c', '#e67e22', '#95a5a6'];
-
-  // Mapeia nomes técnicos para nomes traduzidos
-  const getMeasureName = (key) => {
-    const nameMap = {
-      'tympanic_membrane': t('middleEar.tympanicMembrane'),
-      'malleus': t('middleEar.malleus'),
-      'incus': t('middleEar.incus'),
-      'stapes': t('middleEar.stapes')
-    };
-    return nameMap[key] || key;
-  };
+  // Se não houver metadados, usa comportamento antigo (extrai chaves dos dados)
+  const dataKeys = seriesMetadata.length > 0
+    ? seriesMetadata.map(m => m.dataKey)
+    : Object.keys(data[0]).filter(key => key !== 'frequency');
 
   return (
     <div className="middle-ear-dynamic-graph">
@@ -102,17 +139,31 @@ const MiddleEarDynamicGraph = ({ data }) => {
           />
           <Tooltip content={<CustomTooltip />} />
           <Legend wrapperStyle={{ paddingTop: '20px' }} />
-          {dataKeys.map((key, index) => (
-            <Line
-              key={key}
-              type="monotone"
-              dataKey={key}
-              stroke={colors[index % colors.length]}
-              strokeWidth={2}
-              dot={false}
-              name={getMeasureName(key)}
-            />
-          ))}
+          {seriesMetadata.length > 0
+            ? seriesMetadata.map((metadata, index) => (
+                <Line
+                  key={metadata.dataKey}
+                  type="monotone"
+                  dataKey={metadata.dataKey}
+                  stroke={colors[index % colors.length]}
+                  strokeWidth={2}
+                  strokeDasharray={metadata.isHeld ? '5 5' : undefined}
+                  dot={false}
+                  name={getSeriesDisplayName(metadata)}
+                />
+              ))
+            : dataKeys.map((key, index) => (
+                <Line
+                  key={key}
+                  type="monotone"
+                  dataKey={key}
+                  stroke={colors[index % colors.length]}
+                  strokeWidth={2}
+                  dot={false}
+                  name={getMeasureName(key)}
+                />
+              ))
+          }
         </LineChart>
       </ResponsiveContainer>
     </div>

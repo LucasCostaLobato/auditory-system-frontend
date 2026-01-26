@@ -3,7 +3,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useSettings } from '../../contexts/SettingsContext';
 import './MiddleEarSidebar.css';
 
-const MiddleEarSidebar = ({ onViewFRF, onViewDynamic }) => {
+const MiddleEarSidebar = ({ onViewFRF, onViewDynamic, onHold, onClear, hasCurrentData, hasHeldData }) => {
   const { t } = useLanguage();
   const { settings, updateSettings } = useSettings();
 
@@ -183,6 +183,24 @@ const MiddleEarSidebar = ({ onViewFRF, onViewDynamic }) => {
               onClick={handleViewDynamic}
             >
               {t('middleEar.viewDynamic')}
+            </button>
+          </div>
+
+          <div className="button-group hold-buttons">
+            <button
+              className="middle-ear-button hold-button"
+              onClick={onHold}
+              disabled={!hasCurrentData}
+            >
+              {t('middleEar.holdCurve')}
+            </button>
+
+            <button
+              className="middle-ear-button clear-button"
+              onClick={onClear}
+              disabled={!hasHeldData}
+            >
+              {t('middleEar.clearHeld')}
             </button>
           </div>
         </div>

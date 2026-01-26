@@ -105,3 +105,42 @@
 .middle-ear-button:active {
   background-color: #21618c;
 }
+
+.middle-ear-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.middle-ear-button:disabled:hover {
+  background-color: #bdc3c7;
+}
+
+.hold-buttons {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #bdc3c7;
+}
+
+.hold-button {
+  background-color: #27ae60;
+}
+
+.hold-button:hover:not(:disabled) {
+  background-color: #219a52;
+}
+
+.hold-button:active:not(:disabled) {
+  background-color: #1e8449;
+}
+
+.clear-button {
+  background-color: #e74c3c;
+}
+
+.clear-button:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.clear-button:active:not(:disabled) {
+  background-color: #a93226;
+}
