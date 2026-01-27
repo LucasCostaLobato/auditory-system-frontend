@@ -64,6 +64,7 @@ const SpaceDomainGraph = ({ data }) => {
             minTickGap={50}
           />
           <YAxis
+            domain={['auto', 'auto']}
             label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />
           <Tooltip content={<CustomTooltip />} />
