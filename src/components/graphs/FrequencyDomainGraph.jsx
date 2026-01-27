@@ -9,7 +9,6 @@ const colors = ['#f39c12', '#e74c3c', '#9b59b6', '#3498db', '#2ecc71', '#1abc9c'
 const FrequencyDomainGraph = ({ data }) => {
   const { t } = useLanguage();
   const [logScaleX, setLogScaleX] = useState(false);
-  const [logScaleY, setLogScaleY] = useState(false);
 
   const xAxisLabel = t('outerEar.frequencyAxisLabel');
   const yAxisLabel = t('outerEar.amplitudeDbAxisLabel');
@@ -65,17 +64,6 @@ const FrequencyDomainGraph = ({ data }) => {
           </span>
           {t('common.logScaleX')}
         </label>
-        <label className="scale-toggle">
-          <span className="toggle-switch">
-            <input
-              type="checkbox"
-              checked={logScaleY}
-              onChange={(e) => setLogScaleY(e.target.checked)}
-            />
-            <span className="toggle-slider"></span>
-          </span>
-          {t('common.logScaleY')}
-        </label>
       </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
@@ -93,7 +81,6 @@ const FrequencyDomainGraph = ({ data }) => {
             minTickGap={50}
           />
           <YAxis
-            scale={logScaleY ? 'log' : 'auto'}
             domain={['auto', 'auto']}
             label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />

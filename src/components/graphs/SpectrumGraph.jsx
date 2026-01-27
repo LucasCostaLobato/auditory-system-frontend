@@ -7,7 +7,6 @@ import '../common/GraphScaleControls.css';
 const SpectrumGraph = ({ data }) => {
   const { t } = useLanguage();
   const [logScaleX, setLogScaleX] = useState(false);
-  const [logScaleY, setLogScaleY] = useState(false);
 
   const xAxisLabel = t('settings.frequencyAxisLabel');
   const yAxisLabel = t('settings.amplitudeAxisLabel');
@@ -51,17 +50,6 @@ const SpectrumGraph = ({ data }) => {
           </span>
           {t('common.logScaleX')}
         </label>
-        <label className="scale-toggle">
-          <span className="toggle-switch">
-            <input
-              type="checkbox"
-              checked={logScaleY}
-              onChange={(e) => setLogScaleY(e.target.checked)}
-            />
-            <span className="toggle-slider"></span>
-          </span>
-          {t('common.logScaleY')}
-        </label>
       </div>
       <ResponsiveContainer width="100%" height={500}>
         <LineChart
@@ -79,8 +67,6 @@ const SpectrumGraph = ({ data }) => {
             minTickGap={50}
           />
           <YAxis
-            scale={logScaleY ? 'log' : 'auto'}
-            domain={logScaleY ? ['auto', 'auto'] : undefined}
             label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
           />
           <Tooltip content={<CustomTooltip />} />

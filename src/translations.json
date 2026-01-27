@@ -18,7 +18,7 @@
       "viewSpectrum": "Ver espectro",
       "spectrumGraphTitle": "Espectro do Sinal",
       "frequencyAxisLabel": "Frequência [Hz]",
-      "amplitudeAxisLabel": "Amplitude",
+      "amplitudeAxisLabel": "Amplitude [dB]",
       "spectrumExplanationTitle": "Sobre o Espectro do Sinal",
       "spectrumExplanationContent": "O espectro de magnitude mostra a distribuição de energia do sinal de entrada ao longo das frequências. Este gráfico permite visualizar como diferentes componentes de frequência estão presentes no sinal escolhido (ruído branco ou sinal de fala), sendo essencial para entender como o som será processado pelo sistema auditivo."
     },
@@ -113,7 +113,7 @@
       "viewSpectrum": "View spectrum",
       "spectrumGraphTitle": "Signal Spectrum",
       "frequencyAxisLabel": "Frequency [Hz]",
-      "amplitudeAxisLabel": "Amplitude",
+      "amplitudeAxisLabel": "Amplitude [dB]",
       "spectrumExplanationTitle": "About Signal Spectrum",
       "spectrumExplanationContent": "The magnitude spectrum shows the energy distribution of the input signal across frequencies. This graph allows you to visualize how different frequency components are present in the chosen signal (white noise or speech signal), which is essential for understanding how sound will be processed by the auditory system."
     },
@@ -208,7 +208,7 @@
       "viewSpectrum": "Ver espectro",
       "spectrumGraphTitle": "Espectro de la Señal",
       "frequencyAxisLabel": "Frecuencia [Hz]",
-      "amplitudeAxisLabel": "Amplitud",
+      "amplitudeAxisLabel": "Amplitud [dB]",
       "spectrumExplanationTitle": "Sobre el Espectro de la Señal",
       "spectrumExplanationContent": "El espectro de magnitud muestra la distribución de energía de la señal de entrada a lo largo de las frecuencias. Este gráfico permite visualizar cómo diferentes componentes de frecuencia están presentes en la señal elegida (ruido blanco o señal de habla), lo cual es esencial para comprender cómo el sonido será procesado por el sistema auditivo."
     },
