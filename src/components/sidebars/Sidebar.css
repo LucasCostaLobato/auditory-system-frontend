@@ -28,15 +28,16 @@
 }
 
 .menu-item {
-  padding: 15px 20px;
+  padding: 12px 16px;
+  margin: 4px 12px;
   background: none;
   border: none;
+  border-radius: 8px;
   color: #000000;
   text-align: left;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
-  border-left: 4px solid transparent;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -47,9 +48,8 @@
 }
 
 .menu-item.active {
-  background-color: #e0d8cc;
-  border-left-color: #c9a227;
-  color: #000000;
+  background-color: #1a1a1a;
+  color: #ffffff;
   font-weight: 600;
 }
 
