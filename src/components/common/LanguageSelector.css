@@ -22,10 +22,10 @@
 .language-select {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #dbe0e4;
+  border: 1px solid #f4e8d4;
   border-radius: 4px;
   font-size: 14px;
-  background-color: #f5f0e8;
+  background-color: #f4e8d4;
   color: rgb(7, 7, 7);
   cursor: pointer;
   transition: background-color 0.3s;
