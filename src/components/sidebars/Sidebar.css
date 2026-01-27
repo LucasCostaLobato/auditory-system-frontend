@@ -12,11 +12,11 @@
 
 .sidebar-header {
   padding: 20px;
-  border-bottom: 1px solid #e0d8cc;
+  border-bottom: 1px solid #f5f0e8;
 }
 
 .sidebar-logo {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
 }
 
@@ -55,5 +55,5 @@
 
 .sidebar-footer {
   padding: 20px;
-  border-top: 1px solid #e0d8cc;
+  border-top: 1px solid #f5f0e8;
 }

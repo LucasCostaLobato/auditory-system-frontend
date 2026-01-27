@@ -5,7 +5,7 @@
 }
 
 .language-label {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 400;
   font-size: 12px;
   /* text-transform: uppercase; */
@@ -22,20 +22,20 @@
 .language-select {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #34495e;
+  border: 1px solid #dbe0e4;
   border-radius: 4px;
   font-size: 14px;
-  background-color: #34495e;
-  color: white;
+  background-color: #f5f0e8;
+  color: rgb(7, 7, 7);
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .language-select:hover {
-  background-color: #4a5f7f;
+  background-color: #a6adb7;
 }
 
 .language-select:focus {
   outline: none;
-  background-color: #4a5f7f;
+  background-color: #a6adb7;
 }
