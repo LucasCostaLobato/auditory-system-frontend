@@ -94,7 +94,19 @@
       "envelopeXAxis": "Posição ao longo da membrana basilar [mm]",
       "envelopeYAxis": "Deslocamento normalizado [-]",
       "envelopeExplanationTitle": "Sobre o Envelope do Deslocamento",
-      "envelopeExplanationContent": "O envelope do deslocamento da membrana basilar mostra a amplitude máxima de vibração ao longo do comprimento da cóclea para uma frequência específica de estímulo sonoro. Cada frequência possui um pico de deslocamento em uma posição característica, demonstrando o princípio de tonotopia coclear."
+      "envelopeExplanationContent": "O envelope do deslocamento da membrana basilar mostra a amplitude máxima de vibração ao longo do comprimento da cóclea para uma frequência específica de estímulo sonoro. Cada frequência possui um pico de deslocamento em uma posição característica, demonstrando o princípio de tonotopia coclear.",
+      "travellingWavesTitle": "Ondas Viajantes na Membrana Basilar",
+      "travellingWavesXAxis": "Posição ao longo da membrana basilar [mm]",
+      "travellingWavesYAxis": "Deslocamento [nm]",
+      "travellingWavesExplanationTitle": "Sobre as Ondas Viajantes",
+      "travellingWavesExplanationContent": "As ondas viajantes mostram a propagação do deslocamento da membrana basilar ao longo do tempo. Esta animação permite visualizar como a onda sonora se propaga da base para o ápice da cóclea, com amplitude crescente até atingir o pico na posição característica da frequência de estímulo, onde então decai rapidamente.",
+      "frame": "Frame",
+      "speed": "Velocidade",
+      "play": "Reproduzir",
+      "pause": "Pausar",
+      "reset": "Reiniciar",
+      "stepForward": "Avançar frame",
+      "stepBackward": "Retroceder frame"
     },
     "home": {
       "title": "Bem-vindo a SimAudiS: uma plataforma de ensino sobre mecanismos da audição",
@@ -203,7 +215,19 @@
       "envelopeXAxis": "Position along basilar membrane [mm]",
       "envelopeYAxis": "Normalized displacement [-]",
       "envelopeExplanationTitle": "About Displacement Envelope",
-      "envelopeExplanationContent": "The basilar membrane displacement envelope shows the maximum vibration amplitude along the length of the cochlea for a specific sound stimulus frequency. Each frequency has a displacement peak at a characteristic position, demonstrating the principle of cochlear tonotopy."
+      "envelopeExplanationContent": "The basilar membrane displacement envelope shows the maximum vibration amplitude along the length of the cochlea for a specific sound stimulus frequency. Each frequency has a displacement peak at a characteristic position, demonstrating the principle of cochlear tonotopy.",
+      "travellingWavesTitle": "Basilar Membrane Travelling Waves",
+      "travellingWavesXAxis": "Position along basilar membrane [mm]",
+      "travellingWavesYAxis": "Displacement [nm]",
+      "travellingWavesExplanationTitle": "About Travelling Waves",
+      "travellingWavesExplanationContent": "Travelling waves show the propagation of basilar membrane displacement over time. This animation allows you to visualize how the sound wave propagates from the base to the apex of the cochlea, with increasing amplitude until reaching the peak at the characteristic position of the stimulus frequency, where it then decays rapidly.",
+      "frame": "Frame",
+      "speed": "Speed",
+      "play": "Play",
+      "pause": "Pause",
+      "reset": "Reset",
+      "stepForward": "Step forward",
+      "stepBackward": "Step backward"
     },
     "home": {
       "title": "Welcome to SimAudiS: the mechanics of hearing learning platform",
@@ -312,7 +336,19 @@
       "envelopeXAxis": "Posición a lo largo de la membrana basilar [mm]",
       "envelopeYAxis": "Desplazamiento normalizado [-]",
       "envelopeExplanationTitle": "Sobre la Envolvente del Desplazamiento",
-      "envelopeExplanationContent": "La envolvente del desplazamiento de la membrana basilar muestra la amplitud máxima de vibración a lo largo de la longitud de la cóclea para una frecuencia específica de estímulo sonoro. Cada frecuencia tiene un pico de desplazamiento en una posición característica, demostrando el principio de tonotopía coclear."
+      "envelopeExplanationContent": "La envolvente del desplazamiento de la membrana basilar muestra la amplitud máxima de vibración a lo largo de la longitud de la cóclea para una frecuencia específica de estímulo sonoro. Cada frecuencia tiene un pico de desplazamiento en una posición característica, demostrando el principio de tonotopía coclear.",
+      "travellingWavesTitle": "Ondas Viajeras en la Membrana Basilar",
+      "travellingWavesXAxis": "Posición a lo largo de la membrana basilar [mm]",
+      "travellingWavesYAxis": "Desplazamiento [nm]",
+      "travellingWavesExplanationTitle": "Sobre las Ondas Viajeras",
+      "travellingWavesExplanationContent": "Las ondas viajeras muestran la propagación del desplazamiento de la membrana basilar a lo largo del tiempo. Esta animación permite visualizar cómo la onda sonora se propaga desde la base hasta el ápice de la cóclea, con amplitud creciente hasta alcanzar el pico en la posición característica de la frecuencia de estímulo, donde luego decae rápidamente.",
+      "frame": "Frame",
+      "speed": "Velocidad",
+      "play": "Reproducir",
+      "pause": "Pausar",
+      "reset": "Reiniciar",
+      "stepForward": "Avanzar frame",
+      "stepBackward": "Retroceder frame"
     },
     "home": {
       "title": "Bienvenido a SimAudiS: la plataforma de enseñanza del mecanismos de la audición",

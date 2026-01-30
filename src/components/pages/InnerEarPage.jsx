@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import InnerEarSidebar from '../sidebars/InnerEarSidebar';
 import InnerEarEnvelopeGraph from '../graphs/InnerEarEnvelopeGraph';
+import InnerEarTravellingWavesGraph from '../graphs/InnerEarTravellingWavesGraph';
 import InnerEarEnvelopeExplanation from '../explanations/InnerEarEnvelopeExplanation';
+import InnerEarTravellingWavesExplanation from '../explanations/InnerEarTravellingWavesExplanation';
 import { getInnerEarBMEnvelope, getInnerEarTravellingWaves } from '../../services/api';
 import './InnerEarPage.css';
 
@@ -206,9 +208,7 @@ const InnerEarPage = () => {
               />
             )}
             {activeGraph === 'travellingWaves' && (
-              <div className="graph-placeholder">
-                <p>Ondas viajantes - Gráfico a ser implementado</p>
-              </div>
+              <InnerEarTravellingWavesGraph data={travellingWavesData} />
             )}
             {!activeGraph && (
               <div className="graph-placeholder">
@@ -219,6 +219,7 @@ const InnerEarPage = () => {
         )}
       </div>
       {activeGraph === 'envelope' && <InnerEarEnvelopeExplanation />}
+      {activeGraph === 'travellingWaves' && <InnerEarTravellingWavesExplanation />}
     </div>
   );
 };
