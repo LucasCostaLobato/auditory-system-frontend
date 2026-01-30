@@ -82,6 +82,20 @@
       "dynamicExplanationTitle": "Sobre a Resposta à Excitação",
       "dynamicExplanationContent": "Este gráfico mostra a resposta vibratória dos componentes da orelha média quando excitados por um sinal de entrada específico. Diferente da FRF, aqui você visualiza o comportamento dinâmico considerando o sinal de entrada configurado (ruído branco ou sinal de fala) e as características do canal auditivo."
     },
+    "innerEar": {
+      "bmDisplacementSection": "Deslocamento da membrana basilar (MB)",
+      "stimulusFrequency": "Frequência do estímulo sonoro",
+      "viewEnvelope": "Ver envelope do deslocamento",
+      "viewTravellingWaves": "Ver ondas viajantes",
+      "holdCurve": "Reter curva",
+      "clearHeld": "Limpar retidas",
+      "clickToView": "Clique em um dos botões para visualizar o gráfico",
+      "envelopeTitle": "Envelope do Deslocamento da Membrana Basilar",
+      "envelopeXAxis": "Posição ao longo da membrana basilar [mm]",
+      "envelopeYAxis": "Deslocamento normalizado [-]",
+      "envelopeExplanationTitle": "Sobre o Envelope do Deslocamento",
+      "envelopeExplanationContent": "O envelope do deslocamento da membrana basilar mostra a amplitude máxima de vibração ao longo do comprimento da cóclea para uma frequência específica de estímulo sonoro. Cada frequência possui um pico de deslocamento em uma posição característica, demonstrando o princípio de tonotopia coclear."
+    },
     "home": {
       "title": "Bem-vindo a SimAudiS: uma plataforma de ensino sobre mecanismos da audição",
       "content": "Conteúdo de apresentação, instruções e referências serão adicionados aqui."
@@ -177,6 +191,20 @@
       "dynamicExplanationTitle": "About Excitation Response",
       "dynamicExplanationContent": "This graph shows the vibratory response of middle ear components when excited by a specific input signal. Unlike the FRF, here you visualize the dynamic behavior considering the configured input signal (white noise or speech signal) and the ear canal characteristics."
     },
+    "innerEar": {
+      "bmDisplacementSection": "Basilar membrane (BM) displacement",
+      "stimulusFrequency": "Sound stimulus frequency",
+      "viewEnvelope": "View displacement envelope",
+      "viewTravellingWaves": "View travelling waves",
+      "holdCurve": "Hold curve",
+      "clearHeld": "Clear held",
+      "clickToView": "Click one of the buttons to view the graph",
+      "envelopeTitle": "Basilar Membrane Displacement Envelope",
+      "envelopeXAxis": "Position along basilar membrane [mm]",
+      "envelopeYAxis": "Normalized displacement [-]",
+      "envelopeExplanationTitle": "About Displacement Envelope",
+      "envelopeExplanationContent": "The basilar membrane displacement envelope shows the maximum vibration amplitude along the length of the cochlea for a specific sound stimulus frequency. Each frequency has a displacement peak at a characteristic position, demonstrating the principle of cochlear tonotopy."
+    },
     "home": {
       "title": "Welcome to SimAudiS: the mechanics of hearing learning platform",
       "content": "Presentation content, instructions and references will be added here."
@@ -271,6 +299,20 @@
       "frfExplanationContent": "La Función de Respuesta en Frecuencia (FRF) del oído medio muestra cómo cada componente vibratorio responde a diferentes frecuencias de entrada. Este gráfico permite visualizar el comportamiento de cada estructura anatómica (membrana timpánica, martillo, yunque y estribo) en función de la frecuencia del sonido incidente.",
       "dynamicExplanationTitle": "Sobre la Respuesta a la Excitación",
       "dynamicExplanationContent": "Este gráfico muestra la respuesta vibratoria de los componentes del oído medio cuando son excitados por una señal de entrada específica. A diferencia de la FRF, aquí se visualiza el comportamiento dinámico considerando la señal de entrada configurada (ruido blanco o señal de habla) y las características del canal auditivo."
+    },
+    "innerEar": {
+      "bmDisplacementSection": "Desplazamiento de la membrana basilar (MB)",
+      "stimulusFrequency": "Frecuencia del estímulo sonoro",
+      "viewEnvelope": "Ver envolvente del desplazamiento",
+      "viewTravellingWaves": "Ver ondas viajeras",
+      "holdCurve": "Retener curva",
+      "clearHeld": "Limpiar retenidas",
+      "clickToView": "Haga clic en uno de los botones para ver el gráfico",
+      "envelopeTitle": "Envolvente del Desplazamiento de la Membrana Basilar",
+      "envelopeXAxis": "Posición a lo largo de la membrana basilar [mm]",
+      "envelopeYAxis": "Desplazamiento normalizado [-]",
+      "envelopeExplanationTitle": "Sobre la Envolvente del Desplazamiento",
+      "envelopeExplanationContent": "La envolvente del desplazamiento de la membrana basilar muestra la amplitud máxima de vibración a lo largo de la longitud de la cóclea para una frecuencia específica de estímulo sonoro. Cada frecuencia tiene un pico de desplazamiento en una posición característica, demostrando el principio de tonotopía coclear."
     },
     "home": {
       "title": "Bienvenido a SimAudiS: la plataforma de enseñanza del mecanismos de la audición",

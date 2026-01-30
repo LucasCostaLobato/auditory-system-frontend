@@ -204,3 +204,53 @@ export const getMiddleEarDynamicBehavior = async (params) => {
     throw error;
   }
 };
+
+// Página Orelha Interna - Ver envelope do deslocamento da MB
+export const getInnerEarBMEnvelope = async (params) => {
+  try {
+    const queryParams = new URLSearchParams({
+      freq_stimulus: params.freqStimulus
+    });
+
+    const response = await fetch(`${API_BASE_URL}inner-ear/bm-envelope?${queryParams}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Erro ao buscar envelope da membrana basilar:', error);
+    throw error;
+  }
+};
+
+// Página Orelha Interna - Ver ondas viajantes na MB
+export const getInnerEarTravellingWaves = async (params) => {
+  try {
+    const queryParams = new URLSearchParams({
+      freq_stimulus: params.freqStimulus
+    });
+
+    const response = await fetch(`${API_BASE_URL}inner-ear/bm-travelling-waves?${queryParams}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Erro ao buscar ondas viajantes da membrana basilar:', error);
+    throw error;
+  }
+};
