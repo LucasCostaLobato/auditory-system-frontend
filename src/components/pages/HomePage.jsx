@@ -19,6 +19,7 @@ const HomePage = () => {
         <ul className="section-list">
           <li>{t('home.whatIsPoint1')}</li>
           <li>{t('home.whatIsPoint2')}</li>
+          <li>{t('home.whatIsPoint3')}</li>
         </ul>
         <div className="figure-container">
           <img src={homePageFigure} alt={t('home.figureAlt')} className="home-figure" />
