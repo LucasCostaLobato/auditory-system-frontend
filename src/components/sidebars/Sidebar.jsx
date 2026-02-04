@@ -1,7 +1,7 @@
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Home, Settings, Activity } from 'lucide-react';
 import LanguageSelector from '../common/LanguageSelector';
-import logo from '../../assets/simaudis_logo_v1.png';
+import logo from '../../assets/simaudis_logo_v3.png';
 import './Sidebar.css';
 
 const Sidebar = ({ activeMenu, setActiveMenu }) => {
