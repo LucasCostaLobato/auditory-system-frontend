@@ -1,5 +1,32 @@
 const API_BASE_URL = 'http://127.0.0.1:8000/';
 
+// Página Fundamentos - Acústica: Sobreposição de senoides
+export const getFundamentalsAcoustics = async (params) => {
+  try {
+    const queryParams = new URLSearchParams();
+
+    params.amplitudes.forEach(a => queryParams.append('amplitudes', a));
+    params.frequencies.forEach(f => queryParams.append('frequencies', f));
+    params.phases.forEach(p => queryParams.append('phases', p));
+
+    const response = await fetch(`${API_BASE_URL}fundamentals/acoustics?${queryParams}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Erro ao buscar sinal acústico:', error);
+    throw error;
+  }
+};
+
 // Página de Configurações - Ver espectro do sinal de entrada
 export const getInputSignal = async (params) => {
   try {

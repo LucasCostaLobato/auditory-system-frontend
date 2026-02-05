@@ -1,0 +1,185 @@
+.fundamentals-sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #ecf0f1;
+  padding: 20px;
+  position: fixed;
+  left: 250px;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.fundamentals-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.fundamentals-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  color: #2c3e50;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.subsection-title {
+  color: #34495e;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dde1e3;
+}
+
+/* Sine wave row */
+.sine-wave-row {
+  background-color: #fff;
+  border: 1px solid #dde1e3;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.sine-wave-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.wave-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.remove-wave-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: #e74c3c;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.remove-wave-button:hover {
+  background-color: #c0392b;
+}
+
+/* Fields */
+.sine-wave-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 13px;
+  color: #555;
+  min-width: 75px;
+  font-weight: 500;
+}
+
+.field-input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 13px;
+  background-color: white;
+  max-width: 100px;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.input-with-unit {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.input-unit {
+  font-size: 12px;
+  color: #7f8c8d;
+  min-width: 20px;
+}
+
+/* Add wave button */
+.add-wave-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: 2px dashed #bdc3c7;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 15px;
+}
+
+.add-wave-button:hover {
+  background-color: #d5dbdb;
+  border-color: #95a5a6;
+}
+
+/* Action buttons */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.fundamentals-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.fundamentals-button:hover {
+  background-color: #2980b9;
+}
+
+.fundamentals-button:active {
+  background-color: #21618c;
+}
+
+.fundamentals-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}

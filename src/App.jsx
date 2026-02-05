@@ -7,6 +7,7 @@ import SettingsPage from './components/pages/SettingsPage';
 import OuterEarPage from './components/pages/OuterEarPage';
 import MiddleEarPage from './components/pages/MiddleEarPage';
 import InnerEarPage from './components/pages/InnerEarPage';
+import FundamentalsPage from './components/pages/FundamentalsPage';
 import './App.css';
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
     switch (activeMenu) {
       case 'home':
         return <HomePage />;
+      case 'fundamentals':
+        return <FundamentalsPage />;
       case 'settings':
         return <SettingsPage onClose={handleCloseSettings} />;
       case 'outerEar':

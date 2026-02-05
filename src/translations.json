@@ -2,10 +2,30 @@
   "pt": {
     "menu": {
       "home": "Início",
+      "fundamentals": "Fundamentos",
       "settings": "Configurações",
       "outerEar": "Orelha externa",
       "middleEar": "Orelha média",
       "innerEar": "Orelha interna"
+    },
+    "fundamentals": {
+      "acousticsSection": "Acústica",
+      "sineWaveSubsection": "Características de uma onda senoidal",
+      "amplitude": "Amplitude",
+      "frequency": "Frequência",
+      "phase": "Fase",
+      "wave": "Onda",
+      "addWave": "Adicionar onda",
+      "removeWave": "Remover onda",
+      "viewSignal": "Ver sinal",
+      "clickToView": "Clique em \"Ver sinal\" para visualizar os gráficos",
+      "timeGraphTitle": "Sinal no Domínio do Tempo",
+      "spectrumGraphTitle": "Espectro de Frequência",
+      "timeAxis": "Tempo [s]",
+      "frequencyAxis": "Frequência [Hz]",
+      "amplitudeAxis": "Amplitude [-]",
+      "explanationTitle": "Sobre a Sobreposição de Senoides",
+      "explanationContent": "Um sinal composto pode ser representado como a soma de ondas senoidais com diferentes amplitudes, frequências e fases. Este princípio, baseado na análise de Fourier, é fundamental para a acústica: qualquer som pode ser decomposto em seus componentes senoidais. O gráfico superior mostra o sinal resultante no domínio do tempo, enquanto o gráfico inferior mostra o espectro de frequências, revelando as componentes individuais que formam o sinal."
     },
     "settings": {
       "signalType": "Tipo de sinal",
@@ -139,10 +159,30 @@
   "en": {
     "menu": {
       "home": "Home",
+      "fundamentals": "Fundamentals",
       "settings": "Settings",
       "outerEar": "Outer ear",
       "middleEar": "Middle ear",
       "innerEar": "Inner ear"
+    },
+    "fundamentals": {
+      "acousticsSection": "Acoustics",
+      "sineWaveSubsection": "Characteristics of a sinusoidal wave",
+      "amplitude": "Amplitude",
+      "frequency": "Frequency",
+      "phase": "Phase",
+      "wave": "Wave",
+      "addWave": "Add wave",
+      "removeWave": "Remove wave",
+      "viewSignal": "View signal",
+      "clickToView": "Click \"View signal\" to display the graphs",
+      "timeGraphTitle": "Time Domain Signal",
+      "spectrumGraphTitle": "Frequency Spectrum",
+      "timeAxis": "Time [s]",
+      "frequencyAxis": "Frequency [Hz]",
+      "amplitudeAxis": "Amplitude [-]",
+      "explanationTitle": "About Sinusoidal Superposition",
+      "explanationContent": "A composite signal can be represented as the sum of sinusoidal waves with different amplitudes, frequencies, and phases. This principle, based on Fourier analysis, is fundamental to acoustics: any sound can be decomposed into its sinusoidal components. The upper graph shows the resulting signal in the time domain, while the lower graph shows the frequency spectrum, revealing the individual components that form the signal."
     },
     "settings": {
       "signalType": "Signal type",
@@ -276,10 +316,30 @@
   "es": {
     "menu": {
       "home": "Inicio",
+      "fundamentals": "Fundamentos",
       "settings": "Configuraciones",
       "outerEar": "Oído externo",
       "middleEar": "Oído medio",
       "innerEar": "Oído interno"
+    },
+    "fundamentals": {
+      "acousticsSection": "Acústica",
+      "sineWaveSubsection": "Características de una onda senoidal",
+      "amplitude": "Amplitud",
+      "frequency": "Frecuencia",
+      "phase": "Fase",
+      "wave": "Onda",
+      "addWave": "Agregar onda",
+      "removeWave": "Eliminar onda",
+      "viewSignal": "Ver señal",
+      "clickToView": "Haga clic en \"Ver señal\" para visualizar los gráficos",
+      "timeGraphTitle": "Señal en el Dominio del Tiempo",
+      "spectrumGraphTitle": "Espectro de Frecuencia",
+      "timeAxis": "Tiempo [s]",
+      "frequencyAxis": "Frecuencia [Hz]",
+      "amplitudeAxis": "Amplitud [-]",
+      "explanationTitle": "Sobre la Superposición de Senoidales",
+      "explanationContent": "Una señal compuesta puede representarse como la suma de ondas senoidales con diferentes amplitudes, frecuencias y fases. Este principio, basado en el análisis de Fourier, es fundamental para la acústica: cualquier sonido puede descomponerse en sus componentes senoidales. El gráfico superior muestra la señal resultante en el dominio del tiempo, mientras que el gráfico inferior muestra el espectro de frecuencias, revelando los componentes individuales que forman la señal."
     },
     "settings": {
       "signalType": "Tipo de señal",
