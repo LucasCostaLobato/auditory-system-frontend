@@ -30,6 +30,18 @@ const FundamentalsSignalGraph = ({ data }) => {
     y: spectrum[i]
   }));
 
+  // Calcula limites do eixo Y para o gráfico de tempo (mínimo: [-0.1, 0.1])
+  const signalMin = Math.min(...signal);
+  const signalMax = Math.max(...signal);
+  const timeYDomain = [
+    Math.min(signalMin, -0.1),
+    Math.max(signalMax, 0.1)
+  ];
+
+  // Calcula limites do eixo Y para o gráfico de espectro (mínimo: [0, 0.1])
+  const spectrumMax = Math.max(...spectrum);
+  const spectrumYDomain = [0, Math.max(spectrumMax, 0.1)];
+
   const TimeTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
@@ -77,6 +89,10 @@ const FundamentalsSignalGraph = ({ data }) => {
               minTickGap={50}
             />
             <YAxis
+              type="number"
+              domain={timeYDomain}
+              allowDataOverflow={true}
+              tickFormatter={(value) => Number(value).toPrecision(2)}
               label={{ value: t('fundamentals.amplitudeAxis'), angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
             />
             <Tooltip content={<TimeTooltip />} />
@@ -124,6 +140,10 @@ const FundamentalsSignalGraph = ({ data }) => {
               minTickGap={50}
             />
             <YAxis
+              type="number"
+              domain={spectrumYDomain}
+              allowDataOverflow={true}
+              tickFormatter={(value) => Number(value).toPrecision(2)}
               label={{ value: t('fundamentals.amplitudeAxis'), angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
             />
             <Tooltip content={<SpectrumTooltip />} />
