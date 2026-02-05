@@ -31,17 +31,20 @@ const FundamentalsSignalGraph = ({ data }) => {
     y: spectrum[i]
   }));
 
-  // Calcula limites do eixo Y para o gráfico de tempo (mínimo: [-0.1, 0.1])
+  // Calcula limites do eixo Y para o gráfico de tempo (mínimo: [-0.1, 0.1], com 10% de margem)
   const signalMin = Math.min(...signal);
   const signalMax = Math.max(...signal);
+  const signalRange = signalMax - signalMin;
+  const signalPadding = signalRange * 0.1;
   const timeYDomain = [
-    Math.min(signalMin, -0.1),
-    Math.max(signalMax, 0.1)
+    Math.min(signalMin - signalPadding, -0.1),
+    Math.max(signalMax + signalPadding, 0.1)
   ];
 
-  // Calcula limites do eixo Y para o gráfico de espectro (mínimo: [0, 0.1])
+  // Calcula limites do eixo Y para o gráfico de espectro (mínimo: [0, 0.1], com 10% de margem)
   const spectrumMax = Math.max(...spectrum);
-  const spectrumYDomain = [0, Math.max(spectrumMax, 0.1)];
+  const spectrumPadding = spectrumMax * 0.1;
+  const spectrumYDomain = [0, Math.max(spectrumMax + spectrumPadding, 0.1)];
 
   // Calcula ticks redondos para os eixos X
   const timeMin = Math.min(...time);
