@@ -104,7 +104,7 @@ const FundamentalsSignalGraph = ({ data }) => {
               type="number"
               domain={timeYDomain}
               allowDataOverflow={true}
-              tickFormatter={(value) => Number(value).toPrecision(2)}
+              tickFormatter={(value) => Math.abs(value) < 0.01 ? '0' : Number(value).toPrecision(2)}
               label={{ value: t('fundamentals.amplitudeAxis'), angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
             />
             <Tooltip content={<TimeTooltip />} />
@@ -155,7 +155,7 @@ const FundamentalsSignalGraph = ({ data }) => {
               type="number"
               domain={spectrumYDomain}
               allowDataOverflow={true}
-              tickFormatter={(value) => Number(value).toPrecision(2)}
+              tickFormatter={(value) => Math.abs(value) < 0.01 ? '0' : Number(value).toPrecision(2)}
               label={{ value: t('fundamentals.amplitudeAxis'), angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
             />
             <Tooltip content={<SpectrumTooltip />} />
