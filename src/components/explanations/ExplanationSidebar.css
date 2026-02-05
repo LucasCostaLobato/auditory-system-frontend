@@ -44,3 +44,19 @@
   color: #2c3e50;
   font-weight: 600;
 }
+
+.explanation-image {
+  width: 100%;
+  border-radius: 6px;
+  margin: 12px 0;
+}
+
+.explanation-image.acoustics-image {
+  width: 100%;
+}
+
+.explanation-image.vibrations-image {
+  width: 60%;
+  margin: auto;
+  display: block;
+}
