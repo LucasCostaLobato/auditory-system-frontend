@@ -25,7 +25,18 @@
       "frequencyAxis": "Frequência [Hz]",
       "amplitudeAxis": "Amplitude [-]",
       "explanationTitle": "Sobre a Sobreposição de Senoides",
-      "explanationContent": "Um sinal composto pode ser representado como a soma de ondas senoidais com diferentes amplitudes, frequências e fases. Este princípio, baseado na análise de Fourier, é fundamental para a acústica: qualquer som pode ser decomposto em seus componentes senoidais. O gráfico superior mostra o sinal resultante no domínio do tempo, enquanto o gráfico inferior mostra o espectro de frequências, revelando as componentes individuais que formam o sinal."
+      "explanationContent": "Um sinal composto pode ser representado como a soma de ondas senoidais com diferentes amplitudes, frequências e fases. Este princípio, baseado na análise de Fourier, é fundamental para a acústica: qualquer som pode ser decomposto em seus componentes senoidais. O gráfico superior mostra o sinal resultante no domínio do tempo, enquanto o gráfico inferior mostra o espectro de frequências, revelando as componentes individuais que formam o sinal.",
+      "vibrationsSection": "Vibrações",
+      "sdofSubsection": "Características de um sistema de um grau de liberdade",
+      "mass": "Massa",
+      "stiffness": "Rigidez",
+      "damping": "Amortecimento",
+      "viewSpectrum": "Ver espectro",
+      "vibrationGraphTitle": "Função de Resposta em Frequência (FRF)",
+      "vibrationFrequencyAxis": "Frequência [Hz]",
+      "vibrationAmplitudeAxis": "Amplitude [um/N]",
+      "vibrationExplanationTitle": "Sobre a FRF de um Sistema de 1 Grau de Liberdade",
+      "vibrationExplanationContent": "A Função de Resposta em Frequência (FRF) descreve como um sistema mecânico responde a excitações em diferentes frequências. Um sistema de um grau de liberdade é caracterizado por sua massa, rigidez e amortecimento. A frequência natural do sistema é determinada pela razão entre rigidez e massa, enquanto o amortecimento controla a amplitude do pico de ressonância. Na ressonância, o sistema vibra com amplitude máxima, o que pode ser observado como o pico no gráfico da FRF."
     },
     "settings": {
       "signalType": "Tipo de sinal",
@@ -182,7 +193,18 @@
       "frequencyAxis": "Frequency [Hz]",
       "amplitudeAxis": "Amplitude [-]",
       "explanationTitle": "About Sinusoidal Superposition",
-      "explanationContent": "A composite signal can be represented as the sum of sinusoidal waves with different amplitudes, frequencies, and phases. This principle, based on Fourier analysis, is fundamental to acoustics: any sound can be decomposed into its sinusoidal components. The upper graph shows the resulting signal in the time domain, while the lower graph shows the frequency spectrum, revealing the individual components that form the signal."
+      "explanationContent": "A composite signal can be represented as the sum of sinusoidal waves with different amplitudes, frequencies, and phases. This principle, based on Fourier analysis, is fundamental to acoustics: any sound can be decomposed into its sinusoidal components. The upper graph shows the resulting signal in the time domain, while the lower graph shows the frequency spectrum, revealing the individual components that form the signal.",
+      "vibrationsSection": "Vibrations",
+      "sdofSubsection": "Characteristics of a single degree of freedom system",
+      "mass": "Mass",
+      "stiffness": "Stiffness",
+      "damping": "Damping",
+      "viewSpectrum": "View spectrum",
+      "vibrationGraphTitle": "Frequency Response Function (FRF)",
+      "vibrationFrequencyAxis": "Frequency [Hz]",
+      "vibrationAmplitudeAxis": "Amplitude [um/N]",
+      "vibrationExplanationTitle": "About the FRF of a Single Degree of Freedom System",
+      "vibrationExplanationContent": "The Frequency Response Function (FRF) describes how a mechanical system responds to excitations at different frequencies. A single degree of freedom system is characterized by its mass, stiffness, and damping. The natural frequency of the system is determined by the ratio between stiffness and mass, while damping controls the amplitude of the resonance peak. At resonance, the system vibrates with maximum amplitude, which can be observed as the peak in the FRF graph."
     },
     "settings": {
       "signalType": "Signal type",
@@ -339,7 +361,18 @@
       "frequencyAxis": "Frecuencia [Hz]",
       "amplitudeAxis": "Amplitud [-]",
       "explanationTitle": "Sobre la Superposición de Senoidales",
-      "explanationContent": "Una señal compuesta puede representarse como la suma de ondas senoidales con diferentes amplitudes, frecuencias y fases. Este principio, basado en el análisis de Fourier, es fundamental para la acústica: cualquier sonido puede descomponerse en sus componentes senoidales. El gráfico superior muestra la señal resultante en el dominio del tiempo, mientras que el gráfico inferior muestra el espectro de frecuencias, revelando los componentes individuales que forman la señal."
+      "explanationContent": "Una señal compuesta puede representarse como la suma de ondas senoidales con diferentes amplitudes, frecuencias y fases. Este principio, basado en el análisis de Fourier, es fundamental para la acústica: cualquier sonido puede descomponerse en sus componentes senoidales. El gráfico superior muestra la señal resultante en el dominio del tiempo, mientras que el gráfico inferior muestra el espectro de frecuencias, revelando los componentes individuales que forman la señal.",
+      "vibrationsSection": "Vibraciones",
+      "sdofSubsection": "Características de un sistema de un grado de libertad",
+      "mass": "Masa",
+      "stiffness": "Rigidez",
+      "damping": "Amortiguamiento",
+      "viewSpectrum": "Ver espectro",
+      "vibrationGraphTitle": "Función de Respuesta en Frecuencia (FRF)",
+      "vibrationFrequencyAxis": "Frecuencia [Hz]",
+      "vibrationAmplitudeAxis": "Amplitud [um/N]",
+      "vibrationExplanationTitle": "Sobre la FRF de un Sistema de 1 Grado de Libertad",
+      "vibrationExplanationContent": "La Función de Respuesta en Frecuencia (FRF) describe cómo un sistema mecánico responde a excitaciones en diferentes frecuencias. Un sistema de un grado de libertad se caracteriza por su masa, rigidez y amortiguamiento. La frecuencia natural del sistema está determinada por la relación entre rigidez y masa, mientras que el amortiguamiento controla la amplitud del pico de resonancia. En la resonancia, el sistema vibra con amplitud máxima, lo que puede observarse como el pico en el gráfico de la FRF."
     },
     "settings": {
       "signalType": "Tipo de señal",

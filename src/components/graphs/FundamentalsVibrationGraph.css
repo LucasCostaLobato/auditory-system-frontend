@@ -1,0 +1,12 @@
+.fundamentals-vibration-graph {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fundamentals-vibration-graph h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 20px;
+}

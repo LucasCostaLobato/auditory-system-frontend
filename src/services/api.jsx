@@ -27,6 +27,33 @@ export const getFundamentalsAcoustics = async (params) => {
   }
 };
 
+// Página Fundamentos - Vibrações: FRF de sistema de 1 grau de liberdade
+export const getFundamentalsVibrations = async (params) => {
+  try {
+    const queryParams = new URLSearchParams({
+      mass: params.mass,
+      stiffness: params.stiffness,
+      damping: params.damping
+    });
+
+    const response = await fetch(`${API_BASE_URL}fundamentals/vibrations?${queryParams}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    console.error('Erro ao buscar FRF de vibrações:', error);
+    throw error;
+  }
+};
+
 // Página de Configurações - Ver espectro do sinal de entrada
 export const getInputSignal = async (params) => {
   try {

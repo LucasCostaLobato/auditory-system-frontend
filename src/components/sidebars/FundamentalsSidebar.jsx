@@ -3,12 +3,16 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { Plus, X } from 'lucide-react';
 import './FundamentalsSidebar.css';
 
-const FundamentalsSidebar = ({ onViewSignal }) => {
+const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
   const { t } = useLanguage();
 
   const [sineWaves, setSineWaves] = useState([
     { amplitude: 1, frequency: 10, phase: 0 }
   ]);
+
+  const [mass, setMass] = useState(1);
+  const [stiffness, setStiffness] = useState(1000);
+  const [damping, setDamping] = useState(150);
 
   const handleAddWave = () => {
     setSineWaves(prev => [...prev, { amplitude: 1, frequency: 10, phase: 0 }]);
@@ -31,6 +35,15 @@ const FundamentalsSidebar = ({ onViewSignal }) => {
       phases: sineWaves.map(w => parseFloat(w.phase))
     };
     onViewSignal(params);
+  };
+
+  const handleViewSpectrum = () => {
+    const params = {
+      mass: parseFloat(mass),
+      stiffness: parseFloat(stiffness),
+      damping: parseFloat(damping)
+    };
+    onViewSpectrum(params);
   };
 
   return (
@@ -115,6 +128,69 @@ const FundamentalsSidebar = ({ onViewSignal }) => {
             onClick={handleViewSignal}
           >
             {t('fundamentals.viewSignal')}
+          </button>
+        </div>
+      </div>
+
+      {/* Seção: Vibrações */}
+      <div className="fundamentals-section">
+        <h3 className="section-title">{t('fundamentals.vibrationsSection')}</h3>
+
+        <h4 className="subsection-title">{t('fundamentals.sdofSubsection')}</h4>
+
+        <div className="vibration-fields">
+          <div className="field-group">
+            <label className="field-label">{t('fundamentals.mass')}</label>
+            <div className="input-with-unit">
+              <input
+                type="number"
+                className="field-input"
+                value={mass}
+                onChange={(e) => setMass(e.target.value)}
+                step="0.1"
+                min="0.01"
+              />
+              <span className="input-unit">kg</span>
+            </div>
+          </div>
+
+          <div className="field-group">
+            <label className="field-label">{t('fundamentals.stiffness')}</label>
+            <div className="input-with-unit">
+              <input
+                type="number"
+                className="field-input"
+                value={stiffness}
+                onChange={(e) => setStiffness(e.target.value)}
+                step="1"
+                min="0.01"
+              />
+              <span className="input-unit">kN/m</span>
+            </div>
+          </div>
+
+          <div className="field-group">
+            <label className="field-label">{t('fundamentals.damping')}</label>
+            <div className="input-with-unit">
+              <input
+                type="number"
+                className="field-input"
+                value={damping}
+                onChange={(e) => setDamping(e.target.value)}
+                step="0.1"
+                min="0"
+              />
+              <span className="input-unit">Ns/m</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="button-group">
+          <button
+            className="fundamentals-button"
+            onClick={handleViewSpectrum}
+          >
+            {t('fundamentals.viewSpectrum')}
           </button>
         </div>
       </div>
