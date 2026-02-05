@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { calculateNiceTicks, formatTickValue } from '../../utils/graphUtils';
 import './SpaceDomainGraph.css';
 import '../common/GraphScaleControls.css';
 
@@ -47,6 +48,11 @@ const SpaceDomainGraph = ({ data }) => {
     return point;
   });
 
+  // Calcula ticks redondos para o eixo X
+  const posMin = Math.min(...data.positions);
+  const posMax = Math.max(...data.positions);
+  const posTicks = calculateNiceTicks(posMin, posMax, 6);
+
   return (
     <div className="space-domain-graph">
       <h2>{t('outerEar.spaceDomainGraphTitle')}</h2>
@@ -58,10 +64,11 @@ const SpaceDomainGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="position"
+            type="number"
+            domain={[posMin, posMax]}
+            ticks={posTicks}
+            tickFormatter={formatTickValue}
             label={{ value: xAxisLabel, position: 'insideBottom', offset: -10 }}
-            tickFormatter={(value) => Math.round(value)}
-            interval="preserveStartEnd"
-            minTickGap={50}
           />
           <YAxis
             domain={['auto', 'auto']}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { calculateNiceTicks, calculateLogTicks, formatTickValue } from '../../utils/graphUtils';
 import './FrequencyDomainGraph.css';
 import '../common/GraphScaleControls.css';
 
@@ -49,6 +50,12 @@ const FrequencyDomainGraph = ({ data }) => {
     return point;
   });
 
+  // Calcula ticks redondos para o eixo X
+  const freqMin = Math.min(...data.frequencies);
+  const freqMax = Math.max(...data.frequencies);
+  const freqTicks = calculateNiceTicks(freqMin, freqMax, 6);
+  const freqLogTicks = calculateLogTicks(freqMin, freqMax);
+
   return (
     <div className="frequency-domain-graph">
       <h2>{t('outerEar.frequencyDomainGraphTitle')}</h2>
@@ -73,12 +80,12 @@ const FrequencyDomainGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
+            type="number"
             scale={logScaleX ? 'log' : 'auto'}
-            domain={logScaleX ? ['auto', 'auto'] : undefined}
+            domain={[freqMin, freqMax]}
+            ticks={logScaleX ? freqLogTicks : freqTicks}
+            tickFormatter={formatTickValue}
             label={{ value: xAxisLabel, position: 'insideBottom', offset: -10 }}
-            tickFormatter={(value) => Math.round(value)}
-            interval="preserveStartEnd"
-            minTickGap={50}
           />
           <YAxis
             domain={['auto', 'auto']}

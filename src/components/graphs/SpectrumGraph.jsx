@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { calculateNiceTicks, calculateLogTicks, formatTickValue } from '../../utils/graphUtils';
 import './SpectrumGraph.css';
 import '../common/GraphScaleControls.css';
 
@@ -35,6 +36,13 @@ const SpectrumGraph = ({ data }) => {
     );
   }
 
+  // Calcula ticks redondos para o eixo X
+  const frequencies = data.map(d => d.frequency);
+  const freqMin = Math.min(...frequencies);
+  const freqMax = Math.max(...frequencies);
+  const freqTicks = calculateNiceTicks(freqMin, freqMax, 6);
+  const freqLogTicks = calculateLogTicks(freqMin, freqMax);
+
   return (
     <div className="spectrum-graph">
       <h2>{t('settings.spectrumGraphTitle')}</h2>
@@ -59,12 +67,12 @@ const SpectrumGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="frequency"
+            type="number"
             scale={logScaleX ? 'log' : 'auto'}
-            domain={logScaleX ? ['auto', 'auto'] : undefined}
+            domain={[freqMin, freqMax]}
+            ticks={logScaleX ? freqLogTicks : freqTicks}
+            tickFormatter={formatTickValue}
             label={{ value: xAxisLabel, position: 'insideBottom', offset: -10 }}
-            tickFormatter={(value) => Math.round(value)}
-            interval="preserveStartEnd"
-            minTickGap={50}
           />
           <YAxis
             label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}

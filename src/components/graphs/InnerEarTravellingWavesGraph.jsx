@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { calculateNiceTicks, formatTickValue } from '../../utils/graphUtils';
 import { Play, Pause, SkipBack, SkipForward } from 'lucide-react';
 import './InnerEarTravellingWavesGraph.css';
 
@@ -113,6 +114,11 @@ const InnerEarTravellingWavesGraph = ({ data }) => {
   const yMax = Math.max(...allValues);
   const yPadding = (yMax - yMin) * 0.1;
 
+  // Calcula ticks redondos para o eixo X
+  const xMin = Math.min(...xVec);
+  const xMax = Math.max(...xVec);
+  const xTicks = calculateNiceTicks(xMin, xMax, 6);
+
   return (
     <div className="inner-ear-travelling-waves-graph">
       <h2>{t('innerEar.travellingWavesTitle')}</h2>
@@ -184,10 +190,11 @@ const InnerEarTravellingWavesGraph = ({ data }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="x"
+            type="number"
+            domain={[xMin, xMax]}
+            ticks={xTicks}
+            tickFormatter={formatTickValue}
             label={{ value: xAxisLabel, position: 'insideBottom', offset: -10 }}
-            tickFormatter={(value) => Number(value).toFixed(1)}
-            interval="preserveStartEnd"
-            minTickGap={50}
           />
           <YAxis
             domain={[yMin - yPadding, yMax + yPadding]}

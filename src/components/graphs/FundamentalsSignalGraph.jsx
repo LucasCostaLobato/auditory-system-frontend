@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { calculateNiceTicks, calculateLogTicks, formatTickValue } from '../../utils/graphUtils';
 import './FundamentalsSignalGraph.css';
 import '../common/GraphScaleControls.css';
 
@@ -41,6 +42,16 @@ const FundamentalsSignalGraph = ({ data }) => {
   // Calcula limites do eixo Y para o gráfico de espectro (mínimo: [0, 0.1])
   const spectrumMax = Math.max(...spectrum);
   const spectrumYDomain = [0, Math.max(spectrumMax, 0.1)];
+
+  // Calcula ticks redondos para os eixos X
+  const timeMin = Math.min(...time);
+  const timeMax = Math.max(...time);
+  const timeTicks = calculateNiceTicks(timeMin, timeMax, 6);
+
+  const freqMin = Math.min(...freq_vec);
+  const freqMax = Math.max(...freq_vec);
+  const freqTicks = calculateNiceTicks(freqMin, freqMax, 6);
+  const freqLogTicks = calculateLogTicks(freqMin, freqMax);
 
   const TimeTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -83,10 +94,11 @@ const FundamentalsSignalGraph = ({ data }) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="x"
+              type="number"
+              domain={[timeMin, timeMax]}
+              ticks={timeTicks}
+              tickFormatter={formatTickValue}
               label={{ value: t('fundamentals.timeAxis'), position: 'insideBottom', offset: -10 }}
-              tickFormatter={(value) => Number(value).toPrecision(3)}
-              interval="preserveStartEnd"
-              minTickGap={50}
             />
             <YAxis
               type="number"
@@ -132,12 +144,12 @@ const FundamentalsSignalGraph = ({ data }) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="x"
+              type="number"
               scale={logScaleX ? 'log' : 'auto'}
-              domain={logScaleX ? ['auto', 'auto'] : undefined}
+              domain={[freqMin, freqMax]}
+              ticks={logScaleX ? freqLogTicks : freqTicks}
+              tickFormatter={formatTickValue}
               label={{ value: t('fundamentals.frequencyAxis'), position: 'insideBottom', offset: -10 }}
-              tickFormatter={(value) => Math.round(value)}
-              interval="preserveStartEnd"
-              minTickGap={50}
             />
             <YAxis
               type="number"

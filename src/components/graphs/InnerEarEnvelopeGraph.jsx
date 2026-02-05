@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { calculateNiceTicks, calculateLogTicks, formatTickValue } from '../../utils/graphUtils';
 import './InnerEarEnvelopeGraph.css';
 import '../common/GraphScaleControls.css';
 
@@ -49,6 +50,13 @@ const InnerEarEnvelopeGraph = ({ data, seriesMetadata = [] }) => {
     ? seriesMetadata.map(m => m.dataKey)
     : Object.keys(data[0]).filter(key => key !== 'x');
 
+  // Calcula ticks redondos para o eixo X
+  const xValues = data.map(d => d.x);
+  const xMin = Math.min(...xValues);
+  const xMax = Math.max(...xValues);
+  const xTicks = calculateNiceTicks(xMin, xMax, 6);
+  const xLogTicks = calculateLogTicks(xMin, xMax);
+
   return (
     <div className="inner-ear-envelope-graph">
       <h2>{t('innerEar.envelopeTitle')}</h2>
@@ -84,12 +92,12 @@ const InnerEarEnvelopeGraph = ({ data, seriesMetadata = [] }) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="x"
+            type="number"
             scale={logScaleX ? 'log' : 'auto'}
-            domain={logScaleX ? ['auto', 'auto'] : undefined}
+            domain={[xMin, xMax]}
+            ticks={logScaleX ? xLogTicks : xTicks}
+            tickFormatter={formatTickValue}
             label={{ value: xAxisLabel, position: 'insideBottom', offset: -10 }}
-            tickFormatter={(value) => Number(value).toFixed(1)}
-            interval="preserveStartEnd"
-            minTickGap={50}
           />
           <YAxis
             scale={logScaleY ? 'log' : 'auto'}
