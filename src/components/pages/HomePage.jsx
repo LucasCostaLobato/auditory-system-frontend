@@ -31,6 +31,7 @@ const HomePage = () => {
         <h2 className="section-title">{t('home.howToUseTitle')}</h2>
         <p className="section-intro">{t('home.howToUseIntro')}</p>
         <ol className="section-list numbered">
+          <li>{t('home.howToUseStep0')}</li>
           <li>{t('home.howToUseStep1')}</li>
           <li>{t('home.howToUseStep2')}</li>
           <li>{t('home.howToUseStep3')}</li>
