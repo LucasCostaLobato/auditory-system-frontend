@@ -72,13 +72,16 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
             <div className="sine-wave-fields">
               <div className="field-group">
                 <label className="field-label">{t('fundamentals.amplitude')}</label>
-                <input
-                  type="number"
-                  className="field-input"
-                  value={wave.amplitude}
-                  onChange={(e) => handleWaveChange(index, 'amplitude', e.target.value)}
-                  step="0.1"
-                />
+                <div className="input-with-unit">
+                  <input
+                    type="number"
+                    className="field-input"
+                    value={wave.amplitude}
+                    onChange={(e) => handleWaveChange(index, 'amplitude', e.target.value)}
+                    step="0.1"
+                  />
+                  <span className="input-unit">Pa</span>
+                </div>
               </div>
 
               <div className="field-group">

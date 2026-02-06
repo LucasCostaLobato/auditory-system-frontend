@@ -27,7 +27,9 @@ const OuterEarPage = () => {
         ecLength: params.canalLength,
         startFrequency: settings.startFrequency,
         endFrequency: settings.endFrequency,
-        frequencyPoints: settings.frequencyPoints
+        frequencyPoints: settings.frequencyPoints,
+        meCondition: settings.meCondition,
+        meSeverity: settings.meSeverity
       });
 
       // A API retorna { freq_vec: [], frf: [] }
@@ -57,7 +59,9 @@ const OuterEarPage = () => {
       const response = await getSpaceDomainAnalysis({
         ecLength: params.canalLength,
         frequencies: params.frequencies,
-        signalType: settings.signalType
+        signalType: settings.signalType,
+        meCondition: settings.meCondition,
+        meSeverity: settings.meSeverity
       });
 
       // A API retorna { x_vec: [], "100.0": [], "500.0": [], "1000.0": [], ... }
@@ -101,7 +105,9 @@ const OuterEarPage = () => {
         startFrequency: settings.startFrequency,
         endFrequency: settings.endFrequency,
         frequencyPoints: settings.frequencyPoints,
-        signalType: settings.signalType
+        signalType: settings.signalType,
+        meCondition: settings.meCondition,
+        meSeverity: settings.meSeverity
       });
 
       // A API retorna { freq_vec: [], "7.0": [], "25.0": [], ... }

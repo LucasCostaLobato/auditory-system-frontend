@@ -12,7 +12,7 @@ const FrequencyDomainGraph = ({ data }) => {
   const [logScaleX, setLogScaleX] = useState(false);
 
   const xAxisLabel = t('outerEar.frequencyAxisLabel');
-  const yAxisLabel = t('outerEar.amplitudeDbAxisLabel');
+  const yAxisLabel = t('outerEar.amplitudePaAxisLabel');
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {

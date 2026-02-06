@@ -73,6 +73,7 @@ const SpaceDomainGraph = ({ data }) => {
           <YAxis
             domain={['auto', 'auto']}
             label={{ value: yAxisLabel, angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
+            tickFormatter={(value) => Math.abs(value) < 0.01 ? '0' : Number(value).toPrecision(3)}
           />
           <Tooltip content={<CustomTooltip />} />
           <Legend wrapperStyle={{ paddingTop: '20px' }} />
