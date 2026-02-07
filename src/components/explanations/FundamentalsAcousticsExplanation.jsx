@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import acousticsImg from '../../assets/sidebar_fundamentals_acoustics.png';
+import acousticsImg from '../../assets/sidebar_fundamentals_acoustics2.png';
 import './ExplanationSidebar.css';
 
 const FundamentalsAcousticsExplanation = () => {

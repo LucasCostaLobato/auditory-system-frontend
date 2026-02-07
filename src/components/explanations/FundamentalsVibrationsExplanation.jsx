@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import vibrationsImg from '../../assets/sidebar_fundamentals_vibration.png';
+import vibrationsImg from '../../assets/sidebar_fundamentals_vibration2.png';
 import './ExplanationSidebar.css';
 
 const FundamentalsVibrationsExplanation = () => {
