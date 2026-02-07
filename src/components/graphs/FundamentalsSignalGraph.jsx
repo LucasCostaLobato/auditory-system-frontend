@@ -17,12 +17,18 @@ const FundamentalsSignalGraph = ({ data }) => {
     );
   }
 
-  const { signal, time, spectrum, freq_vec } = data;
+  const { signal_time, time, signal_space, space, spectrum, freq_vec } = data;
+
+  // Prepara dados para o gráfico no domínio do espaço
+  const spaceData = space.map((s, i) => ({
+    x: s,
+    y: signal_space[i]
+  }));
 
   // Prepara dados para o gráfico no domínio do tempo
   const timeData = time.map((t, i) => ({
     x: t,
-    y: signal[i]
+    y: signal_time[i]
   }));
 
   // Prepara dados para o gráfico no domínio da frequência
@@ -31,9 +37,19 @@ const FundamentalsSignalGraph = ({ data }) => {
     y: spectrum[i]
   }));
 
+  // Calcula limites do eixo Y para o gráfico espacial (mínimo: [-0.1, 0.1], com 10% de margem)
+  const spaceSignalMin = Math.min(...signal_space);
+  const spaceSignalMax = Math.max(...signal_space);
+  const spaceSignalRange = spaceSignalMax - spaceSignalMin;
+  const spaceSignalPadding = spaceSignalRange * 0.1;
+  const spaceYDomain = [
+    Math.min(spaceSignalMin - spaceSignalPadding, -0.1),
+    Math.max(spaceSignalMax + spaceSignalPadding, 0.1)
+  ];
+
   // Calcula limites do eixo Y para o gráfico de tempo (mínimo: [-0.1, 0.1], com 10% de margem)
-  const signalMin = Math.min(...signal);
-  const signalMax = Math.max(...signal);
+  const signalMin = Math.min(...signal_time);
+  const signalMax = Math.max(...signal_time);
   const signalRange = signalMax - signalMin;
   const signalPadding = signalRange * 0.1;
   const timeYDomain = [
@@ -47,6 +63,10 @@ const FundamentalsSignalGraph = ({ data }) => {
   const spectrumYDomain = [0, Math.max(spectrumMax + spectrumPadding, 0.1)];
 
   // Calcula ticks redondos para os eixos X
+  const spaceMin = Math.min(...space);
+  const spaceMax = Math.max(...space);
+  const spaceTicks = calculateNiceTicks(spaceMin, spaceMax, 6);
+
   const timeMin = Math.min(...time);
   const timeMax = Math.max(...time);
   const timeTicks = calculateNiceTicks(timeMin, timeMax, 6);
@@ -55,6 +75,20 @@ const FundamentalsSignalGraph = ({ data }) => {
   const freqMax = Math.max(...freq_vec);
   const freqTicks = calculateNiceTicks(freqMin, freqMax, 6);
   const freqLogTicks = calculateLogTicks(freqMin, freqMax);
+
+  const SpaceTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p><strong>{t('fundamentals.spaceAxis')}:</strong> {Number(label).toPrecision(4)}</p>
+          <p style={{ color: payload[0].color }}>
+            <strong>{t('fundamentals.amplitudeAxis')}:</strong> {Number(payload[0].value).toPrecision(4)}
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   const TimeTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -86,7 +120,44 @@ const FundamentalsSignalGraph = ({ data }) => {
 
   return (
     <div className="fundamentals-signal-graph">
-      {/* Gráfico 1: Sinal no domínio do tempo */}
+      {/* Gráfico 1: Sinal no domínio do espaço */}
+      <div className="graph-container">
+        <h2>{t('fundamentals.spaceGraphTitle')}</h2>
+        <ResponsiveContainer width="100%" height={350}>
+          <LineChart
+            data={spaceData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis
+              dataKey="x"
+              type="number"
+              domain={[spaceMin, spaceMax]}
+              ticks={spaceTicks}
+              tickFormatter={formatTickValue}
+              label={{ value: t('fundamentals.spaceAxis'), position: 'insideBottom', offset: -10 }}
+            />
+            <YAxis
+              type="number"
+              domain={spaceYDomain}
+              allowDataOverflow={true}
+              tickFormatter={(value) => Math.abs(value) < 0.01 ? '0' : Number(value).toPrecision(2)}
+              label={{ value: t('fundamentals.amplitudeAxis'), angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
+            />
+            <Tooltip content={<SpaceTooltip />} />
+            <Line
+              type="monotone"
+              dataKey="y"
+              stroke="#27ae60"
+              strokeWidth={2}
+              dot={false}
+              isAnimationActive={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Gráfico 2: Sinal no domínio do tempo */}
       <div className="graph-container">
         <h2>{t('fundamentals.timeGraphTitle')}</h2>
         <ResponsiveContainer width="100%" height={350}>
