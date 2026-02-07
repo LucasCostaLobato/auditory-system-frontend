@@ -193,7 +193,7 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
             className="fundamentals-button"
             onClick={handleViewSpectrum}
           >
-            {t('fundamentals.viewSpectrum')}
+            {t('fundamentals.viewSpectrumVibSystem')}
           </button>
         </div>
       </div>
