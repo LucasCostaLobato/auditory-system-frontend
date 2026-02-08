@@ -1,5 +1,5 @@
 .explanation-sidebar {
-  width: 400px;
+  width: 500px;
   height: 100vh;
   background-color: #ecf0f1;
   padding: 20px;
@@ -52,7 +52,9 @@
 }
 
 .explanation-image.acoustics-image {
-  width: 100%;
+  width: 80%;
+  margin: auto;
+  display: block;
 }
 
 .explanation-image.vibrations-image {
