@@ -16,6 +16,7 @@ const FundamentalsAcousticsExplanation = () => {
         <img src={acousticsImg} alt="Acoustics" className="explanation-image acoustics-image" />
         <ul>
           <li>{t('fundamentals.explanationBullet3')}</li>
+          <li>{t('fundamentals.explanationBullet31')}</li>
           <li>{t('fundamentals.explanationBullet4')}</li>
           <li>{t('fundamentals.explanationBullet5')}</li>
         </ul>
