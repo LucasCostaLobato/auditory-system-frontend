@@ -27,7 +27,7 @@
       "frequencyAxis": "Frequência [Hz]",
       "amplitudeAxis": "Amplitude [Pa]",
       "explanationTitle": "Ondas sonoras",
-      "explanationBullet1": "O fenômeno físico \"som\" nada mais é do que o movimento oscilatório das partículas do meio (ex.: ar);",
+      "explanationBullet1": "O fenômeno físico som nada mais é do que o movimento oscilatório das partículas do meio (ex.: ar);",
       "explanationBullet2": "Ondas sonoras são tipicamente representadas por senóides ou uma sobreposição (soma) de diferentes senóides. A figura abaixo ilustra a relação entre o som e sua representação por uma senóide;",
       "explanationBullet3": "As ondas sonoras podem ser visualizadas em diferentes domínios: espaço, tempo e frequência;",
       "explanationBullet31": "Um ciclo completo da onda no tempo é chamado de \"período\" enquanto no espaço é chamado de \"comprimento de onda\";",
@@ -95,8 +95,11 @@
       "spaceDomainBullet3": "Compare como é a distribuição de pressão sonora ao longo do canal auditivo para frequências abaixo e acima da primeira frequência natural do canal auditivo, verificado na análise de sua FRF;",
       "spaceDomainBullet4": "Na página \"Fundamentos\", é possível ver que a onda sonora tem pontos de pressão igual a zero, chamados \"nós de pressão\". Isso não é observável ao longo do canal auditivo devido ao amortecimento acústico presente neste sistema;",
       "spaceDomainBullet5": "Para melhor entender, veja na página \"Fundamentos\" como o amortecimento suaviza o pico de um sistema vibratório. O mesmo acontece em um sistema acústico para os máximos de pressão e os nós de pressão;",
-      "frequencyDomainExplanationTitle": "Sobre a Análise no Domínio da Frequência",
-      "frequencyDomainExplanationContent": "Este gráfico exibe o espectro de frequências em posições específicas ao longo do canal auditivo. Mostra como o conteúdo espectral do sinal de entrada se modifica conforme a onda sonora propaga pelo canal, revelando os efeitos da ressonância em diferentes localizações."
+      "frequencyDomainExplanationTitle": "Análise no Domínio da Frequência",
+      "frequencyDomainBullet1": "Nesta análise, é possível entender como o Nível de Pressão Sonora (NPS) varia ao longo da frequência;",
+      "frequencyDomainBullet2": "Em contraste à análise no domínio do espaço, nesta análise observa-se a onda em um (ou mais) ponto no espaço;",
+      "frequencyDomainBullet3": "Compare como é o espectro de NPS em diferentes pontos do canal auditivo;",
+      "frequencyDomainBullet4": "Na página \"Configurações\", selecione o sinal \"Ruído branco ideal\", e tente explicar as semelhanças e diferenças do NPS ao final do canal auditivo e a FRF do canal auditivo;"
     },
     "middleEar": {
       "condition": "Condição da orelha média",
@@ -285,8 +288,11 @@
       "spaceDomainBullet3": "Compare the sound pressure distribution along the ear canal for frequencies below and above the first natural frequency of the ear canal, as verified in the FRF analysis;",
       "spaceDomainBullet4": "On the \"Fundamentals\" page, you can see that the sound wave has points of zero pressure, called \"pressure nodes\". This is not observable along the ear canal due to the acoustic damping present in this system;",
       "spaceDomainBullet5": "To better understand, see on the \"Fundamentals\" page how damping smooths the peak of a vibratory system. The same happens in an acoustic system for pressure maxima and pressure nodes;",
-      "frequencyDomainExplanationTitle": "About Frequency Domain Analysis",
-      "frequencyDomainExplanationContent": "This graph displays the frequency spectrum at specific positions along the ear canal. It shows how the spectral content of the input signal changes as the sound wave propagates through the canal, revealing the effects of resonance at different locations."
+      "frequencyDomainExplanationTitle": "Frequency Domain Analysis",
+      "frequencyDomainBullet1": "In this analysis, it is possible to understand how the Sound Pressure Level (SPL) varies along the frequency;",
+      "frequencyDomainBullet2": "In contrast to the space domain analysis, in this analysis the wave is observed at one (or more) point in space;",
+      "frequencyDomainBullet3": "Compare the SPL spectrum at different points of the ear canal;",
+      "frequencyDomainBullet4": "On the \"Settings\" page, select the \"Ideal white noise\" signal, and try to explain the similarities and differences between the SPL at the end of the ear canal and the ear canal FRF;"
     },
     "middleEar": {
       "condition": "Middle ear condition",
@@ -475,8 +481,11 @@
       "spaceDomainBullet3": "Compare la distribución de presión sonora a lo largo del canal auditivo para frecuencias por debajo y por encima de la primera frecuencia natural del canal auditivo, verificada en el análisis de su FRF;",
       "spaceDomainBullet4": "En la página \"Fundamentos\", se puede ver que la onda sonora tiene puntos de presión igual a cero, llamados \"nodos de presión\". Esto no es observable a lo largo del canal auditivo debido al amortiguamiento acústico presente en este sistema;",
       "spaceDomainBullet5": "Para entender mejor, vea en la página \"Fundamentos\" cómo el amortiguamiento suaviza el pico de un sistema vibratorio. Lo mismo ocurre en un sistema acústico para los máximos de presión y los nodos de presión;",
-      "frequencyDomainExplanationTitle": "Sobre el Análisis en el Dominio de la Frecuencia",
-      "frequencyDomainExplanationContent": "Este gráfico muestra el espectro de frecuencias en posiciones específicas a lo largo del canal auditivo. Muestra cómo el contenido espectral de la señal de entrada se modifica conforme la onda sonora se propaga por el canal, revelando los efectos de la resonancia en diferentes ubicaciones."
+      "frequencyDomainExplanationTitle": "Análisis en el Dominio de la Frecuencia",
+      "frequencyDomainBullet1": "En este análisis, es posible entender cómo el Nivel de Presión Sonora (NPS) varía a lo largo de la frecuencia;",
+      "frequencyDomainBullet2": "En contraste con el análisis en el dominio del espacio, en este análisis se observa la onda en uno (o más) puntos en el espacio;",
+      "frequencyDomainBullet3": "Compare cómo es el espectro de NPS en diferentes puntos del canal auditivo;",
+      "frequencyDomainBullet4": "En la página \"Configuraciones\", seleccione la señal \"Ruido blanco ideal\", e intente explicar las similitudes y diferencias del NPS al final del canal auditivo y la FRF del canal auditivo;"
     },
     "middleEar": {
       "condition": "Condición del oído medio",

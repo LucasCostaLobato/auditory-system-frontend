@@ -1,5 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext';
-import spacialImg from '../../assets/sidebar_outerear_spacial.png';
+import spacialImg from '../../assets/sidebar_outerear_spacial2.png';
 import './ExplanationSidebar.css';
 
 const SpaceDomainExplanation = () => {

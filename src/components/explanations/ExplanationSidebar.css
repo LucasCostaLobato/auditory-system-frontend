@@ -70,7 +70,13 @@
 }
 
 .explanation-image.outerear-spacial-image {
-  width: 50%;
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+
+.explanation-image.outerear-frequency-image {
+  width: 70%;
   margin: auto;
   display: block;
 }
