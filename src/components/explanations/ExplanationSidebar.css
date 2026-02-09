@@ -64,5 +64,13 @@
 }
 
 .explanation-image.outerear-frf-image {
-  width: 100%;
+  width: 75%;
+  margin: auto;
+  display: block;
+}
+
+.explanation-image.outerear-spacial-image {
+  width: 50%;
+  margin: auto;
+  display: block;
 }
