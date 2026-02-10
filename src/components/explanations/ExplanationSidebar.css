@@ -80,3 +80,15 @@
   margin: auto;
   display: block;
 }
+
+.explanation-image.middleear-frf-image {
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+
+.explanation-image.middleear-response-image {
+  width: 90%;
+  margin: auto;
+  display: block;
+}
