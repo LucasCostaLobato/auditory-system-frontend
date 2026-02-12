@@ -38,6 +38,34 @@
   border-bottom: 1px solid #dde1e3;
 }
 
+.medium-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.field-select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 13px;
+  background-color: white;
+}
+
+.field-select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.sound-speed-info {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-style: italic;
+  margin: 8px 0 15px 0;
+}
+
 /* Sine wave row */
 .sine-wave-row {
   background-color: #fff;

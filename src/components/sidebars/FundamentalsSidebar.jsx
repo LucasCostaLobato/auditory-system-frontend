@@ -10,9 +10,13 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
     { amplitude: 1, frequency: 10, phase: 0 }
   ]);
 
+  const [medium, setMedium] = useState('air');
+
   const [mass, setMass] = useState(1);
   const [stiffness, setStiffness] = useState(1000);
   const [damping, setDamping] = useState(150);
+
+  const soundSpeed = medium === 'air' ? 343 : 1500;
 
   const handleAddWave = () => {
     setSineWaves(prev => [...prev, { amplitude: 1, frequency: 10, phase: 0 }]);
@@ -32,7 +36,8 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
     const params = {
       amplitudes: sineWaves.map(w => parseFloat(w.amplitude)),
       frequencies: sineWaves.map(w => parseFloat(w.frequency)),
-      phases: sineWaves.map(w => parseFloat(w.phase))
+      phases: sineWaves.map(w => parseFloat(w.phase)),
+      medium
     };
     onViewSignal(params);
   };
@@ -51,6 +56,21 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
       {/* Seção: Acústica */}
       <div className="fundamentals-section">
         <h3 className="section-title">{t('fundamentals.acousticsSection')}</h3>
+
+        <div className="medium-group">
+          <label className="field-label">{t('fundamentals.propagationMedium')}</label>
+          <select
+            className="field-select"
+            value={medium}
+            onChange={(e) => setMedium(e.target.value)}
+          >
+            <option value="air">{t('fundamentals.mediumAir')}</option>
+            <option value="water">{t('fundamentals.mediumWater')}</option>
+          </select>
+        </div>
+        <p className="sound-speed-info">
+          {t('fundamentals.soundSpeed')} = {soundSpeed} m/s
+        </p>
 
         <h4 className="subsection-title">{t('fundamentals.sineWaveSubsection')}</h4>
 

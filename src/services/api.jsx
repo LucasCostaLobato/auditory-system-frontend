@@ -5,6 +5,7 @@ export const getFundamentalsAcoustics = async (params) => {
   try {
     const queryParams = new URLSearchParams();
 
+    queryParams.append('medium', params.medium || 'air');
     params.amplitudes.forEach(a => queryParams.append('amplitudes', a));
     params.frequencies.forEach(f => queryParams.append('frequencies', f));
     params.phases.forEach(p => queryParams.append('phases', p));
