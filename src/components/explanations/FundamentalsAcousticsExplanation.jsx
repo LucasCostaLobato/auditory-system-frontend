@@ -18,6 +18,7 @@ const FundamentalsAcousticsExplanation = () => {
           <li>{t('fundamentals.explanationBullet3')}</li>
           <li>{t('fundamentals.explanationBullet31')}</li>
           <li>{t('fundamentals.explanationBullet4')}</li>
+          <li>{t('fundamentals.explanationBullet45')}</li>
           <li>{t('fundamentals.explanationBullet5')}</li>
         </ul>
       </div>
