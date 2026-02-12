@@ -62,8 +62,11 @@
       "spectrumGraphTitle": "Espectro do Sinal",
       "frequencyAxisLabel": "Frequência [Hz]",
       "amplitudeAxisLabel": "Nível de Pressão Sonora [dB]",
-      "spectrumExplanationTitle": "Sobre o Espectro do Sinal",
-      "spectrumExplanationContent": "O espectro de magnitude mostra a distribuição de energia do sinal de entrada ao longo das frequências. Este gráfico permite visualizar como diferentes componentes de frequência estão presentes no sinal escolhido (ruído branco ou sinal de fala), sendo essencial para entender como o som será processado pelo sistema auditivo."
+      "spectrumExplanationTitle": "Espectro do Sinal de Entrada",
+      "spectrumExplanationBullet1": "O espectro do sinal escolhido será usado como a pressão sonora de entrada no canal auditivo. Com isso, poderá ser analisado como cada tipo de sinal é processado ao longo do sistema auditivo;",
+      "spectrumExplanationBullet2": "O tipo \"Ruído branco ideal\" tem a mesma amplitude em todas as frequências dentro da faixa de frequência definida. Por essa razão, este é um sinal adequado para analisar as características acústicas e vibratórias do sistema auditivo;",
+      "spectrumExplanationBullet3": "O tipo \"Sinal de fala\", que neste caso refere-se a fala da palavra Fonoaudiologia, é um sinal de fala de um adulto masculino. Observa-se que este sinal tem amplitudes diferentes para frequências diferentes, sem um padrão bem definido ao longo do espectro;",
+      "spectrumExplanationBullet4": "O tipo \"Clarineta\", que neste caso refere-se à nota dó, é um sinal musical. Note que este tem um espectro formado por uma frequência fundamental, em 258 Hz, e picos em frequências múltiplas inteiras da frequência fundamental, chamadas de harmônicas;"
     },
     "outerEar": {
       "anatomySection": "Anatomia do canal auditivo",
@@ -264,8 +267,11 @@
       "spectrumGraphTitle": "Signal Spectrum",
       "frequencyAxisLabel": "Frequency [Hz]",
       "amplitudeAxisLabel": "Sound Pressure Level [dB]",
-      "spectrumExplanationTitle": "About Signal Spectrum",
-      "spectrumExplanationContent": "The magnitude spectrum shows the energy distribution of the input signal across frequencies. This graph allows you to visualize how different frequency components are present in the chosen signal (white noise or speech signal), which is essential for understanding how sound will be processed by the auditory system."
+      "spectrumExplanationTitle": "Input Signal Spectrum",
+      "spectrumExplanationBullet1": "The spectrum of the chosen signal will be used as the input sound pressure at the ear canal. This allows analyzing how each type of signal is processed along the auditory system;",
+      "spectrumExplanationBullet2": "The \"Ideal white noise\" type has the same amplitude at all frequencies within the defined frequency range. For this reason, this is a suitable signal for analyzing the acoustic and vibratory characteristics of the auditory system;",
+      "spectrumExplanationBullet3": "The \"Speech signal\" type, which in this case refers to the speech of the word Fonoaudiologia, is a speech signal from an adult male. It can be observed that this signal has different amplitudes for different frequencies, without a well-defined pattern across the spectrum;",
+      "spectrumExplanationBullet4": "The \"Clarinet\" type, which in this case refers to the note C, is a musical signal. Note that it has a spectrum formed by a fundamental frequency at 258 Hz, and peaks at integer multiples of the fundamental frequency, called harmonics;"
     },
     "outerEar": {
       "anatomySection": "Ear canal anatomy",
@@ -466,8 +472,11 @@
       "spectrumGraphTitle": "Espectro de la Señal",
       "frequencyAxisLabel": "Frecuencia [Hz]",
       "amplitudeAxisLabel": "Nivel de Presión Sonora [dB]",
-      "spectrumExplanationTitle": "Sobre el Espectro de la Señal",
-      "spectrumExplanationContent": "El espectro de magnitud muestra la distribución de energía de la señal de entrada a lo largo de las frecuencias. Este gráfico permite visualizar cómo diferentes componentes de frecuencia están presentes en la señal elegida (ruido blanco o señal de habla), lo cual es esencial para comprender cómo el sonido será procesado por el sistema auditivo."
+      "spectrumExplanationTitle": "Espectro de la Señal de Entrada",
+      "spectrumExplanationBullet1": "El espectro de la señal elegida se utilizará como la presión sonora de entrada en el canal auditivo. Con ello, se podrá analizar cómo cada tipo de señal es procesada a lo largo del sistema auditivo;",
+      "spectrumExplanationBullet2": "El tipo \"Ruido blanco ideal\" tiene la misma amplitud en todas las frecuencias dentro del rango de frecuencia definido. Por esta razón, esta es una señal adecuada para analizar las características acústicas y vibratorias del sistema auditivo;",
+      "spectrumExplanationBullet3": "El tipo \"Señal de habla\", que en este caso se refiere al habla de la palabra Fonoaudiologia, es una señal de habla de un hombre adulto. Se observa que esta señal tiene amplitudes diferentes para frecuencias diferentes, sin un patrón bien definido a lo largo del espectro;",
+      "spectrumExplanationBullet4": "El tipo \"Clarinete\", que en este caso se refiere a la nota do, es una señal musical. Note que tiene un espectro formado por una frecuencia fundamental en 258 Hz, y picos en frecuencias múltiplos enteros de la frecuencia fundamental, llamadas armónicas;"
     },
     "outerEar": {
       "anatomySection": "Anatomía del canal auditivo",
