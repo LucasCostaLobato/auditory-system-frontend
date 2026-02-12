@@ -45,16 +45,16 @@ const InnerEarSidebar = ({ onViewEnvelope, onViewTravellingWaves, onHold, onClea
         <div className="button-group">
           <button
             className="inner-ear-button"
-            onClick={handleViewEnvelope}
+            onClick={handleViewTravellingWaves}
           >
-            {t('innerEar.viewEnvelope')}
+            {t('innerEar.viewTravellingWaves')}
           </button>
 
           <button
             className="inner-ear-button"
-            onClick={handleViewTravellingWaves}
+            onClick={handleViewEnvelope}
           >
-            {t('innerEar.viewTravellingWaves')}
+            {t('innerEar.viewEnvelope')}
           </button>
         </div>
 
