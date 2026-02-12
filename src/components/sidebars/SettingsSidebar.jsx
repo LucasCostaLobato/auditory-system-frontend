@@ -45,6 +45,7 @@ const SettingsSidebar = ({ onViewSpectrum }) => {
         >
           <option value="white_noise">{t('settings.whiteNoise')}</option>
           <option value="speech">{t('settings.speechSignal')}</option>
+          <option value="clarinet">{t('settings.clarinet')}</option>
         </select>
       </div>
 
