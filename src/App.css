@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f3f2ea;
+}
+
+.main-content {
+  margin-left: 250px;
+  flex: 1;
+  min-height: 100vh;
+}
+
+.page-placeholder {
+  padding: 40px;
+  font-size: 20px;
+  color: #7f8c8d;
+  text-align: center;
+}

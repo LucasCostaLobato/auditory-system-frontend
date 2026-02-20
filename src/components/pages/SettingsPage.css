@@ -1,0 +1,35 @@
+.settings-page {
+  display: flex;
+  width: 100%;
+}
+
+.settings-content {
+  margin-left: 300px;
+  margin-right: 520px;
+  padding: 40px;
+  flex: 1;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  font-size: 20px;
+  color: #7f8c8d;
+}
+
+.graph-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #bdc3c7;
+}
+
+.graph-placeholder p {
+  color: #7f8c8d;
+  font-size: 18px;
+}

@@ -1,0 +1,46 @@
+import { useLanguage } from '../../contexts/LanguageContext';
+import { Home, Settings, Activity, BookOpen } from 'lucide-react';
+import LanguageSelector from '../common/LanguageSelector';
+import logo from '../../assets/simaudis_logo_v3.png';
+import './Sidebar.css';
+
+const Sidebar = ({ activeMenu, setActiveMenu }) => {
+  const { t } = useLanguage();
+
+  const menuItems = [
+    { id: 'home', label: t('menu.home'), icon: Home },
+    { id: 'fundamentals', label: t('menu.fundamentals'), icon: BookOpen },
+    { id: 'settings', label: t('menu.settings'), icon: Settings },
+    { id: 'outerEar', label: t('menu.outerEar'), icon: Activity },
+    { id: 'middleEar', label: t('menu.middleEar'), icon: Activity },
+    { id: 'innerEar', label: t('menu.innerEar'), icon: Activity }
+  ];
+
+  return (
+    <div className="sidebar">
+      <div className="sidebar-header">
+        <img src={logo} alt="SimAudiS" className="sidebar-logo" />
+      </div>
+      <nav className="sidebar-menu">
+        {menuItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <button
+              key={item.id}
+              className={`menu-item ${activeMenu === item.id ? 'active' : ''}`}
+              onClick={() => setActiveMenu(item.id)}
+            >
+              <Icon size={18} />
+              {item.label}
+            </button>
+          );
+        })}
+      </nav>
+      <div className="sidebar-footer">
+        <LanguageSelector />
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;

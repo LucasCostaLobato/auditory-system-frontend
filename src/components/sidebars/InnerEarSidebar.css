@@ -1,0 +1,151 @@
+.inner-ear-sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #ecf0f1;
+  padding: 20px;
+  position: fixed;
+  left: 250px;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.inner-ear-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+.inner-ear-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  color: #2c3e50;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.inner-ear-label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 15px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.inner-ear-label:first-of-type {
+  margin-top: 0;
+}
+
+.inner-ear-input {
+  width: calc(100% - 45px);
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.inner-ear-input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.input-unit {
+  display: inline-block;
+  margin-left: 8px;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.inner-ear-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.inner-ear-select:disabled {
+  background-color: #ecf0f1;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.inner-ear-select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.inner-ear-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.inner-ear-button:hover {
+  background-color: #2980b9;
+}
+
+.inner-ear-button:active {
+  background-color: #21618c;
+}
+
+.inner-ear-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.inner-ear-button:disabled:hover {
+  background-color: #bdc3c7;
+}
+
+.hold-buttons {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #bdc3c7;
+}
+
+.hold-button {
+  background-color: #27ae60;
+}
+
+.hold-button:hover:not(:disabled) {
+  background-color: #219a52;
+}
+
+.hold-button:active:not(:disabled) {
+  background-color: #1e8449;
+}
+
+.clear-button {
+  background-color: #e74c3c;
+}
+
+.clear-button:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+.clear-button:active:not(:disabled) {
+  background-color: #a93226;
+}
