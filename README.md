@@ -1,132 +1,111 @@
-# Plataforma de Ensino sobre o Sistema Auditivo
+# SimAudiS — Frontend
 
-Uma plataforma web interativa para ensino sobre mecanismos da audição, desenvolvida com React + Vite.
+Plataforma web interativa para ensino e estudo sobre os mecanismos do sistema auditivo humano. Desenvolvida com React + Vite.
 
-## Estrutura do Projeto
+## Pré-requisitos
 
-```
-src/
-├── components/          # Componentes React
-│   ├── Sidebar.jsx     # Menu principal lateral
-│   ├── HomePage.jsx    # Página inicial
-│   ├── SettingsPage.jsx         # Página de configurações
-│   ├── SettingsSidebar.jsx      # Sidebar de configurações
-│   ├── SpectrumGraph.jsx        # Gráfico de espectro (específico)
-│   └── LanguageSelector.jsx     # Seletor de idioma
-├── contexts/
-│   └── LanguageContext.jsx      # Contexto para gerenciamento de idiomas
-├── translations.json             # Arquivo com todas as traduções (PT, EN, ES)
-├── App.jsx                       # Componente principal
-└── main.jsx                      # Ponto de entrada
-```
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-## Funcionalidades Implementadas
+- [Node.js](https://nodejs.org/) versão **18 ou superior** (recomendado: v20)
+- [npm](https://www.npmjs.com/) versão **9 ou superior** (instalado junto com o Node.js)
+- [make](https://www.gnu.org/software/make/) (disponível nativamente no Linux/macOS; no Windows, instalar via [Chocolatey](https://chocolatey.org/): `choco install make`)
 
-### ✅ Menu Principal (Sidebar Esquerda)
-- Início (página padrão)
-- Configurações
-- Orelha externa (em desenvolvimento)
-- Orelha média (em desenvolvimento)
-- Orelha interna (em desenvolvimento)
-
-### ✅ Sistema de Tradução
-- 3 idiomas: Português, Inglês e Espanhol
-- Seletor de idioma no canto superior direito
-- Traduções centralizadas no arquivo `src/translations.json`
-
-### ✅ Página Início
-- Apresentação da plataforma
-- Conteúdo editável no arquivo de traduções
-
-### ✅ Página Configurações
-- **Sidebar Secundária** com:
-  - Dropdown de tipo de sinal (Ruído branco ideal / Sinal de fala)
-  - Campos para faixa de frequência (inicial, final, número de pontos)
-  - Botão "Ver espectro"
-- **Área de Gráfico**:
-  - Gráfico XY específico para espectro
-  - Integração com API (placeholder)
-  - Dados mockados para teste
-
-## Como Executar
+Para verificar as versões instaladas:
 
 ```bash
-# Instalar dependências
-npm install
-
-# Executar em modo desenvolvimento
-npm run dev
-
-# Build para produção
-npm run build
+node --version
+npm --version
+make --version
 ```
 
-## Tecnologias Utilizadas
+## Instalação e execução
 
-- **React 19** - Framework UI
-- **Vite** - Build tool
-- **Recharts** - Biblioteca de gráficos
-- **Axios** - Requisições HTTP
+### 1. Clone o repositório
+
+```bash
+git clone <url-do-repositório>
+cd auditory-system-frontend
+```
+
+### 2. Instale as dependências
+
+```bash
+make install
+```
+
+Isso executará `npm install` e instalará todos os pacotes listados em `package.json`.
+
+### 3. Execute o servidor de desenvolvimento
+
+```bash
+make run
+```
+
+O frontend estará disponível em [http://localhost:5173](http://localhost:5173).
+
+> **Atenção:** o frontend consome uma API backend. Certifique-se de que o backend do SimAudiS está rodando localmente em `http://127.0.0.1:8000` antes de usar as funcionalidades que fazem requisições (geração de gráficos, análises, etc.). Consulte o repositório do backend para instruções de execução.
+
+## Outros comandos disponíveis
+
+| Comando | Descrição |
+|---|---|
+| `make install` | Instala as dependências do projeto |
+| `make run` | Inicia o servidor de desenvolvimento |
+| `make build` | Gera o build de produção na pasta `dist/` |
+
+## Estrutura do projeto
+
+```
+auditory-system-frontend/
+├── public/                  # Arquivos estáticos públicos
+├── src/
+│   ├── assets/              # Imagens e recursos estáticos
+│   ├── components/
+│   │   ├── explanations/    # Sidebars explicativas de cada página
+│   │   ├── graphs/          # Componentes de gráfico (um por funcionalidade)
+│   │   ├── pages/           # Páginas principais da aplicação
+│   │   └── sidebars/        # Sidebars de controle de cada página
+│   ├── contexts/
+│   │   ├── LanguageContext.jsx   # Gerenciamento de idioma
+│   │   └── SettingsContext.jsx   # Estado global de configurações
+│   ├── services/
+│   │   └── api.jsx          # Funções de chamada à API backend
+│   ├── translations.json    # Todas as traduções (PT, EN, ES)
+│   ├── App.jsx              # Componente raiz e roteamento
+│   └── main.jsx             # Ponto de entrada
+├── Makefile
+├── package.json
+└── vite.config.js
+```
+
+## Páginas da aplicação
+
+| Página | Descrição |
+|---|---|
+| **Início** | Apresentação da plataforma |
+| **Configurações** | Definição do sinal de entrada (tipo, faixa de frequência) e visualização do espectro |
+| **Fundamentos** | Conceitos de acústica (ondas sonoras) e vibrações (sistemas de 1 grau de liberdade) |
+| **Orelha Externa** | FRF do canal auditivo, análise no domínio do espaço e da frequência |
+| **Orelha Média** | FRF e resposta à excitação da orelha média |
+| **Orelha Interna** | Ondas viajantes e envelope do deslocamento da membrana basilar |
+
+## Tecnologias utilizadas
+
+- [React 19](https://react.dev/)
+- [Vite 7](https://vite.dev/)
+- [Recharts](https://recharts.org/) — gráficos interativos
+- [Lucide React](https://lucide.dev/) — ícones
 
 ## Configuração da API
 
-O endpoint da API está configurado em `src/components/SettingsPage.jsx:14`:
+O endereço base da API está definido em `src/services/api.jsx`:
 
 ```javascript
-const response = await axios.get('https://api.placeholder.com/spectrum', {
-  params: {
-    signal_type: params.signalType,
-    start_freq: params.startFrequency,
-    end_freq: params.endFrequency,
-    num_points: params.frequencyPoints
-  }
-});
+const API_BASE_URL = 'http://127.0.0.1:8000/';
 ```
 
-**Para atualizar a URL da API:**
-1. Abra o arquivo `src/components/SettingsPage.jsx`
-2. Localize a linha 14
-3. Substitua `https://api.placeholder.com/spectrum` pela URL real
-4. Ajuste os parâmetros conforme necessário
+Altere essa constante caso o backend esteja rodando em outro endereço ou porta.
 
-## Adicionando Novos Idiomas
+## Internacionalização
 
-Para adicionar um novo idioma, edite `src/translations.json`:
-
-```json
-{
-  "pt": { ... },
-  "en": { ... },
-  "es": { ... },
-  "fr": {
-    "menu": {
-      "home": "Accueil",
-      ...
-    }
-  }
-}
-```
-
-## Próximos Passos
-
-1. Adicionar conteúdo para as páginas Orelha Externa, Média e Interna
-2. Criar gráficos específicos para cada funcionalidade
-3. Conectar com a API real
-4. Adicionar mais traduções e conteúdo educacional
-
-## Estrutura de Gráficos
-
-**IMPORTANTE:** Cada gráfico possui seu próprio componente com código específico. Não há código genérico compartilhado entre gráficos. Isso permite personalização total de:
-- Títulos dos eixos
-- Escalas
-- Cores
-- Tipos de visualização
-- Labels e legendas
-
-Exemplo: `SpectrumGraph.jsx` é exclusivo para o gráfico de espectro das configurações.
-
-## Notas
-
-- O projeto usa dados mockados quando a API não está disponível
-- Cada funcionalidade que gera gráficos terá seu próprio componente de gráfico
-- As traduções são carregadas dinamicamente conforme o idioma selecionado
+A plataforma suporta três idiomas: **Português (PT)**, **Inglês (EN)** e **Espanhol (ES)**. Todas as strings de interface estão centralizadas em `src/translations.json`, organizadas por idioma e seção. O idioma pode ser alternado pelo seletor no canto superior direito da interface.
