@@ -7,7 +7,7 @@ export const SettingsProvider = ({ children }) => {
     signalType: 'white_noise',
     startFrequency: 100,
     endFrequency: 10000,
-    frequencyPoints: 500,
+    frequencyPoints: 300,
     canalLength: '30',
     frequencyList: '',
     positionList: '',
