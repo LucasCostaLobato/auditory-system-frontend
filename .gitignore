@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Variáveis de ambiente (nunca commitar)
+.env
+.env.local
+.env.*.local
+# .env.example deve ser commitado (contém apenas exemplos, sem valores sensíveis)
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

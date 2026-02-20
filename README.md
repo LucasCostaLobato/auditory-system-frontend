@@ -35,7 +35,19 @@ make install
 
 Isso executará `npm install` e instalará todos os pacotes listados em `package.json`.
 
-### 3. Execute o servidor de desenvolvimento
+### 3. Configure as variáveis de ambiente
+
+```bash
+cp .env.example .env
+```
+
+Edite o arquivo `.env` com o endereço correto do backend:
+
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8000/
+```
+
+### 4. Execute o servidor de desenvolvimento
 
 ```bash
 make run
@@ -43,7 +55,7 @@ make run
 
 O frontend estará disponível em [http://localhost:5173](http://localhost:5173).
 
-> **Atenção:** o frontend consome uma API backend. Certifique-se de que o backend do SimAudiS está rodando localmente em `http://127.0.0.1:8000` antes de usar as funcionalidades que fazem requisições (geração de gráficos, análises, etc.). Consulte o repositório do backend para instruções de execução.
+> **Atenção:** o frontend consome uma API backend. Certifique-se de que o backend do SimAudiS está rodando antes de usar as funcionalidades que fazem requisições (geração de gráficos, análises, etc.). Consulte o repositório do backend para instruções de execução.
 
 ## Outros comandos disponíveis
 
@@ -96,15 +108,31 @@ auditory-system-frontend/
 - [Recharts](https://recharts.org/) — gráficos interativos
 - [Lucide React](https://lucide.dev/) — ícones
 
-## Configuração da API
+## Variáveis de ambiente
 
-O endereço base da API está definido em `src/services/api.jsx`:
+| Variável | Descrição | Exemplo |
+|---|---|---|
+| `VITE_API_BASE_URL` | URL base da API backend | `https://api.simaudis.com/` |
 
-```javascript
-const API_BASE_URL = 'http://127.0.0.1:8000/';
-```
+O arquivo `.env` nunca deve ser commitado. Use `.env.example` como referência. Em produção, configure a variável diretamente no painel da plataforma de deploy (Vercel ou Netlify).
 
-Altere essa constante caso o backend esteja rodando em outro endereço ou porta.
+## Deploy (Vercel / Netlify)
+
+O repositório já inclui os arquivos de configuração para ambas as plataformas.
+
+### Vercel
+
+1. Importe o repositório em [vercel.com](https://vercel.com)
+2. Em **Settings → Environment Variables**, adicione `VITE_API_BASE_URL` com a URL do backend em produção
+3. O deploy ocorrerá automaticamente a cada push na branch configurada
+
+### Netlify
+
+1. Importe o repositório em [netlify.com](https://netlify.com)
+2. Em **Site settings → Environment variables**, adicione `VITE_API_BASE_URL`
+3. As configurações de build (`npm run build`, pasta `dist/`) já estão definidas em `netlify.toml`
+
+> Em ambas as plataformas, o comando de build é `npm run build` e o diretório de publicação é `dist/`.
 
 ## Internacionalização
 
