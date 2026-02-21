@@ -39,3 +39,15 @@
   outline: none;
   background-color: #a6adb7;
 }
+
+.language-selector--compact {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.language-selector--compact .language-select {
+  width: auto;
+  padding: 6px 8px;
+  font-size: 13px;
+}

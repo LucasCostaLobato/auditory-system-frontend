@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Settings, Info } from 'lucide-react';
 import MiddleEarSidebar from '../sidebars/MiddleEarSidebar';
 import MiddleEarFRFGraph from '../graphs/MiddleEarFRFGraph';
 import MiddleEarDynamicGraph from '../graphs/MiddleEarDynamicGraph';
@@ -12,6 +13,8 @@ const MiddleEarPage = () => {
   const [dynamicData, setDynamicData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [activeGraph, setActiveGraph] = useState(null); // 'frf' ou 'dynamic'
+  const [controlsOpen, setControlsOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   // Estado para curvas "held" - armazena séries com metadados
   const [heldFrfSeries, setHeldFrfSeries] = useState([]);
@@ -20,6 +23,17 @@ const MiddleEarPage = () => {
   // Parâmetros da requisição atual (para saber qual condição foi usada)
   const [currentFrfParams, setCurrentFrfParams] = useState(null);
   const [currentDynamicParams, setCurrentDynamicParams] = useState(null);
+
+  const anyDrawerOpen = controlsOpen || infoOpen;
+
+  useEffect(() => {
+    if (anyDrawerOpen) {
+      document.body.classList.add('drawer-open');
+    } else {
+      document.body.classList.remove('drawer-open');
+    }
+    return () => document.body.classList.remove('drawer-open');
+  }, [anyDrawerOpen]);
 
   // Gera um sufixo único baseado na condição e severidade
   const getConditionSuffix = (params) => {
@@ -236,6 +250,12 @@ const MiddleEarPage = () => {
         onClear={handleClear}
         hasCurrentData={hasCurrentData()}
         hasHeldData={hasHeldData()}
+        isOpen={controlsOpen}
+        onClose={() => setControlsOpen(false)}
+      />
+      <div
+        className={`sidebar-overlay${anyDrawerOpen ? ' is-visible' : ''}`}
+        onClick={() => { setControlsOpen(false); setInfoOpen(false); }}
       />
       <div className="middle-ear-content">
         {loading ? (
@@ -262,8 +282,31 @@ const MiddleEarPage = () => {
           </>
         )}
       </div>
-      {activeGraph === 'frf' && <MiddleEarFRFExplanation />}
-      {activeGraph === 'dynamic' && <MiddleEarDynamicExplanation />}
+      {activeGraph === 'frf' && (
+        <MiddleEarFRFExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+      {activeGraph === 'dynamic' && (
+        <MiddleEarDynamicExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+
+      <div className="mobile-action-bar">
+        <button
+          className={`mobile-action-btn${controlsOpen ? ' is-active' : ''}`}
+          onClick={() => { setControlsOpen(prev => !prev); setInfoOpen(false); }}
+        >
+          <Settings size={20} />
+          Controles
+        </button>
+        {activeGraph && (
+          <button
+            className={`mobile-action-btn${infoOpen ? ' is-active' : ''}`}
+            onClick={() => { setInfoOpen(prev => !prev); setControlsOpen(false); }}
+          >
+            <Info size={20} />
+            Explicação
+          </button>
+        )}
+      </div>
     </div>
   );
 };

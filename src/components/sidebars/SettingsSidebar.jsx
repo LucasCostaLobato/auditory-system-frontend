@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useSettings } from '../../contexts/SettingsContext';
 import './SettingsSidebar.css';
 
-const SettingsSidebar = ({ onViewSpectrum }) => {
+const SettingsSidebar = ({ onViewSpectrum, isOpen, onClose }) => {
   const { t } = useLanguage();
   const { settings, updateSettings } = useSettings();
 
@@ -32,10 +33,17 @@ const SettingsSidebar = ({ onViewSpectrum }) => {
     updateSettings(params);
 
     onViewSpectrum(params);
+    onClose?.();
   };
 
   return (
-    <div className="settings-sidebar">
+    <div className={`settings-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="page-sidebar-close">
+        <button className="page-sidebar-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
+
       <div className="settings-section">
         <label className="settings-label">{t('settings.signalType')}</label>
         <select

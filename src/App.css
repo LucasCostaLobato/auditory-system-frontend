@@ -22,3 +22,32 @@
   color: #7f8c8d;
   text-align: center;
 }
+
+/* Overlay backdrop for drawers */
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    padding-top: var(--mobile-header-height);
+    padding-bottom: var(--mobile-action-bar-height);
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: var(--mobile-header-height) 0 0 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 850;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .sidebar-overlay.is-visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

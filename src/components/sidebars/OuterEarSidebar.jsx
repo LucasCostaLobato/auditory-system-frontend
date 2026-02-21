@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useSettings } from '../../contexts/SettingsContext';
 import './OuterEarSidebar.css';
 
-const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDomain }) => {
+const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDomain, isOpen, onClose }) => {
   const { t } = useLanguage();
   const { settings, updateSettings } = useSettings();
 
@@ -27,6 +28,7 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
     updateSettings({ canalLength });
 
     onGetFRF(params);
+    onClose?.();
   };
 
   const handleExecuteSpaceDomain = () => {
@@ -45,6 +47,7 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
     updateSettings({ canalLength, frequencyList });
 
     onExecuteSpaceDomain(params);
+    onClose?.();
   };
 
   const handleExecuteFrequencyDomain = () => {
@@ -63,10 +66,17 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
     updateSettings({ canalLength, positionList });
 
     onExecuteFrequencyDomain(params);
+    onClose?.();
   };
 
   return (
-    <div className="outer-ear-sidebar">
+    <div className={`outer-ear-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="page-sidebar-close">
+        <button className="page-sidebar-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
+
       {/* Seção 1: Anatomia do canal auditivo */}
       <div className="outer-ear-section">
         <h3 className="section-title">{t('outerEar.anatomySection')}</h3>

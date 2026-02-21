@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Settings, Info } from 'lucide-react';
 import InnerEarSidebar from '../sidebars/InnerEarSidebar';
 import InnerEarEnvelopeGraph from '../graphs/InnerEarEnvelopeGraph';
 import InnerEarTravellingWavesGraph from '../graphs/InnerEarTravellingWavesGraph';
@@ -12,12 +13,25 @@ const InnerEarPage = () => {
   const [travellingWavesData, setTravellingWavesData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [activeGraph, setActiveGraph] = useState(null); // 'envelope' ou 'travellingWaves'
+  const [controlsOpen, setControlsOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   // Estado para curvas "held" - armazena séries com metadados
   const [heldEnvelopeSeries, setHeldEnvelopeSeries] = useState([]);
 
   // Parâmetros da requisição atual
   const [currentEnvelopeParams, setCurrentEnvelopeParams] = useState(null);
+
+  const anyDrawerOpen = controlsOpen || infoOpen;
+
+  useEffect(() => {
+    if (anyDrawerOpen) {
+      document.body.classList.add('drawer-open');
+    } else {
+      document.body.classList.remove('drawer-open');
+    }
+    return () => document.body.classList.remove('drawer-open');
+  }, [anyDrawerOpen]);
 
   // Gera um sufixo único baseado na frequência
   const getFrequencySuffix = (params) => {
@@ -195,6 +209,12 @@ const InnerEarPage = () => {
         onClear={handleClear}
         hasCurrentData={hasCurrentData()}
         hasHeldData={hasHeldData()}
+        isOpen={controlsOpen}
+        onClose={() => setControlsOpen(false)}
+      />
+      <div
+        className={`sidebar-overlay${anyDrawerOpen ? ' is-visible' : ''}`}
+        onClick={() => { setControlsOpen(false); setInfoOpen(false); }}
       />
       <div className="inner-ear-content">
         {loading ? (
@@ -218,8 +238,31 @@ const InnerEarPage = () => {
           </>
         )}
       </div>
-      {activeGraph === 'envelope' && <InnerEarEnvelopeExplanation />}
-      {activeGraph === 'travellingWaves' && <InnerEarTravellingWavesExplanation />}
+      {activeGraph === 'envelope' && (
+        <InnerEarEnvelopeExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+      {activeGraph === 'travellingWaves' && (
+        <InnerEarTravellingWavesExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+
+      <div className="mobile-action-bar">
+        <button
+          className={`mobile-action-btn${controlsOpen ? ' is-active' : ''}`}
+          onClick={() => { setControlsOpen(prev => !prev); setInfoOpen(false); }}
+        >
+          <Settings size={20} />
+          Controles
+        </button>
+        {activeGraph && (
+          <button
+            className={`mobile-action-btn${infoOpen ? ' is-active' : ''}`}
+            onClick={() => { setInfoOpen(prev => !prev); setControlsOpen(false); }}
+          >
+            <Info size={20} />
+            Explicação
+          </button>
+        )}
+      </div>
     </div>
   );
 };

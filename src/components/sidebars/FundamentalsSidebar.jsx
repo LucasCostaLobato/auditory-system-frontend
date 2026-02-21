@@ -3,7 +3,7 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { Plus, X } from 'lucide-react';
 import './FundamentalsSidebar.css';
 
-const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
+const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum, isOpen, onClose }) => {
   const { t } = useLanguage();
 
   const [sineWaves, setSineWaves] = useState([
@@ -40,6 +40,7 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
       medium
     };
     onViewSignal(params);
+    onClose?.();
   };
 
   const handleViewSpectrum = () => {
@@ -49,10 +50,16 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum }) => {
       damping: parseFloat(damping)
     };
     onViewSpectrum(params);
+    onClose?.();
   };
 
   return (
-    <div className="fundamentals-sidebar">
+    <div className={`fundamentals-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="page-sidebar-close">
+        <button className="page-sidebar-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
       {/* Seção: Acústica */}
       <div className="fundamentals-section">
         <h3 className="section-title">{t('fundamentals.acousticsSection')}</h3>

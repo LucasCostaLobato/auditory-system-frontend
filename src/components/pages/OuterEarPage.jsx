@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Settings, Info } from 'lucide-react';
 import { useSettings } from '../../contexts/SettingsContext';
 import { getOuterEarFRF, getSpaceDomainAnalysis, getFrequencyDomainAnalysis } from '../../services/api';
 import OuterEarSidebar from '../sidebars/OuterEarSidebar';
@@ -17,6 +18,19 @@ const OuterEarPage = () => {
   const [spaceDomainData, setSpaceDomainData] = useState({ series: [], positions: [] });
   const [frequencyDomainData, setFrequencyDomainData] = useState({ series: [], frequencies: [] });
   const [loading, setLoading] = useState(false);
+  const [controlsOpen, setControlsOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
+
+  const anyDrawerOpen = controlsOpen || infoOpen;
+
+  useEffect(() => {
+    if (anyDrawerOpen) {
+      document.body.classList.add('drawer-open');
+    } else {
+      document.body.classList.remove('drawer-open');
+    }
+    return () => document.body.classList.remove('drawer-open');
+  }, [anyDrawerOpen]);
 
   const handleGetFRF = async (params) => {
     setLoading(true);
@@ -167,13 +181,44 @@ const OuterEarPage = () => {
         onGetFRF={handleGetFRF}
         onExecuteSpaceDomain={handleExecuteSpaceDomain}
         onExecuteFrequencyDomain={handleExecuteFrequencyDomain}
+        isOpen={controlsOpen}
+        onClose={() => setControlsOpen(false)}
+      />
+      <div
+        className={`sidebar-overlay${anyDrawerOpen ? ' is-visible' : ''}`}
+        onClick={() => { setControlsOpen(false); setInfoOpen(false); }}
       />
       <div className="outer-ear-content">
         {renderGraph()}
       </div>
-      {activeGraph === 'frf' && <CanalFRFExplanation />}
-      {activeGraph === 'spaceDomain' && <SpaceDomainExplanation />}
-      {activeGraph === 'frequencyDomain' && <FrequencyDomainExplanation />}
+      {activeGraph === 'frf' && (
+        <CanalFRFExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+      {activeGraph === 'spaceDomain' && (
+        <SpaceDomainExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+      {activeGraph === 'frequencyDomain' && (
+        <FrequencyDomainExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+
+      <div className="mobile-action-bar">
+        <button
+          className={`mobile-action-btn${controlsOpen ? ' is-active' : ''}`}
+          onClick={() => { setControlsOpen(prev => !prev); setInfoOpen(false); }}
+        >
+          <Settings size={20} />
+          Controles
+        </button>
+        {activeGraph && (
+          <button
+            className={`mobile-action-btn${infoOpen ? ' is-active' : ''}`}
+            onClick={() => { setInfoOpen(prev => !prev); setControlsOpen(false); }}
+          >
+            <Info size={20} />
+            Explicação
+          </button>
+        )}
+      </div>
     </div>
   );
 };

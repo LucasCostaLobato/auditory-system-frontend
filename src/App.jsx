@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { SettingsProvider } from './contexts/SettingsContext';
 import Sidebar from './components/sidebars/Sidebar';
+import MobileHeader from './components/common/MobileHeader';
 import HomePage from './components/pages/HomePage';
 import SettingsPage from './components/pages/SettingsPage';
 import OuterEarPage from './components/pages/OuterEarPage';
@@ -12,6 +13,21 @@ import './App.css';
 
 function App() {
   const [activeMenu, setActiveMenu] = useState('home');
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  useEffect(() => {
+    if (mobileNavOpen) {
+      document.body.classList.add('drawer-open');
+    } else {
+      document.body.classList.remove('drawer-open');
+    }
+    return () => document.body.classList.remove('drawer-open');
+  }, [mobileNavOpen]);
+
+  const handleMenuSelect = (menuId) => {
+    setActiveMenu(menuId);
+    setMobileNavOpen(false);
+  };
 
   const handleCloseSettings = () => {
     setActiveMenu('home');
@@ -40,7 +56,17 @@ function App() {
     <LanguageProvider>
       <SettingsProvider>
         <div className="app">
-          <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+          <MobileHeader onMenuOpen={() => setMobileNavOpen(true)} />
+          <Sidebar
+            activeMenu={activeMenu}
+            setActiveMenu={handleMenuSelect}
+            isOpen={mobileNavOpen}
+            onClose={() => setMobileNavOpen(false)}
+          />
+          <div
+            className={`sidebar-overlay${mobileNavOpen ? ' is-visible' : ''}`}
+            onClick={() => setMobileNavOpen(false)}
+          />
           <main className="main-content">
             {renderContent()}
           </main>
