@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Settings, Info } from 'lucide-react';
 import { useSettings } from '../../contexts/SettingsContext';
 import { getInputSignal } from '../../services/api';
 import SettingsSidebar from '../sidebars/SettingsSidebar';
@@ -10,6 +11,20 @@ const SettingsPage = () => {
   const { updateSettings } = useSettings();
   const [graphData, setGraphData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [controlsOpen, setControlsOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
+
+  const hasExplanation = graphData.length > 0;
+  const anyDrawerOpen = controlsOpen || infoOpen;
+
+  useEffect(() => {
+    if (anyDrawerOpen) {
+      document.body.classList.add('drawer-open');
+    } else {
+      document.body.classList.remove('drawer-open');
+    }
+    return () => document.body.classList.remove('drawer-open');
+  }, [anyDrawerOpen]);
 
   const handleViewSpectrum = async (params) => {
     setLoading(true);
@@ -46,7 +61,15 @@ const SettingsPage = () => {
 
   return (
     <div className="settings-page">
-      <SettingsSidebar onViewSpectrum={handleViewSpectrum} />
+      <SettingsSidebar
+        onViewSpectrum={handleViewSpectrum}
+        isOpen={controlsOpen}
+        onClose={() => setControlsOpen(false)}
+      />
+      <div
+        className={`sidebar-overlay${anyDrawerOpen ? ' is-visible' : ''}`}
+        onClick={() => { setControlsOpen(false); setInfoOpen(false); }}
+      />
       <div className="settings-content">
         {loading ? (
           <div className="loading">Carregando...</div>
@@ -54,7 +77,28 @@ const SettingsPage = () => {
           <SpectrumGraph data={graphData} />
         )}
       </div>
-      {graphData.length > 0 && <SpectrumExplanation />}
+      {hasExplanation && (
+        <SpectrumExplanation isOpen={infoOpen} onClose={() => setInfoOpen(false)} />
+      )}
+
+      <div className="mobile-action-bar">
+        <button
+          className={`mobile-action-btn${controlsOpen ? ' is-active' : ''}`}
+          onClick={() => { setControlsOpen(prev => !prev); setInfoOpen(false); }}
+        >
+          <Settings size={20} />
+          Controles
+        </button>
+        {hasExplanation && (
+          <button
+            className={`mobile-action-btn${infoOpen ? ' is-active' : ''}`}
+            onClick={() => { setInfoOpen(prev => !prev); setControlsOpen(false); }}
+          >
+            <Info size={20} />
+            Explicação
+          </button>
+        )}
+      </div>
     </div>
   );
 };

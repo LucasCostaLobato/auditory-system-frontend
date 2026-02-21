@@ -1,10 +1,11 @@
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Home, Settings, Activity, BookOpen } from 'lucide-react';
 import LanguageSelector from '../common/LanguageSelector';
 import logo from '../../assets/simaudis_logo_v3.png';
 import './Sidebar.css';
 
-const Sidebar = ({ activeMenu, setActiveMenu }) => {
+const Sidebar = ({ activeMenu, setActiveMenu, isOpen, onClose }) => {
   const { t } = useLanguage();
 
   const menuItems = [
@@ -17,7 +18,12 @@ const Sidebar = ({ activeMenu, setActiveMenu }) => {
   ];
 
   return (
-    <div className="sidebar">
+    <div className={`sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="sidebar-close">
+        <button className="sidebar-close-btn" onClick={onClose} aria-label="Fechar menu">
+          <X size={22} />
+        </button>
+      </div>
       <div className="sidebar-header">
         <img src={logo} alt="SimAudiS" className="sidebar-logo" />
       </div>

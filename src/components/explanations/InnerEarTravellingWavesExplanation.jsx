@@ -1,3 +1,4 @@
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import travellingImg from '../../assets/sidebar_innerear_trevelling.png';
 import './ExplanationSidebar.css';
@@ -12,11 +13,16 @@ const renderWithBoldQuotes = (text) => {
   });
 };
 
-const InnerEarTravellingWavesExplanation = () => {
+const InnerEarTravellingWavesExplanation = ({ isOpen, onClose }) => {
   const { t } = useLanguage();
 
   return (
-    <div className="explanation-sidebar">
+    <div className={`explanation-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="explanation-close">
+        <button className="explanation-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
       <h3 className="explanation-title">{t('innerEar.travellingWavesExplanationTitle')}</h3>
       <div className="explanation-content">
         <ul>

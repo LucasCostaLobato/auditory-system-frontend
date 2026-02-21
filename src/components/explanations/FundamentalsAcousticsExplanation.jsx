@@ -1,12 +1,18 @@
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import acousticsImg from '../../assets/sidebar_fundamentals_acoustics2.png';
 import './ExplanationSidebar.css';
 
-const FundamentalsAcousticsExplanation = () => {
+const FundamentalsAcousticsExplanation = ({ isOpen, onClose }) => {
   const { t } = useLanguage();
 
   return (
-    <div className="explanation-sidebar">
+    <div className={`explanation-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="explanation-close">
+        <button className="explanation-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
       <h3 className="explanation-title">{t('fundamentals.explanationTitle')}</h3>
       <div className="explanation-content">
         <ul>

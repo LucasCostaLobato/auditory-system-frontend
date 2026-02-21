@@ -1,12 +1,18 @@
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import frfImg from '../../assets/sidebar_outerear_frf.png';
 import './ExplanationSidebar.css';
 
-const CanalFRFExplanation = () => {
+const CanalFRFExplanation = ({ isOpen, onClose }) => {
   const { t } = useLanguage();
 
   return (
-    <div className="explanation-sidebar">
+    <div className={`explanation-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="explanation-close">
+        <button className="explanation-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
       <h3 className="explanation-title">{t('outerEar.frfExplanationTitle')}</h3>
       <div className="explanation-content">
         <ul>

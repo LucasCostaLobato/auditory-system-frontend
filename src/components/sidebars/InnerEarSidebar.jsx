@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import './InnerEarSidebar.css';
 
-const InnerEarSidebar = ({ onViewEnvelope, onViewTravellingWaves, onHold, onClear, hasCurrentData, hasHeldData }) => {
+const InnerEarSidebar = ({ onViewEnvelope, onViewTravellingWaves, onHold, onClear, hasCurrentData, hasHeldData, isOpen, onClose }) => {
   const { t } = useLanguage();
 
   // Estado local para frequência do estímulo
@@ -14,6 +15,7 @@ const InnerEarSidebar = ({ onViewEnvelope, onViewTravellingWaves, onHold, onClea
       freqStimulus: parseFloat(freqStimulus)
     };
     onViewEnvelope(params);
+    onClose?.();
   };
 
   // Handler para Ver ondas viajantes
@@ -22,10 +24,17 @@ const InnerEarSidebar = ({ onViewEnvelope, onViewTravellingWaves, onHold, onClea
       freqStimulus: parseFloat(freqStimulus)
     };
     onViewTravellingWaves(params);
+    onClose?.();
   };
 
   return (
-    <div className="inner-ear-sidebar">
+    <div className={`inner-ear-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="page-sidebar-close">
+        <button className="page-sidebar-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
+
       {/* Seção: Deslocamento da membrana basilar */}
       <div className="inner-ear-section">
         <h4 className="section-title">{t('innerEar.bmDisplacementSection')}</h4>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useSettings } from '../../contexts/SettingsContext';
 import './MiddleEarSidebar.css';
 
-const MiddleEarSidebar = ({ onViewFRF, onViewDynamic, onHold, onClear, hasCurrentData, hasHeldData }) => {
+const MiddleEarSidebar = ({ onViewFRF, onViewDynamic, onHold, onClear, hasCurrentData, hasHeldData, isOpen, onClose }) => {
   const { t } = useLanguage();
   const { settings, updateSettings } = useSettings();
 
@@ -76,6 +77,7 @@ const MiddleEarSidebar = ({ onViewFRF, onViewDynamic, onHold, onClear, hasCurren
     };
 
     onViewFRF(params);
+    onClose?.();
   };
 
   // Handler para Ver resposta à excitação
@@ -98,10 +100,17 @@ const MiddleEarSidebar = ({ onViewFRF, onViewDynamic, onHold, onClear, hasCurren
     };
 
     onViewDynamic(params);
+    onClose?.();
   };
 
   return (
-    <div className="middle-ear-sidebar">
+    <div className={`middle-ear-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="page-sidebar-close">
+        <button className="page-sidebar-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
+
       {/* Seção 1: Condição da Orelha Média */}
       <div className="middle-ear-section">
           <h4 className="section-title">{t('middleEar.condition')}</h4>

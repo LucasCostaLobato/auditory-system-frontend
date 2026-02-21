@@ -1,12 +1,18 @@
+import { X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import frequencyImg from '../../assets/sidebar_outerear_frequency.png';
 import './ExplanationSidebar.css';
 
-const FrequencyDomainExplanation = () => {
+const FrequencyDomainExplanation = ({ isOpen, onClose }) => {
   const { t } = useLanguage();
 
   return (
-    <div className="explanation-sidebar">
+    <div className={`explanation-sidebar${isOpen ? ' is-open' : ''}`}>
+      <div className="explanation-close">
+        <button className="explanation-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
+        </button>
+      </div>
       <h3 className="explanation-title">{t('outerEar.frequencyDomainExplanationTitle')}</h3>
       <div className="explanation-content">
         <ul>
