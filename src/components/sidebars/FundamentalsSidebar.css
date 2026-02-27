@@ -219,6 +219,39 @@
   cursor: not-allowed;
 }
 
+.play-signal-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-signal-button:hover {
+  background-color: #229954;
+}
+
+.play-signal-button:active {
+  background-color: #1e8449;
+}
+
+.play-signal-button.is-playing {
+  background-color: #e74c3c;
+}
+
+.play-signal-button.is-playing:hover {
+  background-color: #c0392b;
+}
+
 .page-sidebar-close {
   display: none;
 }
