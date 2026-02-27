@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Plus, X } from 'lucide-react';
+import { Plus, X, Volume2, VolumeX } from 'lucide-react';
 import './FundamentalsSidebar.css';
 
 const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum, isOpen, onClose }) => {
@@ -15,6 +15,12 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum, isOpen, onClose }) 
   const [mass, setMass] = useState(1);
   const [stiffness, setStiffness] = useState(1000);
   const [damping, setDamping] = useState(150);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const audioCtxRef = useRef(null);
+  const oscillatorsRef = useRef(null);
+  const gainRef = useRef(null);
+  const stopTimeoutRef = useRef(null);
 
   const soundSpeed = medium === 'air' ? 343 : 1500;
 
@@ -52,6 +58,77 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum, isOpen, onClose }) 
     onViewSpectrum(params);
     onClose?.();
   };
+
+  const stopAudio = () => {
+    if (stopTimeoutRef.current) {
+      clearTimeout(stopTimeoutRef.current);
+      stopTimeoutRef.current = null;
+    }
+    if (oscillatorsRef.current) {
+      oscillatorsRef.current.forEach(osc => { try { osc.stop(); } catch (_) {} });
+      oscillatorsRef.current = null;
+    }
+    if (audioCtxRef.current) {
+      audioCtxRef.current.close();
+      audioCtxRef.current = null;
+    }
+    gainRef.current = null;
+    setIsPlaying(false);
+  };
+
+  const handlePlaySignal = () => {
+    if (isPlaying) { stopAudio(); return; }
+
+    // Build wave list (phase in radians, filter out zero-frequency)
+    const waves = sineWaves
+      .map(w => ({
+        amplitude: parseFloat(w.amplitude) || 0,
+        frequency: parseFloat(w.frequency) || 0,
+        phase: ((parseFloat(w.phase) || 0) * Math.PI) / 180
+      }))
+      .filter(w => w.frequency > 0);
+
+    if (waves.length === 0) return;
+
+    const ctx = new AudioContext();
+    audioCtxRef.current = ctx;
+
+    // Normalise amplitudes so peak stays ≤ 0.7 to avoid clipping
+    const totalPeak = waves.reduce((s, w) => s + Math.abs(w.amplitude), 0);
+    const norm = totalPeak > 0 ? 0.7 / totalPeak : 1;
+
+    const masterGain = ctx.createGain();
+    masterGain.gain.setValueAtTime(1, ctx.currentTime);
+    masterGain.connect(ctx.destination);
+    gainRef.current = masterGain;
+
+    // sin(ωt + φ) = sin(φ)·cos(ωt) + cos(φ)·sin(ωt)
+    // PeriodicWave: x(t) = real[1]·cos(ωt) + imag[1]·sin(ωt)
+    const oscs = waves.map(({ amplitude, frequency, phase }) => {
+      const a = amplitude * norm;
+      const real = new Float32Array([0, a * Math.sin(phase)]);
+      const imag = new Float32Array([0, a * Math.cos(phase)]);
+      const periodicWave = ctx.createPeriodicWave(real, imag, { disableNormalization: true });
+
+      const osc = ctx.createOscillator();
+      osc.setPeriodicWave(periodicWave);
+      osc.frequency.value = frequency;
+      osc.connect(masterGain);
+      osc.start();
+      return osc;
+    });
+
+    oscillatorsRef.current = oscs;
+    setIsPlaying(true);
+
+    // Fade out over last 0.3 s, total duration 3 s
+    const duration = 3;
+    masterGain.gain.setValueAtTime(1, ctx.currentTime + duration - 0.3);
+    masterGain.gain.linearRampToValueAtTime(0, ctx.currentTime + duration);
+    stopTimeoutRef.current = setTimeout(stopAudio, duration * 1000);
+  };
+
+  useEffect(() => stopAudio, []); // cleanup on unmount
 
   return (
     <div className={`fundamentals-sidebar${isOpen ? ' is-open' : ''}`}>
@@ -158,6 +235,13 @@ const FundamentalsSidebar = ({ onViewSignal, onViewSpectrum, isOpen, onClose }) 
             onClick={handleViewSignal}
           >
             {t('fundamentals.viewSignal')}
+          </button>
+          <button
+            className={`play-signal-button${isPlaying ? ' is-playing' : ''}`}
+            onClick={handlePlaySignal}
+          >
+            {isPlaying ? <VolumeX size={16} /> : <Volume2 size={16} />}
+            {isPlaying ? t('fundamentals.stopSignal') : t('fundamentals.playSignal')}
           </button>
         </div>
       </div>
