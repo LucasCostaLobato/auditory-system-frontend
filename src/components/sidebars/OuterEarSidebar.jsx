@@ -4,68 +4,54 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import { useSettings } from '../../contexts/SettingsContext';
 import './OuterEarSidebar.css';
 
+const AGE_LENGTHS = {
+  infant:     16,
+  child:      21,
+  adolescent: 25,
+  adult:      30
+};
+
 const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDomain, isOpen, onClose }) => {
   const { t } = useLanguage();
   const { settings, updateSettings } = useSettings();
 
-  const [canalLength, setCanalLength] = useState(settings.canalLength);
+  const [ageGroup, setAgeGroup] = useState('adult');
   const [frequencyList, setFrequencyList] = useState(settings.frequencyList);
   const [positionList, setPositionList] = useState(settings.positionList);
 
+  const canalLength = AGE_LENGTHS[ageGroup];
+
   // Update local state when context changes
   useEffect(() => {
-    setCanalLength(settings.canalLength);
     setFrequencyList(settings.frequencyList);
     setPositionList(settings.positionList);
   }, [settings]);
 
   const handleGetFRF = () => {
-    const params = {
-      canalLength: parseFloat(canalLength)
-    };
-
-    // Save to context for persistence
-    updateSettings({ canalLength });
-
-    onGetFRF(params);
+    updateSettings({ canalLength: String(canalLength) });
+    onGetFRF({ canalLength });
     onClose?.();
   };
 
   const handleExecuteSpaceDomain = () => {
-    // Converte string separada por vírgulas em array de floats
     const frequencies = frequencyList
       .split(',')
       .map(f => parseFloat(f.trim()))
       .filter(f => !isNaN(f));
 
-    const params = {
-      canalLength: parseFloat(canalLength),
-      frequencies
-    };
-
-    // Save to context for persistence
-    updateSettings({ canalLength, frequencyList });
-
-    onExecuteSpaceDomain(params);
+    updateSettings({ canalLength: String(canalLength), frequencyList });
+    onExecuteSpaceDomain({ canalLength, frequencies });
     onClose?.();
   };
 
   const handleExecuteFrequencyDomain = () => {
-    // Converte string separada por vírgulas em array de floats
     const positions = positionList
       .split(',')
       .map(p => parseFloat(p.trim()))
       .filter(p => !isNaN(p));
 
-    const params = {
-      canalLength: parseFloat(canalLength),
-      positions
-    };
-
-    // Save to context for persistence
-    updateSettings({ canalLength, positionList });
-
-    onExecuteFrequencyDomain(params);
+    updateSettings({ canalLength: String(canalLength), positionList });
+    onExecuteFrequencyDomain({ canalLength, positions });
     onClose?.();
   };
 
@@ -81,20 +67,26 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
       <div className="outer-ear-section">
         <h3 className="section-title">{t('outerEar.anatomySection')}</h3>
 
-        <label className="outer-ear-label">{t('outerEar.canalLength')}</label>
-        <input
-          type="number"
-          className="outer-ear-input"
-          value={canalLength}
-          onChange={(e) => setCanalLength(e.target.value)}
-          placeholder="mm"
-          step="0.1"
-        />
+        <div className="age-group">
+          <label className="outer-ear-label">{t('outerEar.ageGroup')}</label>
+          <select
+            className="outer-ear-select"
+            value={ageGroup}
+            onChange={(e) => setAgeGroup(e.target.value)}
+          >
+            <option value="infant">{t('outerEar.ageInfant')}</option>
+            <option value="child">{t('outerEar.ageChild')}</option>
+            <option value="adolescent">{t('outerEar.ageAdolescent')}</option>
+            <option value="adult">{t('outerEar.ageAdult')}</option>
+          </select>
+        </div>
+        <p className="canal-length-info">
+          {t('outerEar.canalLengthInfo')} = {canalLength} mm
+        </p>
 
         <button
           className="outer-ear-button"
           onClick={handleGetFRF}
-          disabled={!canalLength}
         >
           {t('outerEar.getFRF')}
         </button>
@@ -116,7 +108,7 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
         <button
           className="outer-ear-button"
           onClick={handleExecuteSpaceDomain}
-          disabled={!canalLength || !frequencyList}
+          disabled={!frequencyList}
         >
           {t('outerEar.executeSpaceDomain')}
         </button>
@@ -138,7 +130,7 @@ const OuterEarSidebar = ({ onGetFRF, onExecuteSpaceDomain, onExecuteFrequencyDom
         <button
           className="outer-ear-button"
           onClick={handleExecuteFrequencyDomain}
-          disabled={!canalLength || !positionList}
+          disabled={!positionList}
         >
           {t('outerEar.executeFrequencyDomain')}
         </button>

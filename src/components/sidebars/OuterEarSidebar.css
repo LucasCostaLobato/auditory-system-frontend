@@ -50,6 +50,35 @@
   border-color: #3498db;
 }
 
+.age-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.outer-ear-select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.outer-ear-select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.canal-length-info {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-style: italic;
+  margin: 8px 0 15px 0;
+}
+
 .outer-ear-button {
   width: 100%;
   padding: 12px;
@@ -117,7 +146,8 @@
     background-color: #d5dbdb;
   }
 
-  .outer-ear-input {
+  .outer-ear-input,
+  .outer-ear-select {
     font-size: 16px;
   }
 }

@@ -108,7 +108,13 @@
       "frequencyDomainBullet1": "Nesta análise, é possível entender como o Nível de Pressão Sonora (NPS) varia ao longo da frequência;",
       "frequencyDomainBullet2": "Em contraste à análise no domínio do espaço, nesta análise observa-se a onda em um (ou mais) ponto no espaço;",
       "frequencyDomainBullet3": "Compare como é o espectro de NPS em diferentes pontos do canal auditivo;",
-      "frequencyDomainBullet4": "Na página \"Configurações\", selecione o sinal \"Ruído branco ideal\", e tente explicar as semelhanças e diferenças do NPS ao final do canal auditivo e a FRF do canal auditivo;"
+      "frequencyDomainBullet4": "Na página \"Configurações\", selecione o sinal \"Ruído branco ideal\", e tente explicar as semelhanças e diferenças do NPS ao final do canal auditivo e a FRF do canal auditivo;",
+      "ageGroup": "Faixa etária",
+      "ageInfant": "Infantes",
+      "ageChild": "Crianças",
+      "ageAdolescent": "Adolescentes",
+      "ageAdult": "Adultos",
+      "canalLengthInfo": "Comprimento do canal"
     },
     "middleEar": {
       "condition": "Condição da orelha média",
@@ -329,7 +335,13 @@
       "frequencyDomainBullet1": "In this analysis, it is possible to understand how the Sound Pressure Level (SPL) varies along the frequency;",
       "frequencyDomainBullet2": "In contrast to the space domain analysis, in this analysis the wave is observed at one (or more) point in space;",
       "frequencyDomainBullet3": "Compare the SPL spectrum at different points of the ear canal;",
-      "frequencyDomainBullet4": "On the \"Settings\" page, select the \"Ideal white noise\" signal, and try to explain the similarities and differences between the SPL at the end of the ear canal and the ear canal FRF;"
+      "frequencyDomainBullet4": "On the \"Settings\" page, select the \"Ideal white noise\" signal, and try to explain the similarities and differences between the SPL at the end of the ear canal and the ear canal FRF;",
+      "ageGroup": "Age group",
+      "ageInfant": "Infants",
+      "ageChild": "Children",
+      "ageAdolescent": "Adolescents",
+      "ageAdult": "Adults",
+      "canalLengthInfo": "Canal length"
     },
     "middleEar": {
       "condition": "Middle ear condition",
@@ -550,7 +562,13 @@
       "frequencyDomainBullet1": "En este análisis, es posible entender cómo el Nivel de Presión Sonora (NPS) varía a lo largo de la frecuencia;",
       "frequencyDomainBullet2": "En contraste con el análisis en el dominio del espacio, en este análisis se observa la onda en uno (o más) puntos en el espacio;",
       "frequencyDomainBullet3": "Compare cómo es el espectro de NPS en diferentes puntos del canal auditivo;",
-      "frequencyDomainBullet4": "En la página \"Configuraciones\", seleccione la señal \"Ruido blanco ideal\", e intente explicar las similitudes y diferencias del NPS al final del canal auditivo y la FRF del canal auditivo;"
+      "frequencyDomainBullet4": "En la página \"Configuraciones\", seleccione la señal \"Ruido blanco ideal\", e intente explicar las similitudes y diferencias del NPS al final del canal auditivo y la FRF del canal auditivo;",
+      "ageGroup": "Grupo de edad",
+      "ageInfant": "Infantes",
+      "ageChild": "Niños",
+      "ageAdolescent": "Adolescentes",
+      "ageAdult": "Adultos",
+      "canalLengthInfo": "Longitud del canal"
     },
     "middleEar": {
       "condition": "Condición del oído medio",
